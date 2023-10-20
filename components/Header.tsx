@@ -16,7 +16,7 @@ export default function Header({
         <div className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
         <Image
           alt="header text"
-          src="/logo.png"
+          src={'/'+actual+'/logo.png'}
           className="w-auto h-auto"
           width={1000}
           height={1000}

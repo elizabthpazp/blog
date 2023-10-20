@@ -1,8 +1,12 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
-import "../styles/globals.css";
+import "../../styles/globals.css"
 
-//META TAGSSSSSSSSSSSSSSSSSSSSSSS
+import { i18n } from '../../i18n-config'
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }))
+} 
 
 let title = "Learn about Web Development with me";
 let description = "It doesn't matter if you are just starting out or you are an expert, there is always something new that you can learn and I would really like to be able to share it with you.";
@@ -34,11 +38,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode;  params: { lang: string }
 }) {
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <body className="bg-[#17181C] text-white">
         {children}
         <Analytics />

@@ -17,3 +17,63 @@
     pointer-events: none;
   }
 }
+
+.switch-lang {
+  width: 60px;
+  text-align: left;
+  cursor: pointer;  
+  top: 15px;
+  right: 150px;
+}
+.switch-lang:hover .lang-dropdown {
+  display: block;
+} 
+.current-lang {
+  background: #34495e;
+  padding: 2px 5px 5px 5px;
+  border-radius: 10px;
+}
+.lang-flag {
+  width: 20px;
+  display: inline-block;
+}
+.lang-text {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.lang-dropdown {
+  display: none;
+  background: #34495e;
+  border-radius: 10px;
+  margin-top: 2px;
+}
+.selecting-lang {
+  padding: 3px 5px 3px 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.selecting-lang:hover {
+  background: #22313f;
+}
+ 
+@media (max-width: 476px) {
+  .switch-lang{display: none;}
+}
+
+@media (min-width: 476px) {
+  .switch-lang2{display: none;}
+}
+
+.switch-lang2 {
+  width: 60px;
+  text-align: left;
+  cursor: pointer;  
+  margin-top: 20px;
+  right: 10px;
+}
+.switch-lang2:hover .lang-dropdown {
+  display: block;
+} 

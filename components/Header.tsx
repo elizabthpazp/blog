@@ -1,9 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import LocaleSwitcher from './LocaleSwitcher'
 
-export default function Header() {
+export default function Header({
+  title,
+  actual
+}: {
+ title: string ,
+ actual: string ,
+}) {
   return (
-    <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
+    <header className="relative flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
       <Link href="/" className="flex space-x-2">
         
         <div className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
@@ -16,14 +23,16 @@ export default function Header() {
         />
         </div>
       </Link>
+      
+      <LocaleSwitcher actual={actual}/>
       <a
         className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-violet-600 text-white px-5 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
-        href="https://github.com/elizabthpazp"
+        href="https://github.com/elizabthpazp/blog"
         target="_blank"
         rel="noopener noreferrer"
       >
         <Github />
-        <p>Star on GitHub</p>
+        <p>{title}</p>
       </a>
     </header>
   );

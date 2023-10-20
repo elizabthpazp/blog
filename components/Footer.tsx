@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer({
+  copy
+}: {
+  copy: string 
+}) {
   return (
     <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t mt-5 flex sm:flex-row flex-col justify-between items-center px-3 space-y-3 sm:mb-0 mb-3 border-gray-500">
       <div className="text-gray-500">
@@ -13,7 +17,7 @@ export default function Footer() {
         >
           elizabthpazp
         </a> &nbsp;
-          All rights reserved.
+          {copy}
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
@@ -26,10 +30,7 @@ export default function Footer() {
             className="h-6 w-6 text-gray-500"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"   
           >
             {" "}
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />{" "}
@@ -62,12 +63,9 @@ export default function Footer() {
             className="h-6 w-6 text-gray-500"
             width="24"
             height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
+            viewBox="0 0 24 24" 
             stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            fill="none"  
           >
             {" "}
             <path stroke="none" d="M0 0h24v24H0z" />{" "}
@@ -85,10 +83,7 @@ export default function Footer() {
             className="h-6 w-6 text-gray-500"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"   
           >
             {" "}
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />{" "}

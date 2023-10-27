@@ -5,9 +5,11 @@ import { i18n, Locale } from '../i18n-config'
 import Image from "next/image";
 
 export default function LocaleSwitcher({ 
-  actual
+  actual,
+  classNameProp
 }: { 
  actual: string ,
+ classNameProp: string ,
 }) {
   const pathName = usePathname()
   const redirectedPathName = (locale: string) => {
@@ -17,10 +19,9 @@ export default function LocaleSwitcher({
     return segments.join('/')
   } 
   const getSrc = (lang:string) => { return lang == 'en' ? "/usa.png" : "/spain.png"}
-  return ( 
-    <div> 
-    <div className='switch-lang absolute'>
-        <div className='current-lang'>
+  return (  
+    <div className={classNameProp}>
+        <div className='current-lang flex'>
          <img className='lang-flag' src={getSrc(actual)}  alt="elizabthpazp" title="elizabthpazp" width={100} height={100}></img>
          <p className="lang-text light:text-white dark:text-white">{actual.toUpperCase()}</p>
         </div>
@@ -38,27 +39,6 @@ export default function LocaleSwitcher({
     )
             }
   })} 
-    </div>
-    <div className='switch-lang2 absolute'>
-        <div className='current-lang'>
-         <img className='lang-flag' src={getSrc(actual)}></img>
-         <p className="lang-text">{actual.toUpperCase()}</p>
-        </div>
-          {i18n.locales.map((locale: Locale) => {
-            if (locale !=actual) {
-    return (
-        <div className='lang-dropdown' key={locale}>
-        <Link href={redirectedPathName(locale)}>
-        <div className='selecting-lang'>
-         <img className='lang-flag' src={getSrc(locale)}></img>
-         <p className="lang-text">{locale.toUpperCase()}</p>
-        </div>  
-        </Link>
-         </div>  
-    )
-            }
-  })} 
-    </div>      
-    </div>
+    </div>    
   )
 }

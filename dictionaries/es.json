@@ -11,8 +11,8 @@
     "share": "Comparte el artículo",
     "articles": {
         "first": {
-            "title": "Descubriendo el Fascinante Mundo del",
-            "title1": "Desarrollo Web Frontend",
+            "title": "Descubriendo el Fascinante Mundo Web del",
+            "title1": "Desarrollo Frontend",
             "description1": "¿Alguna vez te has preguntado cómo se crean esas hermosas y funcionales páginas web que visitas a diario? Bienvenido/a al emocionante mundo del desarrollo web frontend. En este artículo, vamos a explorar qué es el desarrollo web frontend, su importancia y las habilidades necesarias para convertirte en un exitoso desarrollador frontend. ¡Prepárate para adentrarte en un viaje lleno de creatividad, interactividad y nuevas posibilidades!",
             "question1": "¿Qué es el desarrollo web frontend?",
             "description2": "El desarrollo web frontend es la práctica de crear la parte visual, interactiva y de experiencia de usuario de un sitio web. Los desarrolladores frontend son responsables de traducir los diseños de un sitio web o aplicación en código HTML, CSS y JavaScript, creando una experiencia atractiva y funcional para los usuarios. Es el arte de dar vida a las ideas y conceptos a través de la combinación de tecnologías y herramientas frontend.",

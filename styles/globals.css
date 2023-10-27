@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 400px) {
+@media (min-width: 350px) {
   .background-gradient::before {
     background: radial-gradient(
       20% 50% at 50% 50%,
@@ -19,11 +19,10 @@
 }
 
 .switch-lang {
-  width: 60px;
-  text-align: left;
+  width: 60px; 
   cursor: pointer;  
   top: 15px;
-  right: 150px;
+  right: 100px;
 }
 .switch-lang:hover .lang-dropdown {
   display: block;
@@ -33,12 +32,12 @@
   border-radius: 10px;
 }
 .lang-flag {
-  width: 20px;
+  width: 25px;
   display: inline-block;
 }
 .lang-text {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 4px;
   vertical-align: top;
   margin-top: 2px;
 }
@@ -57,40 +56,25 @@
   background: #63788c;
 }
  
-@media (max-width: 476px) {
-  .switch-lang{display: none;}
+@media (max-width: 476px) { 
   .containerLangs{margin-bottom: 25px;}
 }
-
-@media (min-width: 476px) {
-  .switch-lang2{display: none;}
-}
-
-.switch-lang2 {
-  width: 60px;
-  text-align: left;
-  cursor: pointer;  
-  margin-top: 25px; 
-  right: 10px;
-}
-.switch-lang2:hover .lang-dropdown {
-  display: block;
-} 
-
+ 
 
 @media (max-width: 678px) {
   .containerContentBlog{
     text-align: center;
   }
 } 
- 
-@media (min-width: 476px) {
-  .themeSwitch{
-    margin-right:-180px;
+  
+
+@media (max-width: 450px) { 
+  .mt-sm{ margin-top: 100px ;}
+  .switch-lang { 
+    top:0px; 
   }
+  .mt-0-sm{margin-top: -50px;} 
 }
-@media (max-width: 476px) {
-  .themeSwitch{
-    margin-right:0px;
-  }
-}
+  .sombrita{-webkit-box-shadow: 0px 0px 30px -11px rgba(0,0,0,0.53);
+    box-shadow: 0px 0px 30px -11px rgba(0,0,0,0.53);
+  } 

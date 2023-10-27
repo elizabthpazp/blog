@@ -11,34 +11,32 @@ export default function Header({
  actual: string ,
 }) {
   return (
-    <header className="relative flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
-      <Link href="/" className="flex space-x-2">
-        
-        <div className="sm:text-3xl text-xl font-bold ml-2 tracking-tight containerLangs">
+    <header className="columns-4 relative flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
+     
+      <Link href="/" className="w-full flex space-x-2 sm:text-3xl text-xl font-bold ml-2 tracking-tight mt-0-sm">  
         <Image
           alt="elizabthpazp"
           title="elizabthpazp"
           src="/logo.png"
           className="w-auto h-auto"
-          width={1000}
-          height={1000}
-        />
-        </div>
+          width={500}
+          height={500}
+        /> 
       </Link>
-       
-      <LocaleSwitcher actual={actual}  />
+        
+      <LocaleSwitcher actual={actual} classNameProp={'w-full absolute mr-7 switch-lang mt-sm'} />
       
-      <ThemeSwitcher />
+      <ThemeSwitcher classNameProp={'w-full mx-4 mt-1 mt-sm'}/>
+ 
       <a
-        className="flex max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-5 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
+        className="w-full flex mt-sm max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
         href="https://github.com/elizabthpazp/blog"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        <Github />
-        <p>{title}</p>
-      </a>
-
+      > 
+         <Github />  
+      </a> 
+      
     </header>
   );
 }

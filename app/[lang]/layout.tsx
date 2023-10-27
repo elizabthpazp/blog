@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import "../../styles/globals.css"
-
+import { Providers } from "./providers";
 import { i18n } from '../../i18n-config'
 
 export async function generateStaticParams() {
@@ -44,8 +44,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang}>
-      <body className="bg-[#17181C] text-white">
-        {children}
+      <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
+        <Providers>
+         {children}
+        </Providers>
         <Analytics />
       </body>
     </html>

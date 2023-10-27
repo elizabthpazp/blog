@@ -28,8 +28,7 @@
 .switch-lang:hover .lang-dropdown {
   display: block;
 } 
-.current-lang {
-  background: #34495e;
+.current-lang { 
   padding: 2px 5px 5px 5px;
   border-radius: 10px;
 }
@@ -45,8 +44,7 @@
 }
 
 .lang-dropdown {
-  display: none;
-  background: #34495e;
+  display: none; 
   border-radius: 10px;
   margin-top: 2px;
 }
@@ -56,11 +54,12 @@
   border-radius: 10px;
 }
 .selecting-lang:hover {
-  background: #22313f;
+  background: #63788c;
 }
  
 @media (max-width: 476px) {
   .switch-lang{display: none;}
+  .containerLangs{margin-bottom: 25px;}
 }
 
 @media (min-width: 476px) {
@@ -71,9 +70,27 @@
   width: 60px;
   text-align: left;
   cursor: pointer;  
-  margin-top: 20px;
+  margin-top: 25px; 
   right: 10px;
 }
 .switch-lang2:hover .lang-dropdown {
   display: block;
 } 
+
+
+@media (max-width: 678px) {
+  .containerContentBlog{
+    text-align: center;
+  }
+} 
+ 
+@media (min-width: 476px) {
+  .themeSwitch{
+    margin-right:-180px;
+  }
+}
+@media (max-width: 476px) {
+  .themeSwitch{
+    margin-right:0px;
+  }
+}

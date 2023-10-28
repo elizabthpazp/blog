@@ -3,11 +3,9 @@ import Link from "next/link";
 import LocaleSwitcher from './LocaleSwitcher'
 import {ThemeSwitcher} from './ThemeSwitcher' 
 
-export default function Header({
-  title,
+export default function Header({ 
   actual
-}: {
- title: string ,
+}: { 
  actual: string ,
 }) {
   return (
@@ -28,14 +26,14 @@ export default function Header({
       
       <ThemeSwitcher classNameProp={'w-full mx-4 mt-1 mt-sm'}/>
  
-      <a
+      <Link
         className="w-full flex mt-sm max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
         href="https://github.com/elizabthpazp/blog"
         target="_blank"
         rel="noopener noreferrer"
       > 
          <Github />  
-      </a> 
+      </Link> 
       
     </header>
   );

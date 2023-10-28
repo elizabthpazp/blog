@@ -4,7 +4,19 @@ import Footer from "../../../components/Footer";
 import Header from "../../../components/Header"; 
 import { getDictionary } from '../../../get-dictionary'
 import SquigglyLines from "../../../components/SquigglyLines";
-import { Locale } from '../../../i18n-config' 
+import { Locale } from '../../../i18n-config'  
+
+let titlePage: string, descriptionPage: string;
+export async function generateMetadata() {
+	return {
+		title: titlePage,
+		description: descriptionPage,
+    openGraph: {
+     title: titlePage,
+		 description: descriptionPage,
+    }
+	}
+} 
 
 export default async function Learn({
   params: { lang },
@@ -12,15 +24,16 @@ export default async function Learn({
   params: { lang: Locale }
 }) {
   const dictionary = await getDictionary(lang); 
-
+  titlePage = dictionary.articles.first.title + dictionary.articles.first.title1;
+  descriptionPage = dictionary.articles.first.description2;
   const actual = `https://blog-elizabthpazp.vercel.app/${lang}/desarrollo-web-frontend`
   
-  const share = `https://twitter.com/share?url=${actual}&text=${dictionary.articles.first.title + dictionary.articles.first.title1} por @elizabthpazp`;
+  const share = `https://twitter.com/share?url=${actual}&text=${titlePage} por @elizabthpazp`;
 
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Header actual={lang} title={dictionary.github}/>
-      
+      <Header actual={lang} />
+       
       <main className="flex flex-1 w-full flex-col items-center justify-center px-4 sm:mt-20 mt-20 background-gradient">
   
         <h3 className="mx-auto text-gray-800 light:text-gray-800 dark:text-gray-300 text-center max-w-5xl font-display text-4xl font-bold tracking-normal sm:text-6xl">
@@ -108,4 +121,4 @@ export default async function Learn({
       <Footer copy={dictionary.copy} />
     </div>
   );
-}
+} 

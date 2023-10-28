@@ -5,7 +5,8 @@ import Header from "../../components/Header";
 import SquigglyLines from "../../components/SquigglyLines";
 import { getDictionary } from '../../get-dictionary'
 import { Locale } from '../../i18n-config'
- 
+import { links } from '../../links-web' 
+
 export default async function HomePage({
   params: { lang },
 }: {
@@ -19,7 +20,7 @@ export default async function HomePage({
    
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
         <a
-          href="https://t.me/elizabthpazp"
+          href={links.telegram}
           target="_blank"
           rel="noreferrer"
           className="border border-gray-700 rounded-xl py-2 px-3 light:text-gray-500 dark:text-gray-400 text-sm mb-5 transition duration-300 ease-in-out"

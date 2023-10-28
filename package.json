@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "preview": "next preview"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",

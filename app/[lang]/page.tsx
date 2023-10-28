@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header"; 
+import PostPreview from "../../components/PostPreview"; 
 import SquigglyLines from "../../components/SquigglyLines";
 import { getDictionary } from '../../get-dictionary'
 import { Locale } from '../../i18n-config'
@@ -9,22 +10,7 @@ import { links } from '../../links-web'
 import fs from 'fs'; 
 import matter from "gray-matter";
 import { PostMetadata } from "../../PostMetadata";
-
-const getPostMetaData=(lang: Locale): PostMetadata[]=>{ 
-  const folder = 'posts/'  
-  const files = fs.readdirSync(folder); 
-
-  const posts = files.map((filename)=>{ 
-    const fileContents = fs.readFileSync(`posts/${filename}/${lang}/${filename}.md`, 'utf8'); 
-    const matterResult = matter(fileContents);
-    return{
-      title: matterResult.data.title,
-      description: matterResult.data.title,
-      slug: filename 
-    }
-  })  
-  return posts;
-}
+import getPostMetaData from "../../getPostMetadata"; 
 
 export default async function HomePage({
   params: { lang },
@@ -33,12 +19,8 @@ export default async function HomePage({
 }) {
   const dictionary = await getDictionary(lang) 
   const postMetadata = getPostMetaData(lang);
-  const postPreviews = postMetadata.map((post) => (
-     <div> 
-      <Link href={`/${post.slug}`}> 
-      <h2>{post.title}</h2>
-      </Link>
-     </div>
+  const postPreviews = postMetadata.map((post) => ( 
+    <PostPreview key={post.slug} {...post} /> 
   ));
 
   return (

@@ -9,7 +9,7 @@ import { getDictionary } from "../../../get-dictionary";
 import SquigglyLines from "../../../components/SquigglyLines";
 import { Locale } from "../../../i18n-config";
 import matter from "gray-matter";
-import { PostMetadata } from "../../../PostMetadata";
+import { PostMetadata } from "../../../PostMetadata"; 
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -25,6 +25,13 @@ export async function generateMetadata({
       description: getPostMetaData(slug, lang).description,
     },
   };
+}
+
+export const generateStaticParams =async () => { 
+  return [
+    {slug : "desarrollo-web-frontend"},
+    {slug : "catewebs-digital-portal"}
+  ]
 }
 
 const getPostContent = (slug: string, lang: Locale) => {

@@ -42,7 +42,7 @@ export default async function Learn({
           </span>
         </h3>
         <p className="light:text-gray-600 dark:text-gray-400 mt-8">26 {lang == 'es' ? 'octubre' : 'october'} 2023</p>
-        <div className="containerContentBlog mt-6 font-medium mb-20">
+        <div className="containerContentBlog mt-6 font-medium mb-20 max-w-4xl">
         <h2 className="mx-auto mt-12 text-xl sm:text-white-400 text-white-500 leading-7">
         {dictionary.articles.first.description1}
         </h2>

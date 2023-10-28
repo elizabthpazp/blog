@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import "../../styles/globals.css"
 import { Providers } from "./providers";
 import { i18n } from '../../i18n-config'
+import { links } from '../../links-web' 
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
@@ -10,20 +11,20 @@ export async function generateStaticParams() {
 
 let title = "Learn about Web Development with me";
 let description = "It doesn't matter if you are just starting out or you are an expert, there is always something new that you can learn and I would really like to be able to share it with you.";
-let ogimage = "./logo.png";
-let sitename = "elizabthpazp";
+let ogimage = links.logo;
+let sitename = links.username;
  
 export const metadata: Metadata = {
   title,
   description,
   icons: {
-    icon: "/fav.png",
+    icon: links.icon,
   },
   openGraph: {
     images: [ogimage],
     title,
     description,
-    url: "https://blog-elizabthpazp.vercel.app/",
+    url: links.domain,
     siteName: sitename,
     locale: "en_US",
     type: "website",

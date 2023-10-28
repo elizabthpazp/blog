@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LocaleSwitcher from './LocaleSwitcher'
 import {ThemeSwitcher} from './ThemeSwitcher' 
+import { links } from '../links-web' 
 
 export default function Header({ 
   actual
@@ -13,9 +14,9 @@ export default function Header({
      
       <Link href="/" className="w-full flex space-x-2 sm:text-3xl text-xl font-bold ml-2 tracking-tight mt-0-sm">  
         <Image
-          alt="elizabthpazp"
-          title="elizabthpazp"
-          src="/logo.png"
+          alt={links.username}
+          title={links.username}
+          src={links.logo}
           className="w-auto h-auto"
           width={500}
           height={500}
@@ -28,7 +29,7 @@ export default function Header({
  
       <Link
         className="w-full flex mt-sm max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
-        href="https://github.com/elizabthpazp/blog"
+        href={links.github}
         target="_blank"
         rel="noopener noreferrer"
       > 

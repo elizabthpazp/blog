@@ -15,7 +15,7 @@ export default async function HomePage({
   
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Header actual={lang} title={dictionary.github}/>
+      <Header actual={lang} />
    
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
         <a

@@ -10,6 +10,8 @@ export const links = {
     discord: "https://discord.com/users/1062024233577893918",
     facebook: "https://m.facebook.com/100006840368095/", 
     logo: "/logo.png",
-    icon: "/fav.png"
+    icon: "/fav.png",
+    iconSpain: "/spain.png",
+    iconUsa: "/usa.png"
 } as const
  

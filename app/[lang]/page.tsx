@@ -1,11 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Header from "../../components/Header"; 
 import SquigglyLines from "../../components/SquigglyLines";
 import { getDictionary } from '../../get-dictionary'
 import { Locale } from '../../i18n-config'
-import { links } from '../../links-web' 
+import { links } from '../../links-web'  
+import fs from 'fs'; 
+import matter from "gray-matter";
+import { PostMetadata } from "../../PostMetadata";
+
+const getPostMetaData=(lang: Locale): PostMetadata[]=>{ 
+  const folder = 'posts/'  
+  const files = fs.readdirSync(folder); 
+
+  const posts = files.map((filename)=>{ 
+    const fileContents = fs.readFileSync(`posts/${filename}/${lang}/${filename}.md`, 'utf8'); 
+    const matterResult = matter(fileContents);
+    return{
+      title: matterResult.data.title,
+      description: matterResult.data.title,
+      slug: filename 
+    }
+  })  
+  return posts;
+}
 
 export default async function HomePage({
   params: { lang },
@@ -13,12 +32,20 @@ export default async function HomePage({
   params: { lang: Locale }
 }) {
   const dictionary = await getDictionary(lang) 
-  
+  const postMetadata = getPostMetaData(lang);
+  const postPreviews = postMetadata.map((post) => (
+     <div> 
+      <Link href={`/${post.slug}`}> 
+      <h2>{post.title}</h2>
+      </Link>
+     </div>
+  ));
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header actual={lang} />
    
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient mb-10">
         <a
           href={links.telegram}
           target="_blank"
@@ -45,7 +72,12 @@ export default async function HomePage({
         >
           {dictionary.cta}
         </Link> 
-      </main>
+        <div>
+          Ultimos Posts
+
+          {postPreviews}
+        </div>
+      </main> 
       <Footer copy={dictionary.copy} />
     </div>
   );

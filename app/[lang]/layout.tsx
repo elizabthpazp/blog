@@ -47,9 +47,11 @@ export default function RootLayout({
     <html lang={params.lang}>
       <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
         <Providers>
-         {children}
+         {children} 
+         
+         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="rgb(124 58 237)" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
         </Providers>
-        <Analytics />
+        <Analytics /> 
       </body>
     </html>
   );

@@ -57,15 +57,14 @@
 }
  
 @media (max-width: 476px) { 
-  .containerLangs{margin-bottom: 25px;}
+  .containerLangs{margin-bottom: 25px;} 
+  .mobileshort{font-size: 30px;}
 }
  
-
-@media (max-width: 678px) {
+ 
   .containerContentBlog{
-    text-align: center;
-  }
-} 
+   margin: 0 auto;
+  } 
   
 
 @media (max-width: 450px) { 

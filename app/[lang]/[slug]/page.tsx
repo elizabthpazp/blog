@@ -159,7 +159,7 @@ export default async function Learn({
  
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
-      <Header actual={lang} />
+      <Header showHome={true} actual={lang} />
 
       <main className="w-full items-center justify-center px-4 sm:mt-20 mt-20 background-gradient">
         <Markdown

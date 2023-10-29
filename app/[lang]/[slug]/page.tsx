@@ -57,7 +57,9 @@ const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
   const post: PostMetadata = {
     title: matterResult.data.title,
     description: matterResult.data.title,
-    slug: ""
+    slug: "",
+    date: matterResult.data.date,
+    image: matterResult.data.image,
   } 
   titlePage = matterResult.data.title;
   return post;

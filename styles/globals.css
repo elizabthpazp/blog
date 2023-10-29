@@ -92,3 +92,15 @@
     margin:0 !important;  
     border-radius:0px!important;
   }
+
+
+  .card-post{
+    display: flex; 
+    gap: 4;  
+    
+}
+
+.card-post .containerCard{ 
+    flex-direction: column;
+}
+  

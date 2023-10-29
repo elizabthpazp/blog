@@ -55,7 +55,9 @@ export default async function HomePage({
           {dictionary.cta}
         </Link> 
         <div>
-          Ultimos Posts
+          <h3 className="mx-auto light:text-gray-800 mb-10 mt-14 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
+            {dictionary.posts}
+          </h3>
 
           {postPreviews}
         </div>

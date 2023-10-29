@@ -1,6 +1,8 @@
 ---
 title: Portal Digital de CateWebs
 description: El desarrollo web frontend es la práctica de crear la parte visual, interactiva y de experiencia de usuario de un sitio web. Los desarrolladores frontend son responsables de traducir los diseños en código HTML, CSS y JavaScript, creando una experiencia atractiva y funcional para los usuarios. 
+date: 28 octubre 2023
+image: ./agencia_mk_digital.jpeg
 ---
 
 # Bienvenidos a CateWebs Connect con Isa Portal Tu Destino Digital para el

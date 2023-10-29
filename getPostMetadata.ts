@@ -13,7 +13,9 @@ const getPostMetaData=(lang: Locale): PostMetadata[]=>{
       return{
         title: matterResult.data.title,
         description: matterResult.data.title,
-        slug: filename 
+        slug: filename,
+        date: matterResult.data.date,
+        image: matterResult.data.image,
       }
     })  
     return posts;

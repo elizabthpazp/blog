@@ -96,11 +96,10 @@
 
   .card-post{
     display: flex; 
-    gap: 4;  
-    
-}
+    gap: 4;    
+   }
 
-.card-post .containerCard{ 
-    flex-direction: column;
-}
-  
+   .card-post:hover{
+    filter: brightness(50%);  
+   }
+ 

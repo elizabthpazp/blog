@@ -14,6 +14,8 @@ description: El desarrollo web frontend es la práctica de crear la parte visual
 
 #### El marketing digital no es solo una tendencia, es una necesidad en la era moderna. La tecnología ha transformado la forma en que las empresas se conectan con su audiencia y promocionan sus productos y servicios. Desde pequeñas startups hasta grandes corporaciones, el marketing digital niveló el campo de juego y brindó oportunidades sin precedentes para llegar a un público global. En este blog, exploraremos cómo aprovechar al máximo estas oportunidades y te proporcionaremos estrategias efectivas para triunfar en el mundo en línea.
 
+![catewebs](./agencia_mk_digital.jpeg)
+
 ### ¿Qué Puedes Esperar de CateWebs Connect con Isa Portal?
 
 #### CateWebs Connect con Isa Portal está diseñado para ser tu fuente confiable de información, consejos y recursos sobre marketing digital. Aquí te ofreceremos:
@@ -27,6 +29,8 @@ description: El desarrollo web frontend es la práctica de crear la parte visual
 #### 4. Consejos prácticos: Te proporcionaremos consejos prácticos y estrategias probadas que puedes implementar de inmediato para mejorar tus esfuerzos de marketing digital.
 
 #### 5. Entrevistas y expertos invitados: Tendremos conversaciones con expertos en marketing digital y líderes de la industria para brindarte información valiosa y perspectivas frescas.
+
+![catewebs](./agencia1_mk_digital.jpeg)
 
 ### Únete a la Conversación
 

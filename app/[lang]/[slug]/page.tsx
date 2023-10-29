@@ -1,6 +1,5 @@
 import fs from "fs";
-import Markdown from "markdown-to-jsx";
-import Image from "next/image";
+import Markdown from "markdown-to-jsx"; 
 import Link from "next/link";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
@@ -9,7 +8,9 @@ import { getDictionary } from "../../../get-dictionary";
 import SquigglyLines from "../../../components/SquigglyLines";
 import { Locale } from "../../../i18n-config";
 import matter from "gray-matter";
-import { PostMetadata } from "../../../PostMetadata"; 
+import { PostMetadata, PreviewMetadata } from "../../../PostMetadata"; 
+import getPostMetaData from "../../../getPostMetadata"; 
+import Image from "next/image";
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -18,20 +19,24 @@ export async function generateMetadata({
   params: { lang: Locale; slug: any };
 }) {
   return {
-    title: getPostMetaData(slug, lang).title,
-    description: getPostMetaData(slug, lang).description,
+    title: getPostMetaData2(slug, lang).title,
+    description: getPostMetaData2(slug, lang).description,
     openGraph: {
-      title: getPostMetaData(slug, lang).title,
-      description: getPostMetaData(slug, lang).description,
+      title: getPostMetaData2(slug, lang).title,
+      description: getPostMetaData2(slug, lang).description,
     },
   };
 }
 
 export const generateStaticParams =async () => { 
-  return [
-    {slug : "desarrollo-web-frontend"},
-    {slug : "catewebs-digital-portal"}
-  ]
+  const postMetadata = getPostMetaData('es'); 
+
+  let list:PreviewMetadata[] = [];
+  const posts = postMetadata.map((file)=>{  
+    list.push({slug: file.slug})
+  })  
+  
+  return list;
 }
 
 const getPostContent = (slug: string, lang: Locale) => {
@@ -43,7 +48,7 @@ const getPostContent = (slug: string, lang: Locale) => {
   return matterResult.content;
 };
 
-const getPostMetaData=(slug: string, lang: Locale): PostMetadata=>{
+const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
   const folder = "posts/";
   const file = `${folder}${slug}/${lang}/${slug}.md`; 
   const content = fs.readFileSync(file, "utf8"); 
@@ -134,6 +139,22 @@ export default async function Learn({
     </div>
   );
 
+  const MyImg = ({
+    children,
+    src,
+  }: {
+    children: React.ReactNode; 
+    src: string 
+  }) => ( 
+  <div className="max-w-6xl mx-auto items-center justify-center py-2">
+    <img width={100} height={100}>
+    {children}
+    </img>
+    {src}
+    {lang}
+  </div>
+  );
+ 
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
       <Header actual={lang} />
@@ -172,6 +193,13 @@ export default async function Learn({
                   className: "foo",
                 },
               },
+              // img: {
+              //   component: MyImg,
+              //   props: {
+              //     className: "foo",
+              //     src: 'foo'
+              //   },
+              // },
             },
           }}
         >

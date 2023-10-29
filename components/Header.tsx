@@ -17,7 +17,7 @@ export default function Header({
           alt={links.username}
           title={links.username}
           src={links.logo}
-          className="w-auto h-auto"
+          className="w-auto h-auto forcedImage"
           width={500}
           height={500}
         /> 

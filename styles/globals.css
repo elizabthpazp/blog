@@ -73,7 +73,22 @@
     top:0px; 
   }
   .mt-0-sm{margin-top: -50px;} 
+
+  img{ 
+    max-width: 300px !important; 
+  }
 }
   .sombrita{-webkit-box-shadow: 0px 0px 30px -11px rgba(0,0,0,0.53);
     box-shadow: 0px 0px 30px -11px rgba(0,0,0,0.53);
   } 
+
+  img{
+    margin: 0 auto; 
+    max-width: 500px;
+    border-radius: 32px ;
+  }
+
+  .forcedImage{
+    margin:0 !important;  
+    border-radius:0px!important;
+  }

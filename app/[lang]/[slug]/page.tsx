@@ -12,19 +12,36 @@ import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
 import getPostMetaData from "../../../getPostMetadata"; 
 import Image from "next/image";
 import Search from "../../../components/Search";
+import { links } from "../../../links-web";
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
   params: { lang, slug },
 }: {
   params: { lang: Locale; slug: any };
-}) {
+}) { 
+  let sitename = links.username;
+  const dictionary = await getDictionary(lang) 
   return {
     title: getPostMetaData2(slug, lang).subtitle,
     description: getPostMetaData2(slug, lang).description,
+    icons: {
+      icon: links.icon,
+    },
     openGraph: {
-      title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description,
+     images: [getPostMetaData2(slug, lang).image],
+     title: getPostMetaData2(slug, lang).subtitle,
+     description: getPostMetaData2(slug, lang).description,
+     url: links.domain,
+     siteName: sitename,
+     locale: "en_US",
+     type: "website",
+    },
+    twitter: { 
+     card: "summary_large_image",
+     images: [getPostMetaData2(slug, lang).image],
+     title: getPostMetaData2(slug, lang).subtitle,
+     description: getPostMetaData2(slug, lang).description,
     },
   };
 }

@@ -15,15 +15,26 @@ export async function generateMetadata({
 }: {
   params: { lang: Locale; slug: any };
 }) {
+  let ogimage = links.logo, sitename = links.username;
   const dictionary = await getDictionary(lang) 
   return {
     title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
     description: dictionary.subtitle,
+    icons: {
+      icon: links.icon,
+    },
     openGraph: {
-      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
-      description: dictionary.subtitle,
+     images: [ogimage],
+     title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
+     description: dictionary.subtitle,
+     url: links.domain,
+     siteName: sitename,
+     locale: "en_US",
+     type: "website",
     },
     twitter: { 
+     card: "summary_large_image",
+     images: [ogimage],
      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
      description: dictionary.subtitle,
     },

@@ -1,2 +1,31 @@
 .input{border:2px solid #b7b6b6!important;background:transparent url("/icons/search-light.png") no-repeat 15px center;background-size:15px 15px;border-radius: 22px;padding:10px 45px;}.item{max-width:280px;border-radius:22px;}.input[type="text"]:hover{filter:brightness(97%);}
 .input[type="text"]:focus,.input[type="text"]:active{outline:none;filter:brightness(100%);border:2px solid rgb(148, 77, 186)!important;}@media (min-width:438px) and (max-width:640px){.containerSearch{margin-left: 10%;}}@media screen and (max-width:438px){.containerSearch{margin-left: 8%;}}
+  
+#style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+.containerItemsSearch{margin-left: 25%;}
+@media (min-width:520px) and (max-width:796px){.containerItemsSearch{margin-left: 15%;}}
+@media screen and (max-width:520px){.containerItemsSearch{margin-left: 2%;margin-right: 2%;}}
+
+.containerItem{margin-left: 34%;}
+@media (min-width:520px) and (max-width:657px){.containerItem{margin-left: 15%;}}
+@media (min-width:657px) and (max-width:796px){.containerItem{margin-left: 25%;}}
+@media screen and (max-width:520px){.containerItem{margin-left: 2%;margin-right: 2%;}}

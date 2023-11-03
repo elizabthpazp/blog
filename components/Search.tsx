@@ -52,15 +52,13 @@ export default function Search({
     setInput(input = '')
     filteredList();
   };
-  const { theme } = useTheme()
-  const [isServer, setIsServer] = useState(true) 
- 
+  const { theme } = useTheme() 
   
   return (  
     <div>
   <div className="container blog-animation mt-6 items-center text-center justify-center containerSearch">
     <div className="row-auto flex items-center text-center justify-center">
-      <input type="text" value={input} onChange={e => setInput(input = e.target.value)} className="w-full max-w-xs justify-center shadow-xl border-solid input mb-2 text-gray-800 light:text-gray-800 dark:text-white" placeholder={title} onKeyUp={() => filteredList()} style={theme=='dark'?{background:"transparent url('/icons/search-dark.png') no-repeat 15px center", backgroundSize:'15px 15px'}:{}} />
+      <input type="text" value={input} onChange={e => setInput(input = e.target.value)} className="w-full max-w-xs justify-center shadow-xl border-solid input mb-2 text-gray-800 light:text-gray-800 dark:text-white" placeholder={title} onKeyUp={() => filteredList()} style={theme=='light'?{background:"transparent url('/icons/search-light.png') no-repeat 15px center", backgroundSize:'15px 15px'}:{}} />
       <div style={input!='' ? {display:'block', placeItems:'center',borderRadius:'22px',height:'48px',maxWidth:'48px',width:'48px',cursor:'pointer',marginLeft:'2px',marginTop:'-8px'}: {display:'none'}} onClick={() => changeCloseSearch()} className="columns-1 shadow-xl border-solid border-2 border-red-500 grid">
         <div className="text-red-500 pt-2 pb-0 font-bold font-large">X</div>
       </div>   

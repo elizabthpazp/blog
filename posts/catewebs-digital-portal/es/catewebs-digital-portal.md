@@ -1,7 +1,7 @@
 ---
 title: Portal Digital de CateWebs
 subtitle: Bienvenidos a CateWebs Connect Tu Destino Digital para el Éxito Empresarial
-description: El desarrollo web frontend es la práctica de crear la parte visual, interactiva y de experiencia de usuario de un sitio web. Los desarrolladores frontend son responsables de traducir los diseños en código HTML, CSS y JavaScript, creando una experiencia atractiva y funcional para los usuarios. 
+description: En un mundo cada vez más interconectado, el marketing digital se ha convertido en una fuerza omnipresente que impulsa el éxito de las empresas en todas partes. Desde las redes sociales y el marketing de contenidos hasta la publicidad en línea y la optimización de motores de búsqueda, el panorama digital es vasto y en constante evolución. Nos sumergiremos en este emocionante universo para ayudarte a desentrañar sus secretos y utilizarlos en beneficio de tu negocio.
 date: 28 octubre 2023
 image: ./agencia_mk_digital.jpeg
 ---
@@ -11,7 +11,7 @@ image: ./agencia_mk_digital.jpeg
 
 28 octubre 2023
 
-#### En un mundo cada vez más interconectado, el marketing digital se ha convertido en una fuerza omnipresente que impulsa el éxito de las empresas en todas partes. Desde las redes sociales y el marketing de contenidos hasta la publicidad en línea y la optimización de motores de búsqueda, el panorama digital es vasto y en constante evolución. Aquí, en [Nombre de tu Blog], nos sumergiremos en este emocionante universo para ayudarte a desentrañar sus secretos y utilizarlos en beneficio de tu negocio.
+#### En un mundo cada vez más interconectado, el marketing digital se ha convertido en una fuerza omnipresente que impulsa el éxito de las empresas en todas partes. Desde las redes sociales y el marketing de contenidos hasta la publicidad en línea y la optimización de motores de búsqueda, el panorama digital es vasto y en constante evolución. Aquí, en CateWebs, nos sumergiremos en este emocionante universo para ayudarte a desentrañar sus secretos y utilizarlos en beneficio de tu negocio.
 
 ### ¿Por qué el Marketing Digital?
 

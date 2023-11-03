@@ -1,5 +1,6 @@
 ---
 title: CateWebs Digital Portal
+subtitle: Welcome to CateWebs Connect Your Digital Destination for the Business success
 description: Frontend web development is the practice of creating the visual, interactive, and user experience portion of a website. Frontend developers are responsible for translating designs into HTML, CSS, and JavaScript code, creating an engaging and functional experience for users.
 date: October 28, 2023
 image: ./agencia_mk_digital.jpeg

@@ -1,5 +1,6 @@
 ---
-title: The Fascinating Web World of Frontend Development
+title: Web Development
+subtitle: The Fascinating Web World of Frontend Development
 description: Frontend web development is the practice of creating the visual, interactive, and user experience portion of a website. Frontend developers are responsible for translating designs into HTML, CSS, and JavaScript code, creating an engaging and functional experience for users.
 date: October 26, 2023
 image: ./banner.jpg

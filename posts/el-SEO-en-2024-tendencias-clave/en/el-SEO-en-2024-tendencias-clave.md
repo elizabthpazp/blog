@@ -1,5 +1,6 @@
 ---
 title: CateWebs Digital Portal
+subtitle: Will SEO still be relevant in 2024? Discover key trends
 description: Discover effective strategies, practical tips and analysis of trends in digital marketing. From SEO and social media to online advertising and data analytics, our blog is designed to help you navigate this changing digital landscape and make the most of your online efforts.
 date: October 29, 2023
 image: ./agencia2_mk_digital.png

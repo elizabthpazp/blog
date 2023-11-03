@@ -4,19 +4,22 @@ import { PostMetadata } from "../PostMetadata";
 
 const Postpreview = (props: PostMetadata) => {
   return ( 
-      <Link className="text-left card-post" href={`/${props.slug}`}>
+      <Link className="transition-opacity blog-animation transition-all duration-200 ease-in duration-700 opacity-100 hover:opacity-70 text-left card-post border border-1 shadow-lg dark:border-gray-600 light:border-gray-300 mb-3 p-0" href={`/${props.slug}`} style={{borderRadius:'30px'}} data-wow-delay="300">
         <img 
-          className="mr-20 mt-14 absolute"
+          className="mr-20 mt-6 ml-4 absolute"
           alt={props.title}
           title={props.title}
           src={props.image}
-          width={80}
-          height={80}
+          width={90}
+          height={90}
         />
-        <div className="containerCard relative ml-20 pl-4">
-          <h2 className="mx-auto light:text-gray-800 mb-2 mt-14 dark:text-white max-w-4xl font-display text-2xl font-bold tracking-normal text-gray-800">
-            {props.title}
+        <div className="containerCard relative ml-20 pl-10 pb-4">
+          <h2 className="mx-auto light:text-gray-800 mb-1 mt-4 dark:text-white max-w-lg font-display text-xl font-bold tracking-normal text-gray-800">
+            {props.subtitle}
           </h2>
+          <p className="mx-auto light:text-violet-800 mb-2 dark:text-violet-600 max-w-lg font-display text-1xl font-bold tracking-normal text-violet-600">
+            {props.title}
+          </p>
           <p style={{opacity: '.7'}}>{props.date}</p>
         </div>
       </Link> 

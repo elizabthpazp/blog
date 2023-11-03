@@ -11,6 +11,7 @@ import matter from "gray-matter";
 import { PostMetadata, PreviewMetadata } from "../../../PostMetadata"; 
 import getPostMetaData from "../../../getPostMetadata"; 
 import Image from "next/image";
+import Search from "../../../components/Search";
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -56,6 +57,7 @@ const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
  
   const post: PostMetadata = {
     title: matterResult.data.title,
+    subtitle: matterResult.data.subtitle,
     description: matterResult.data.title,
     slug: "",
     date: matterResult.data.date,
@@ -149,19 +151,21 @@ export default async function Learn({
     src: string 
   }) => ( 
   <div className="max-w-6xl mx-auto items-center justify-center py-2">
-    <img width={100} height={100}>
+    <img className="blog-animation" width={100} height={100}>
     {children}
     </img>
     {src}
     {lang}
   </div>
   );
- 
+  let originalList = getPostMetaData(lang);  
+
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
       <Header showHome={true} actual={lang} />
 
-      <main className="w-full items-center justify-center px-4 sm:mt-20 mt-20 background-gradient">
+      <Search list={originalList} failedText={dictionary.notFound} lang={lang} title={dictionary.search}/> 
+      <main className="w-full items-center justify-center px-4 sm:mt-8 mt-8 background-gradient">
         <Markdown
           options={{
             overrides: {

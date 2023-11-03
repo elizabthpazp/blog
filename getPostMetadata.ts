@@ -12,6 +12,7 @@ const getPostMetaData=(lang: Locale): PostMetadata[]=>{
       const matterResult = matter(fileContents);
       return{
         title: matterResult.data.title,
+        subtitle: matterResult.data.subtitle,
         description: matterResult.data.title,
         slug: filename,
         date: matterResult.data.date,

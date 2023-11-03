@@ -1,5 +1,6 @@
 ---
-title: El fascinante mundo del desarrollo web frontend
+title: Desarrollo Web
+subtitle: El Fascinante Mundo Web del Desarrollo Frontend
 description: El desarrollo web frontend es la práctica de crear la parte visual, interactiva y de experiencia de usuario de un sitio web. Los desarrolladores frontend son responsables de traducir los diseños en código HTML, CSS y JavaScript, creando una experiencia atractiva y funcional para los usuarios. 
 date: 26 octubre 2023
 image: ./banner.jpg

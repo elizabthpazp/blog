@@ -3,18 +3,19 @@ import Link from "next/link";
 import LocaleSwitcher from './LocaleSwitcher'
 import {ThemeSwitcher} from './ThemeSwitcher' 
 import { links } from '../links-web' 
+import { Locale } from '../i18n-config' 
 
 export default function Header({ 
-  actual,
-  showHome
+  actual, 
+  showHome, 
 }: { 
- actual: string ,
+ actual: Locale , 
  showHome?: boolean
 }) {
+    
   return (
     <header className="columns-4 relative flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
-     
-
+       
      <Home show={showHome} className={'light:fill-gray-800 dark:fill-white fill-gray-800'}/> 
 
       <Link href="/" className="w-full flex space-x-2 sm:text-3xl text-xl font-bold ml-2 tracking-tight mt-0-sm">  
@@ -39,7 +40,7 @@ export default function Header({
         rel="noopener noreferrer"
       > 
          <Github />  
-      </Link> 
+      </Link>  
       
     </header>
   );

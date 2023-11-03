@@ -9,5 +9,7 @@
     "cta": "Start now!",
     "copy": "All rights reserved.",
     "share": "Share the article",
-    "posts": "Latest articles"
+    "posts": "Latest articles",
+    "notFound": "No results found",
+    "search": "Search for articles..."
 }

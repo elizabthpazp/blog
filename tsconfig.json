@@ -22,18 +22,21 @@
       {
         "name": "next"
       }
-    ],  
+    ],
     "paths": {
-      "react": [ "./node_modules/@types/react" ]
+      "react": [
+        "./node_modules/@types/react"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "tailwind.config.js"  ],
+    ".next/types/**/*.ts",
+    "tailwind.config.js"
+  ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

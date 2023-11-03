@@ -1,5 +1,6 @@
 ---
 title: Portal Digital de CateWebs
+subtitle: ¿El SEO seguirá siendo relevante en 2024? Descubre las tendencias clave
 description: Descubre estrategias efectivas, consejos prácticos y análisis de tendencias en marketing digital. Desde SEO y redes sociales hasta publicidad en línea y análisis de datos, nuestro blog está diseñado para ayudarte a navegar por este cambiante panorama digital y aprovechar al máximo tus esfuerzos en línea.
 date: 29 octubre 2023
 image: ./agencia2_mk_digital.png

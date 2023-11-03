@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import "../../styles/globals.css"
 import { Providers } from "./providers";
-import { i18n } from '../../i18n-config'
+import { i18n, Locale } from '../../i18n-config'
 import { links } from '../../links-web' 
 
 export async function generateStaticParams() {
@@ -41,7 +41,7 @@ export default function RootLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;  params: { lang: string }
+  children: React.ReactNode;  params: { lang: Locale }
 }) {
   return (
     <html lang={params.lang}>

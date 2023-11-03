@@ -9,6 +9,26 @@ import { Locale } from '../../i18n-config'
 import { links } from '../../links-web'    
 import getPostMetaData from "../../getPostMetadata";  
 import Search from "../../components/Search";
+ 
+export async function generateMetadata({
+  params: { lang, slug },
+}: {
+  params: { lang: Locale; slug: any };
+}) {
+  const dictionary = await getDictionary(lang) 
+  return {
+    title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
+    description: dictionary.subtitle,
+    openGraph: {
+      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
+      description: dictionary.subtitle,
+    },
+    twitter: { 
+     title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
+     description: dictionary.subtitle,
+    },
+  };
+}
 
 export default async function HomePage({
   params: { lang },
@@ -23,8 +43,7 @@ export default async function HomePage({
   const postPreviews = postMetadata.map((post) => ( 
     <PostPreview key={post.slug} {...post} /> 
   ));
-
-  
+ 
   let originalList = getPostMetaData(lang);  
 
   return (

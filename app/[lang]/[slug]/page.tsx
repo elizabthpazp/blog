@@ -20,10 +20,10 @@ export async function generateMetadata({
   params: { lang: Locale; slug: any };
 }) {
   return {
-    title: getPostMetaData2(slug, lang).title,
+    title: getPostMetaData2(slug, lang).subtitle,
     description: getPostMetaData2(slug, lang).description,
     openGraph: {
-      title: getPostMetaData2(slug, lang).title,
+      title: getPostMetaData2(slug, lang).subtitle,
       description: getPostMetaData2(slug, lang).description,
     },
   };

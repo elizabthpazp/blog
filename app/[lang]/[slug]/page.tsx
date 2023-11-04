@@ -12,7 +12,10 @@ import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
 import getPostMetaData from "../../../getPostMetadata"; 
 import Image from "next/image";
 import Search from "../../../components/Search";
+import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
+import PostPreview from "../../../components/PostPreview";
+
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -47,7 +50,7 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams =async () => { 
-  const postMetadata = getPostMetaData('es'); 
+  const postMetadata = getPostMetaData('es', false); 
 
   let list:PreviewMetadata[] = [];
   const posts = postMetadata.map((file)=>{  
@@ -75,7 +78,7 @@ const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
   const post: PostMetadata = {
     title: matterResult.data.title,
     subtitle: matterResult.data.subtitle,
-    description: matterResult.data.title,
+    description: matterResult.data.description,
     slug: "",
     date: matterResult.data.date,
     image: matterResult.data.image,
@@ -175,14 +178,24 @@ export default async function Learn({
     {lang}
   </div>
   );
-  let originalList = getPostMetaData(lang);  
-
+  let originalList = getPostMetaData(lang, false);  
+  let relatedList = getPostMetaData(lang, true, slug);  
+  relatedList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const postPreviews = relatedList.map((post) => (  
+    <PostPreview key={post.slug} {...post} /> 
+  ));
+  
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
       <Header showHome={true} actual={lang} />
 
       <Search list={originalList} failedText={dictionary.notFound} lang={lang} title={dictionary.search}/> 
-      <main className="w-full items-center justify-center px-4 sm:mt-8 mt-8 background-gradient">
+      
+      <div className="float-right row-auto mr-6 likeCounter">
+       <LikeCount></LikeCount>
+      </div>
+
+      <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">
         <Markdown
           options={{
             overrides: {
@@ -234,7 +247,16 @@ export default async function Learn({
             <RouteActualLink titlePage={titlePage} title={dictionary.share} />
           </div>
         </div>
+
+        <div className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 mb-20 pb-10" style={{margin:'0 auto'}}>
+          <h3 className="mx-auto justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
+            {dictionary.related}
+          </h3>
+
+          {postPreviews}
+        </div>
       </main>
+     
       <Footer copy={dictionary.copy} />
     </div>
   );

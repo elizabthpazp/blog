@@ -4,7 +4,7 @@ import { PostMetadata } from "../PostMetadata";
 
 const Postpreview = (props: PostMetadata) => {
   return ( 
-      <Link className="transition-opacity blog-animation transition-all duration-200 ease-in duration-700 opacity-100 hover:opacity-70 text-left card-post border border-1 shadow-lg dark:border-gray-600 light:border-gray-300 mb-3 p-0" href={`/${props.slug}`} style={{borderRadius:'30px'}} data-wow-delay="300">
+      <Link className="transition-opacity blog-animation transition-all duration-200 ease-in duration-700 opacity-100 hover:opacity-70 text-left card-post border border-1 shadow-lg dark:border-gray-600 light:border-gray-300 mb-3 p-0" href={`/${props.slug}`} style={props.slug!=''? {display:'block', borderRadius:'30px'}: {display:'none', borderRadius:'30px'}} data-wow-delay="300">
         <img 
           className="mr-20 mt-6 ml-4 absolute"
           alt={props.title}

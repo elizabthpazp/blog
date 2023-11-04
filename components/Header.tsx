@@ -31,11 +31,12 @@ export default function Header({
         
       <LocaleSwitcher actual={actual} classNameProp={'w-full absolute mr-7 switch-lang mt-sm'} />
       
-      <ThemeSwitcher classNameProp={'w-full mx-4 mt-1 mt-sm'}/>
+      <ThemeSwitcher classNameProp={'w-full mx-4 mt-1 mt-sm cursor-pointer'}/>
  
       <Link
         className="w-full flex mt-sm max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
         href={links.github}
+        title="github"   
         target="_blank"
         rel="noopener noreferrer"
       > 

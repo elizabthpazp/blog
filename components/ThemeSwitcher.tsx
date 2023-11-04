@@ -19,7 +19,7 @@ export function ThemeSwitcher({
  
   return ( 
 <div>
-<button className={classNameProp} onClick={() => setTheme(theme=='dark' ? 'light' : 'dark')} name="elizabthpazp">
+<div className={classNameProp} onClick={() => setTheme(theme=='dark' ? 'light' : 'dark')}>
 
 <div style={ theme == 'dark' ? {display: 'block'} : {display: 'none'} }>
 <svg version="1.1" id="Capa_1" width="25" height="25" fill="#fff" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" 
@@ -64,7 +64,7 @@ export function ThemeSwitcher({
 				S439.837,232.082,439.837,306S379.918,439.837,306,439.837z"/>
 		</g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
   </div>
-</button>     
+</div>     
 </div>
   )
 };

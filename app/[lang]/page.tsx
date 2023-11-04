@@ -47,7 +47,7 @@ export default async function HomePage({
   params: { lang: Locale }
 }) {
   const dictionary = await getDictionary(lang) 
-  let postMetadata = getPostMetaData(lang); 
+  let postMetadata = getPostMetaData(lang, false); 
 
   postMetadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   
@@ -55,7 +55,7 @@ export default async function HomePage({
     <PostPreview key={post.slug} {...post} /> 
   ));
  
-  let originalList = getPostMetaData(lang);  
+  let originalList = getPostMetaData(lang, false);  
 
   return (
     <div className="max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">

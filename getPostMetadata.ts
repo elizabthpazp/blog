@@ -1,25 +1,45 @@
-import fs from "fs"; 
+import fs from "fs";
 import { Locale } from "./i18n-config";
 import matter from "gray-matter";
 import { PostMetadata } from "./PostMetadata";
 
-const getPostMetaData=(lang: Locale): PostMetadata[]=>{ 
-    const folder = 'posts/'  
-    const files = fs.readdirSync(folder); 
+const getPostMetaData = (
+  lang: Locale,
+  related: boolean,
+  actual?: any
+): PostMetadata[] => {
+  const folder = "posts/";
+  const files = fs.readdirSync(folder);
   
-    const posts = files.map((filename)=>{ 
-      const fileContents = fs.readFileSync(`posts/${filename}/${lang}/${filename}.md`, 'utf8'); 
+  const posts = files.map((filename) => {
+    if (related && filename == actual) { 
+      return {
+        title: '',
+        subtitle:  '',
+        description:  '',
+        slug:  '',
+        date: "",
+        image: ''
+      };
+    }
+    else {
+      const fileContents = fs.readFileSync(
+        `posts/${filename}/${lang}/${filename}.md`,
+        "utf8"
+      );
       const matterResult = matter(fileContents);
-      return{
+
+      return {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
         description: matterResult.data.title,
         slug: filename,
         date: matterResult.data.date,
         image: matterResult.data.image,
-      }
-    })  
-    return posts;
-  }
+      };
+    }
+  });
+  return posts;
+};
 
-  export default getPostMetaData;
+export default getPostMetaData;

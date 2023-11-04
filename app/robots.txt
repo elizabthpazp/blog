@@ -1,0 +1,6 @@
+# Robots.txt for blog-elizabthpazp.vercel.app
+
+User-Agent: *
+Disallow:  
+
+Sitemap: https://blog-elizabthpazp.vercel.app/sitemap.xml

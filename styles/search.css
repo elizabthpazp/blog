@@ -21,11 +21,5 @@
 	background-color: #555;
 }
 
-.containerItemsSearch{margin-left: 25%;}
-@media (min-width:520px) and (max-width:796px){.containerItemsSearch{margin-left: 15%;}}
-@media screen and (max-width:520px){.containerItemsSearch{margin-left: 2%;margin-right: 2%;}}
-
-.containerItem{margin-left: 34%;}
-@media (min-width:520px) and (max-width:657px){.containerItem{margin-left: 15%;}}
-@media (min-width:657px) and (max-width:796px){.containerItem{margin-left: 25%;}}
-@media screen and (max-width:520px){.containerItem{margin-left: 2%;margin-right: 2%;}}
+@media (min-width:796px){.containerItem{margin-left: 34%;} .containerItemsSearch{margin-left: 25%;}}
+ 

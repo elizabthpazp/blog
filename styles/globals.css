@@ -44,8 +44,7 @@
 
 .lang-dropdown {
   display: none; 
-  border-radius: 10px;
-  margin-top: 2px;
+  border-radius: 10px; 
 }
 .selecting-lang {
   padding: 3px 5px 3px 5px;
@@ -66,14 +65,11 @@
    margin: 0 auto;
   } 
   
-
-@media (max-width: 450px) { 
-  .mt-sm{ margin-top: 100px ;}
+  
+@media (max-width: 450px) {  
   .switch-lang { 
     top:0px; 
-  }
-  .mt-0-sm{margin-top: -50px;} 
-
+  } 
   img{ 
     max-width: 300px !important; 
   } 

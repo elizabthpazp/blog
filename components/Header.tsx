@@ -14,27 +14,28 @@ export default function Header({
 }) {
     
   return (
-    <header className="columns-4 relative flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
+    <header className="columns-2 relative flex flex-col sm:flex-row xs:flex-col justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
        
      <Home show={showHome} className={'light:fill-gray-800 dark:fill-white fill-gray-800'}/> 
 
-      <Link href="/" className="w-full flex space-x-2 sm:text-3xl text-xl font-bold ml-2 tracking-tight mt-0-sm">  
+      <Link href="/" className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">  
         <Image
           alt={links.username}
           title={links.username}
           src={links.logo}
-          className="w-auto h-auto forcedImage"
+          className="w-auto h-auto forcedImage xs:max-w-xs"
           width={500}
           height={500}
         /> 
       </Link>  
-        
-      <LocaleSwitcher actual={actual} classNameProp={'w-full absolute mr-7 switch-lang mt-sm'} />
+
+     <div className="flex float-right">
+      <LocaleSwitcher actual={actual} classNameProp={'switch-lang mr-8'} />
       
-      <ThemeSwitcher classNameProp={'w-full mx-4 mt-1 mt-sm cursor-pointer'}/>
+      <ThemeSwitcher classNameProp={'mt-1 cursor-pointer mr-8'}/>
  
       <Link
-        className="w-full flex mt-sm max-w-fit items-center justify-center space-x-2 rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
+        className="items-center justify-center rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
         href={links.github}
         title="github"   
         target="_blank"
@@ -42,7 +43,7 @@ export default function Header({
       > 
          <Github />  
       </Link>  
-      
+    </div>   
     </header>
   );
 }

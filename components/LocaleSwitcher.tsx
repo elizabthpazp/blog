@@ -29,7 +29,7 @@ export default function LocaleSwitcher({
           {i18n.locales.map((locale: Locale) => {
             if (locale !=actual) {
     return (
-        <div className='lang-dropdown' key={locale}>
+        <div className='lang-dropdown absolute' key={locale}>
         <Link href={redirectedPathName(locale)}>
         <div className='selecting-lang'>
          <img className='lang-flag forcedImage' src={getSrc(locale)} alt={links.username} title={links.username} width={100} height={100}></img>

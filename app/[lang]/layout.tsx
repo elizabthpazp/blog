@@ -14,14 +14,14 @@ let description = "It doesn't matter if you are just starting out or you are an 
 let ogimage = links.logo;
 let sitename = links.username;
  
-export const metadata: Metadata = {
+export const metadata: Metadata = { 
   title,
   description,
   icons: {
     icon: links.icon,
-  },
-  keywords: 'utf-8',
-  openGraph: {
+  },  
+  keywords: 'blog, desarrollo web, marketing digital, elizabthpazp, seo, web, programación, curso, web development, frontend, developer, desarrollador',
+  openGraph: {  
     images: [ogimage],
     title,
     description,

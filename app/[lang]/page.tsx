@@ -23,14 +23,23 @@ export async function generateMetadata({
     icons: {
       icon: links.icon,
     },
+    canonical: links.domain,
+    amphtml: links.domain,
+    keywords: 'blog, desarrollo web, marketing digital, elizabthpazp, seo, web, programación, curso, web development, frontend, developer, desarrollador',
     openGraph: {
+     canonical: links.domain,
+     amphtml: links.domain,
      images: [ogimage],
      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
      description: dictionary.subtitle,
      url: links.domain,
      siteName: sitename,
-     locale: "en_US",
+     locale: lang == 'en' ? "en_US" : "es_ES",
      type: "website",
+     link: {
+      canonical: links.domain +"/"+slug, 
+      amphtml: links.domain +"/"+slug,
+     }  
     },
     twitter: { 
      card: "summary_large_image",
@@ -38,6 +47,10 @@ export async function generateMetadata({
      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
      description: dictionary.subtitle,
     },
+    link: {
+      canonical: links.domain +"/"+slug, 
+      amphtml: links.domain +"/"+slug,
+     }  
   };
 }
 

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   icons: {
     icon: links.icon,
   },
+  keywords: 'utf-8',
   openGraph: {
     images: [ogimage],
     title,

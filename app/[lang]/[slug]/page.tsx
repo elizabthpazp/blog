@@ -104,7 +104,7 @@ export default async function Learn({
 }: {
   params: { lang: Locale; slug: any };
 }) {
-  const content = getPostContent(slug, lang);
+  const content = await getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
 
   const MyH1 = ({

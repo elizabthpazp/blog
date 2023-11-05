@@ -8,7 +8,7 @@ export default function LikeCount({ count, title }: {count: any, title:string})
   let insertLike=async() =>{ 
     setCount(count2++) 
       const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}`, {
-        method: 'POST', mode: "cors", headers: {
+        method: 'POST', headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Access-Control-Allow-Origin:http://localhost:3000', 

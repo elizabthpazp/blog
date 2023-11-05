@@ -199,8 +199,15 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: "no-store"})
-  const data = await res.json()  
+   
+  const getLikesPage = async (): Promise<any> => {
+    const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: "no-cache"})
+    const data = await res.json() 
+  
+    return data?.result?.rows[data?.result?.rows?.length-1]?.count;
+  };
+
+  const data = await getLikesPage();
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
@@ -214,7 +221,7 @@ export default async function Learn({
       />
 
       <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount count={data?.result?.rows[data?.result?.rows?.length-1]?.count} title={slug}></LikeCount>
+        <LikeCount count={data} title={slug}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">

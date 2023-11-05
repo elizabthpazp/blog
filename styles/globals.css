@@ -18,11 +18,8 @@
   }
 }
 
-.switch-lang {
-  width: 60px; 
-  cursor: pointer;  
-  top: 15px;
-  right: 100px;
+.switch-lang { 
+  cursor: pointer;   
 }
 .switch-lang:hover .lang-dropdown {
   display: block;
@@ -66,10 +63,7 @@
   } 
   
   
-@media (max-width: 450px) {  
-  .switch-lang { 
-    top:0px; 
-  } 
+@media (max-width: 450px) {   
   img{ 
     max-width: 300px !important; 
   } 

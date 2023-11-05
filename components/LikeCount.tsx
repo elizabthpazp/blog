@@ -4,13 +4,27 @@ import getPostMetaData from "../getPostMetadata";
 import { PostMetadata } from "../PostMetadata";
 import { useState } from "react";
 import Image from "next/image";
-import { links } from "../links-web";
+import { links } from "../links-web"; 
+import { insertLikeSql, updateLikeSql } from "../get-likes";
 
-const LikeCount = () => {
-  let [count, setCount] = useState(0); 
-  
+export default function LikeCount({ count, isEmpty, title }: {count: any, isEmpty: boolean, title:string})
+{ 
+  let [count2, setCount] = useState(count); 
+  let insertLike=async() =>{ 
+    setCount(count2++)
+    if(isEmpty)
+     await insertLikeSql(title, count2);
+    else{
+      const res = await fetch(`http://localhost:3000/es/api/post?id=${title}&count=${count2}`, {
+        method: 'POST', next: { tags: [title, count2] } })
+      const data = await res.json() 
+      console.log(data)
+    }
+     await updateLikeSql(title, count2);
+  }
+
   return ( 
-      <div className="flex cursor-pointer" onClick={() => setCount(count++)}>
+      <div className="flex cursor-pointer" onClick={() => insertLike()}> 
       <img
           alt="like"
           title="like"
@@ -19,9 +33,8 @@ const LikeCount = () => {
           width={30}
           height={30} 
         /> 
-        <p className="ml-2">{count}</p>
+        <p className="ml-2">{count2}</p>
       </div>
-  );
-};
-
-export default LikeCount;
+    )
+}
+ 

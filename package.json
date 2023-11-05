@@ -18,6 +18,7 @@
     "@upstash/ratelimit": "^0.3.8",
     "@upstash/redis": "^1.19.1",
     "@vercel/analytics": "^1.1.1",
+    "@vercel/postgres": "^0.5.1",
     "framer-motion": "^8.2.4",
     "gray-matter": "^4.0.3",
     "local-ssl-proxy": "^2.0.5",

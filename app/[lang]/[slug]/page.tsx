@@ -1,5 +1,5 @@
 import fs from "fs";
-import Markdown from "markdown-to-jsx"; 
+import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
@@ -8,86 +8,88 @@ import { getDictionary } from "../../../get-dictionary";
 import SquigglyLines from "../../../components/SquigglyLines";
 import { Locale } from "../../../i18n-config";
 import matter from "gray-matter";
-import { PostMetadata, PreviewMetadata } from "../../../PostMetadata"; 
-import getPostMetaData from "../../../getPostMetadata"; 
+import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
+import getPostMetaData from "../../../getPostMetadata";
 import Image from "next/image";
 import Search from "../../../components/Search";
 import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
 import PostPreview from "../../../components/PostPreview";
-
+import { getLikesApi } from "../../../get-likes";
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
   params: { lang, slug },
 }: {
   params: { lang: Locale; slug: any };
-}) { 
+}) {
   let sitename = links.username;
-  const dictionary = await getDictionary(lang) 
+  const dictionary = await getDictionary(lang);
   return {
     title: getPostMetaData2(slug, lang).subtitle,
     description: getPostMetaData2(slug, lang).description,
     icons: {
       icon: links.icon,
     },
-    canonical: links.domain +"/"+slug,
-    amphtml: links.domain +"/"+slug,
-    keywords: getPostMetaData2(slug, lang).title+ ' ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital',
+    canonical: links.domain + "/" + slug,
+    amphtml: links.domain + "/" + slug,
+    keywords:
+      getPostMetaData2(slug, lang).title +
+      " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
     openGraph: {
-     canonical: links.domain +"/"+slug, 
-     amphtml: links.domain +"/"+slug,
-     images: [getPostMetaData2(slug, lang).image],
-     title: getPostMetaData2(slug, lang).subtitle,
-     description: getPostMetaData2(slug, lang).description,
-     url: links.domain +"/"+slug,
-     siteName: sitename,
-     locale: lang == 'en' ? "en_US" : "es_ES",
-     type: "website",
+      canonical: links.domain + "/" + slug,
+      amphtml: links.domain + "/" + slug,
+      images: [getPostMetaData2(slug, lang).image],
+      title: getPostMetaData2(slug, lang).subtitle,
+      description: getPostMetaData2(slug, lang).description,
+      url: links.domain + "/" + slug,
+      siteName: sitename,
+      locale: lang == "en" ? "en_US" : "es_ES",
+      type: "website",
     },
-    twitter: { 
-     card: "summary_large_image",
-     images: [getPostMetaData2(slug, lang).image],
-     title: getPostMetaData2(slug, lang).subtitle,
-     description: getPostMetaData2(slug, lang).description,
-     link: {
-      canonical: links.domain +"/"+slug, 
-      amphtml: links.domain +"/"+slug,
-     }  
+    twitter: {
+      card: "summary_large_image",
+      images: [getPostMetaData2(slug, lang).image],
+      title: getPostMetaData2(slug, lang).subtitle,
+      description: getPostMetaData2(slug, lang).description,
+      link: {
+        canonical: links.domain + "/" + slug,
+        amphtml: links.domain + "/" + slug,
+      },
     },
     link: {
-     canonical: links.domain +"/"+slug, 
-     amphtml: links.domain +"/"+slug,
-    }  
+      canonical: links.domain + "/" + slug,
+      amphtml: links.domain + "/" + slug,
+    },
   };
 }
 
-export const generateStaticParams =async () => { 
-  const postMetadata = getPostMetaData('es', false); 
+export const generateStaticParams = async () => {
+  const postMetadata = getPostMetaData("es", false);
 
-  let list:PreviewMetadata[] = [];
-  const posts = postMetadata.map((file)=>{  
-    list.push({slug: file.slug})
-  })  
-  
+  let list: PreviewMetadata[] = [];
+  const posts = postMetadata.map((file) => {
+    list.push({ slug: file.slug });
+  });
+
   return list;
-}
+};
 
 const getPostContent = (slug: string, lang: Locale) => {
   const folder = "posts/";
   const file = `${folder}${slug}/${lang}/${slug}.md`;
-  const content = fs.readFileSync(file, "utf8"); 
+  const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
-  
+
   return matterResult.content;
 };
 
-const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
+const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
   const folder = "posts/";
-  const file = `${folder}${slug}/${lang}/${slug}.md`; 
-  const content = fs.readFileSync(file, "utf8"); 
+  const file = `${folder}${slug}/${lang}/${slug}.md`;
+  const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
- 
+
   const post: PostMetadata = {
     title: matterResult.data.title,
     subtitle: matterResult.data.subtitle,
@@ -95,17 +97,17 @@ const getPostMetaData2=(slug: string, lang: Locale): PostMetadata=>{
     slug: "",
     date: matterResult.data.date,
     image: matterResult.data.image,
-  } 
+  };
   titlePage = matterResult.data.title;
   return post;
-}
+};
 
 export default async function Learn({
   params: { lang, slug },
 }: {
   params: { lang: Locale; slug: any };
 }) {
-  const content = getPostContent(slug, lang); 
+  const content = getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
 
   const MyH1 = ({
@@ -180,32 +182,53 @@ export default async function Learn({
     children,
     src,
   }: {
-    children: React.ReactNode; 
-    src: string 
-  }) => ( 
-  <div className="max-w-6xl mx-auto items-center justify-center py-2">
-    <img className="blog-animation" width={100} height={100}>
-    {children}
-    </img>
-    {src}
-    {lang}
-  </div>
+    children: React.ReactNode;
+    src: string;
+  }) => (
+    <div className="max-w-6xl mx-auto items-center justify-center py-2">
+      <img className="blog-animation" width={100} height={100}>
+        {children}
+      </img>
+      {src}
+      {lang}
+    </div>
   );
-  let originalList = getPostMetaData(lang, false);  
-  let relatedList = getPostMetaData(lang, true, slug);  
-  relatedList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const postPreviews = relatedList.map((post) => (  
-    <PostPreview key={post.slug} {...post} /> 
+  let originalList = getPostMetaData(lang, false);
+  let relatedList = getPostMetaData(lang, true, slug);
+  relatedList.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const postPreviews = relatedList.map((post) => (
+    <PostPreview key={post.slug} {...post} />
   ));
-  
+
+  const res = await fetch(`http://localhost:3000/es/api/get?id=${slug}`, { next: { tags: [slug] } })
+  const data = await res.json() 
+   
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
       <Header showHome={true} actual={lang} />
 
-      <Search list={originalList} failedText={dictionary.notFound} lang={lang} title={dictionary.search}/> 
-      
+      <Search
+        list={originalList}
+        failedText={dictionary.notFound}
+        lang={lang}
+        title={dictionary.search} 
+      />
+
       <div className="float-right row-auto mr-6 likeCounter">
-       <LikeCount></LikeCount>
+        {/* {data.result.rows.map((row: any) => { 
+            return (
+              <div key={row.count}> 
+                <LikeCount count={row.count} isEmpty={false} title={slug}></LikeCount>
+              </div>
+            ); 
+        })} */}
+        <LikeCount count={data.result.rows[data.result.rows.length-1].count} isEmpty={false} title={slug}></LikeCount>
+              
+        <div style={data.result.rows.length == 0 ? {display:'block'}: {display:'none'}}>
+          <LikeCount count={0} isEmpty={true} title={slug}></LikeCount>
+        </div>
       </div>
 
       <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">
@@ -261,7 +284,10 @@ export default async function Learn({
           </div>
         </div>
 
-        <div className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 mb-20 pb-10" style={{margin:'0 auto'}}>
+        <div
+          className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 mb-20 pb-10"
+          style={{ margin: "0 auto" }}
+        >
           <h3 className="mx-auto justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
             {dictionary.related}
           </h3>
@@ -269,7 +295,7 @@ export default async function Learn({
           {postPreviews}
         </div>
       </main>
-     
+
       <Footer copy={dictionary.copy} />
     </div>
   );

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import "../../styles/globals.css"
 import { Providers } from "./providers";
 import { i18n, Locale } from '../../i18n-config'
-import { links } from '../../links-web' 
+import { links } from '../../links-web'  
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))

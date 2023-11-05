@@ -16,8 +16,6 @@ export default function Header({
   return (
     <header className="columns-2 relative flex flex-col sm:flex-row xs:flex-col justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
        
-     <Home show={showHome} className={'light:fill-gray-800 dark:fill-white fill-gray-800'}/> 
-
       <Link href="/" className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">  
         <Image
           alt={links.username}
@@ -29,8 +27,10 @@ export default function Header({
         /> 
       </Link>  
 
-     <div className="flex float-right">
-      <LocaleSwitcher actual={actual} classNameProp={'switch-lang mr-8'} />
+     <div className="flex float-right xs:mt-2">
+      <Home show={showHome} className={'mr-8 mt-1 light:fill-gray-800 dark:fill-white fill-gray-800'}/> 
+
+      <LocaleSwitcher actual={actual} classNameProp={'mt-1 switch-lang mr-8'} />
       
       <ThemeSwitcher classNameProp={'mt-1 cursor-pointer mr-8'}/>
  
@@ -65,7 +65,7 @@ function Github({ className }: { className?: string }) {
 
 function Home({ className, show }: { className?: string, show?: boolean }) {
   return (
-    <Link href="/" style={show? {display:'block'}: {display:'none'}} className="mobileNot">
+    <Link href="/" style={show? {display:'block'}: {display:'none'}}>
     <svg className={className} fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  
 	 width="25px" height="25px" viewBox="0 0 495.398 495.398">
 <g>

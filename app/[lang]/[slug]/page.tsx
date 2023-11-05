@@ -99,6 +99,13 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
   return post;
 };
 
+const getLikesPage = async (slug: any): Promise<any> => {
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: "no-cache"})
+  const data = await res.json() 
+
+  return data?.result?.rows[data?.result?.rows?.length-1]?.count;
+};
+
 export default async function Learn({
   params: { lang, slug },
 }: {
@@ -199,15 +206,7 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-   
-  const getLikesPage = async (): Promise<any> => {
-    const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: "no-cache"})
-    const data = await res.json() 
-  
-    return data?.result?.rows[data?.result?.rows?.length-1]?.count;
-  };
-
-  const data = await getLikesPage();
+  const data = await getLikesPage(slug);
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">

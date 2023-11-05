@@ -13,7 +13,7 @@ const Postpreview = (props: PostMetadata) => {
           width={90}
           height={90}
         />
-        <div className="containerCard relative ml-20 pl-10 pb-4">
+        <div className="containerCard relative ml-20 pl-10 pb-4 pr-3">
           <h2 className="mx-auto light:text-gray-800 mb-1 mt-4 dark:text-white max-w-lg font-display text-xl font-bold tracking-normal text-gray-800">
             {props.subtitle}
           </h2>

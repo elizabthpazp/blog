@@ -199,8 +199,9 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { cache: "no-cache", next: { tags: [slug] } })
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { cache: "no-cache" })
   const data = await res.json() 
+  console.log(data?.result?.rows)
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">

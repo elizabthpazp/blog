@@ -27,22 +27,22 @@ export async function generateMetadata({
   const dictionary = await getDictionary(lang);
   return {
     //metadataBase: links.domain + "/" + slug,
-    title: getPostMetaData2(slug, lang).subtitle,
-    description: getPostMetaData2(slug, lang).description,
+    title: await getPostMetaData2(slug, lang).subtitle,
+    description: await getPostMetaData2(slug, lang).description,
     icons: {
       icon: links.icon,
     },
     canonical: links.domain + "/" + slug,
     amphtml: links.domain + "/" + slug,
     keywords:
-      getPostMetaData2(slug, lang).title +
+    await getPostMetaData2(slug, lang).title +
       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
     openGraph: {
       //canonical: links.domain + "/" + slug,
       //amphtml: links.domain + "/" + slug,
-      images: [getPostMetaData2(slug, lang).image],
-      title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description,
+      images: [await getPostMetaData2(slug, lang).image],
+      title: await getPostMetaData2(slug, lang).subtitle,
+      description: await getPostMetaData2(slug, lang).description,
       url: links.domain + "/" + slug,
       siteName: sitename,
       locale: lang == "en" ? "en_US" : "es_ES",
@@ -50,9 +50,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      images: [getPostMetaData2(slug, lang).image],
-      title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description, 
+      images: [await getPostMetaData2(slug, lang).image],
+      title: await getPostMetaData2(slug, lang).subtitle,
+      description: await getPostMetaData2(slug, lang).description, 
     },
     link: {
       canonical: links.domain + "/" + slug,

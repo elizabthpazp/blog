@@ -200,8 +200,7 @@ export default async function Learn({
   ));
 
   const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { cache: "no-cache" })
-  const data = await res.json() 
-  console.log(data?.result?.rows)
+  const data = await res.json()  
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">

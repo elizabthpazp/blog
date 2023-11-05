@@ -202,7 +202,7 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/es/api/get?id=${slug}`, { next: { tags: [slug] } })
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { next: { tags: [slug] } })
   const data = await res.json() 
    
   return (

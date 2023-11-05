@@ -1,26 +1,20 @@
-"use client"
-import Link from "next/link";
-import getPostMetaData from "../getPostMetadata";
-import { PostMetadata } from "../PostMetadata";
-import { useState } from "react";
-import Image from "next/image";
-import { links } from "../links-web"; 
-import { insertLikeSql, updateLikeSql } from "../get-likes";
+"use client" 
+import { useState } from "react"; 
+import { links } from "../links-web";  
 
-export default function LikeCount({ count, isEmpty, title }: {count: any, isEmpty: boolean, title:string})
+export default function LikeCount({ count, title }: {count: any, title:string})
 { 
   let [count2, setCount] = useState(count); 
   let insertLike=async() =>{ 
-    setCount(count2++)
-    if(isEmpty)
-     await insertLikeSql(title, count2);
-    else{
+    setCount(count2++) 
       const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}`, {
-        method: 'POST', next: { tags: [title, count2] } })
+        method: 'POST', mode: "cors", headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Access-Control-Allow-Origin:http://localhost:3000', 
+      },next: { tags: [title, count2] } })
       const data = await res.json() 
-      console.log(data)
-    }
-     await updateLikeSql(title, count2);
+      console.log(data) 
   }
 
   return ( 

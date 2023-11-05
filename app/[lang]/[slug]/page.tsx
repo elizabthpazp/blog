@@ -14,8 +14,7 @@ import Image from "next/image";
 import Search from "../../../components/Search";
 import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
-import PostPreview from "../../../components/PostPreview";
-import { getLikesApi } from "../../../get-likes";
+import PostPreview from "../../../components/PostPreview"; 
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -202,7 +201,7 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { next: { tags: [slug] } })
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { cache: "no-cache", next: { tags: [slug] } })
   const data = await res.json() 
    
   return (
@@ -216,19 +215,8 @@ export default async function Learn({
         title={dictionary.search} 
       />
 
-      <div className="float-right row-auto mr-6 likeCounter">
-        {/* {data.result.rows.map((row: any) => { 
-            return (
-              <div key={row.count}> 
-                <LikeCount count={row.count} isEmpty={false} title={slug}></LikeCount>
-              </div>
-            ); 
-        })} */}
-        <LikeCount count={data.result.rows[data.result.rows.length-1].count} isEmpty={false} title={slug}></LikeCount>
-              
-        <div style={data.result.rows.length == 0 ? {display:'block'}: {display:'none'}}>
-          <LikeCount count={0} isEmpty={true} title={slug}></LikeCount>
-        </div>
+      <div className="float-right row-auto mr-6 likeCounter"> 
+        <LikeCount count={data.result.rows[data.result.rows.length-1].count} title={slug}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">

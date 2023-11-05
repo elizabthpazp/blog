@@ -9,10 +9,8 @@ export default function LikeCount({ count, title }: {count: any, title:string})
     setCount(count2++) 
       const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}`, {
         method: 'POST', headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Access-Control-Allow-Origin:http://localhost:3000', 
-      },next: { tags: [title, count2] } })
+          'Accept': 'application/json'
+      }, next: { tags: [title, count2] } })
       const data = await res.json() 
       console.log(data) 
   }

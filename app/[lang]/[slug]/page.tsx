@@ -183,6 +183,18 @@ export default async function Learn({
     </div>
   );
 
+  const MyLi = ({
+    children,
+    params,
+  }: {
+    children: React.ReactNode;
+    params: { lang: string };
+  }) => (
+    <div className="containerContentBlog font-normal max-w-4xl justify-center mx-auto pt-6 text-xl sm:text-white-400 text-white-500 leading-8">
+      <li>* {children}</li>   
+    </div>
+  );
+
   const MyImg = ({
     children,
     src,
@@ -258,6 +270,12 @@ export default async function Learn({
                   className: "foo",
                 },
               },
+              li: {
+                component: MyLi,
+                props: {
+                  className: "foo",
+                },
+              }
               // img: {
               //   component: MyImg,
               //   props: {

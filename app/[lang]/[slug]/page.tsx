@@ -18,48 +18,48 @@ import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
 
 let titlePage: string, descriptionPage: string;
-export async function generateMetadata({
-  params: { lang, slug },
-}: {
-  params: { lang: Locale; slug: any };
-}) {
-  let sitename = links.username;
-  const dictionary = await getDictionary(lang);
-  return {
-    //metadataBase: links.domain + "/" + slug,
-    title: await getPostMetaData2(slug, lang).subtitle,
-    description: await getPostMetaData2(slug, lang).description,
-    icons: {
-      icon: links.icon,
-    },
-    canonical: links.domain + "/" + slug,
-    amphtml: links.domain + "/" + slug,
-    keywords:
-    await getPostMetaData2(slug, lang).title +
-      " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
-    openGraph: {
-      //canonical: links.domain + "/" + slug,
-      //amphtml: links.domain + "/" + slug,
-      images: [await getPostMetaData2(slug, lang).image],
-      title: await getPostMetaData2(slug, lang).subtitle,
-      description: await getPostMetaData2(slug, lang).description,
-      url: links.domain + "/" + slug,
-      siteName: sitename,
-      locale: lang == "en" ? "en_US" : "es_ES",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [await getPostMetaData2(slug, lang).image],
-      title: await getPostMetaData2(slug, lang).subtitle,
-      description: await getPostMetaData2(slug, lang).description, 
-    },
-    link: {
-      canonical: links.domain + "/" + slug,
-      amphtml: links.domain + "/" + slug,
-    },
-  };
-}
+// export async function generateMetadata({
+//   params: { lang, slug },
+// }: {
+//   params: { lang: Locale; slug: any };
+// }) {
+//   let sitename = links.username;
+//   const dictionary = await getDictionary(lang);
+//   return {
+//     //metadataBase: links.domain + "/" + slug,
+//     title: await getPostMetaData2(slug, lang).subtitle,
+//     description: await getPostMetaData2(slug, lang).description,
+//     icons: {
+//       icon: links.icon,
+//     },
+//     canonical: links.domain + "/" + slug,
+//     amphtml: links.domain + "/" + slug,
+//     keywords:
+//     await getPostMetaData2(slug, lang).title +
+//       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
+//     openGraph: {
+//       //canonical: links.domain + "/" + slug,
+//       //amphtml: links.domain + "/" + slug,
+//       images: [await getPostMetaData2(slug, lang).image],
+//       title: await getPostMetaData2(slug, lang).subtitle,
+//       description: await getPostMetaData2(slug, lang).description,
+//       url: links.domain + "/" + slug,
+//       siteName: sitename,
+//       locale: lang == "en" ? "en_US" : "es_ES",
+//       type: "website",
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       images: [await getPostMetaData2(slug, lang).image],
+//       title: await getPostMetaData2(slug, lang).subtitle,
+//       description: await getPostMetaData2(slug, lang).description, 
+//     },
+//     link: {
+//       canonical: links.domain + "/" + slug,
+//       amphtml: links.domain + "/" + slug,
+//     },
+//   };
+// }
 
 export const generateStaticParams = async () => {
   const postMetadata = getPostMetaData("es", false);

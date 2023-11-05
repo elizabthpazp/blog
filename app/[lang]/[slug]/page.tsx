@@ -202,8 +202,8 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { next: { tags: [slug] } })
-  const data = await res.json() 
+  // const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, { next: { tags: [slug] } })
+  // const data = await res.json() 
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
@@ -224,11 +224,11 @@ export default async function Learn({
               </div>
             ); 
         })} */}
-        <LikeCount count={data.result.rows[data.result.rows.length-1].count} isEmpty={false} title={slug}></LikeCount>
+        {/* <LikeCount count={data.result.rows[data.result.rows.length-1].count} isEmpty={false} title={slug}></LikeCount>
               
         <div style={data.result.rows.length == 0 ? {display:'block'}: {display:'none'}}>
           <LikeCount count={0} isEmpty={true} title={slug}></LikeCount>
-        </div>
+        </div> */}
       </div>
 
       <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">

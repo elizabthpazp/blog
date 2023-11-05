@@ -23,15 +23,15 @@ export async function updateLikeSql (id: string, count: any) {
 }
 
 export async function getLikesApi(id: string) { 
-    // const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${id}`)
-    // console.log(res)
-    // // The return value is *not* serialized
-    // // You can return Date, Map, Set, etc.
+    const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${id}`)
+    console.log(res)
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
    
-    // if (!res.ok) {
-    //   // This will activate the closest `error.js` Error Boundary
-    //   throw new Error('Failed to fetch data')
-    // } 
-    // return res.json()
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error('Failed to fetch data')
+    } 
+    return res.json()
   } 
   

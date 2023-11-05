@@ -101,7 +101,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
 
 const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: 'force-cache' || 'no-store'})
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {next: { revalidate: 0 }})
   const data = await res.json() 
  
   return data?.result?.rows[data?.result?.rows?.length-1]?.count;

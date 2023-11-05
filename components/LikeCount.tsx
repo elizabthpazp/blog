@@ -1,6 +1,11 @@
-"use client" 
-import { useState } from "react"; 
-import { links } from "../links-web";  
+"use client"
+import Link from "next/link";
+import getPostMetaData from "../getPostMetadata";
+import { PostMetadata } from "../PostMetadata";
+import { useState } from "react";
+import Image from "next/image";
+import { links } from "../links-web"; 
+import { insertLikeSql, updateLikeSql } from "../get-likes";
 
 export default function LikeCount({ count, title }: {count: any, title:string})
 { 

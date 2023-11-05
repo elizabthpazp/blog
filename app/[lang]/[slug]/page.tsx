@@ -14,6 +14,7 @@ import Image from "next/image";
 import Search from "../../../components/Search";
 import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
+import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
 
 let titlePage: string, descriptionPage: string;
@@ -216,7 +217,7 @@ export default async function Learn({
       />
 
       <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount count={data.result.rows[data.result.rows.length-1].count} title={slug}></LikeCount>
+        <LikeCount count={data?.result?.rows[data?.result?.rows?.length-1]?.count} title={slug}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">

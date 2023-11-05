@@ -17,7 +17,7 @@ export default function LikeCount({ count, title }: {count: any, title:string})
       const data = await res.json() 
       console.log(data) 
   }
-
+  
   return ( 
       <button className="flex cursor-pointer border light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl border-2 pt-2 pr-2 pl-2" onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
       <img

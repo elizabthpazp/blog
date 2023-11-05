@@ -15,7 +15,7 @@ export default function LikeCount({ count, isEmpty, title }: {count: any, isEmpt
     if(isEmpty)
      await insertLikeSql(title, count2);
     else{
-      const res = await fetch(`http://localhost:3000/es/api/post?id=${title}&count=${count2}`, {
+      const res = await fetch(`https://blog-elizabthpazp.vercel.app/es/api/post?id=${title}&count=${count2}`, {
         method: 'POST', next: { tags: [title, count2] } })
       const data = await res.json() 
       console.log(data)

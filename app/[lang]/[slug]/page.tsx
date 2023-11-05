@@ -199,7 +199,7 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} />
   ));
 
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`)
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: "no-store"})
   const data = await res.json()  
    
   return (
@@ -217,7 +217,7 @@ export default async function Learn({
         <LikeCount count={data?.result?.rows[data?.result?.rows?.length-1]?.count} title={slug}></LikeCount>
       </div>
 
-      <main className="w-full items-center justify-center px-4 sm:mt-9 mt-9 background-gradient">
+      <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">
         <Markdown
           options={{
             overrides: {

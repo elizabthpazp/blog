@@ -19,7 +19,7 @@ export default function LikeCount({ count, title }: {count: any, title:string})
   }
 
   return ( 
-      <div className="flex cursor-pointer" onClick={() => insertLike()}> 
+      <button className="flex cursor-pointer border light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl border-2 pt-2 pr-2 pl-2" onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
       <img
           alt="like"
           title="like"
@@ -28,8 +28,8 @@ export default function LikeCount({ count, title }: {count: any, title:string})
           width={30}
           height={30} 
         /> 
-        <p className="ml-2">{count2}</p>
-      </div>
+        <p className="ml-2 cursor-pointer">{count2}</p>
+      </button>
     )
 }
  

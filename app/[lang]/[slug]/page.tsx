@@ -26,6 +26,7 @@ export async function generateMetadata({
   let sitename = links.username;
   const dictionary = await getDictionary(lang);
   return {
+    //metadataBase: links.domain + "/" + slug,
     title: getPostMetaData2(slug, lang).subtitle,
     description: getPostMetaData2(slug, lang).description,
     icons: {
@@ -37,8 +38,8 @@ export async function generateMetadata({
       getPostMetaData2(slug, lang).title +
       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
     openGraph: {
-      canonical: links.domain + "/" + slug,
-      amphtml: links.domain + "/" + slug,
+      //canonical: links.domain + "/" + slug,
+      //amphtml: links.domain + "/" + slug,
       images: [getPostMetaData2(slug, lang).image],
       title: getPostMetaData2(slug, lang).subtitle,
       description: getPostMetaData2(slug, lang).description,
@@ -51,11 +52,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       images: [getPostMetaData2(slug, lang).image],
       title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description,
-      link: {
-        canonical: links.domain + "/" + slug,
-        amphtml: links.domain + "/" + slug,
-      },
+      description: getPostMetaData2(slug, lang).description, 
     },
     link: {
       canonical: links.domain + "/" + slug,

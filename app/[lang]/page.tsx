@@ -27,8 +27,8 @@ export async function generateMetadata({
     amphtml: links.domain,
     keywords: 'blog, desarrollo web, marketing digital, elizabthpazp, seo, web, programación, curso, web development, frontend, developer, desarrollador',
     openGraph: {
-     canonical: links.domain,
-     amphtml: links.domain,
+    //  canonical: links.domain,
+    //  amphtml: links.domain,
      images: [ogimage],
      title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
      description: dictionary.subtitle,

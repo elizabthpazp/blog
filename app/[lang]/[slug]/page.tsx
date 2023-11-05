@@ -16,6 +16,7 @@ import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
 import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
+import revalidateCache from "../../../revalidate-cache"
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -100,9 +101,9 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
 
 const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {next: { revalidate: 3600 }})
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {next: { tags: ['likes'] }})
   const data = await res.json() 
-
+ 
   return data?.result?.rows[data?.result?.rows?.length-1]?.count;
 };
 

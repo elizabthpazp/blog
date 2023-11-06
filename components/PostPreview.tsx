@@ -23,8 +23,7 @@ const Postpreview = (props: PostMetadata) => {
             {props.title}
           </p>
           <p style={{opacity: '.7'}}>{props.date}</p>
-
-         
+ 
           {/* {/* @ts-expect-error */}
          {/*    <LikesList slug={props.slug}></LikesList> */}
           

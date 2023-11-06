@@ -7,7 +7,7 @@ import Image from "next/image";
 import { links } from "../links-web"; 
 import { insertLikeSql, updateLikeSql } from "../get-likes";
 
-export default function LikeCount({ count, title }: {count: any, title:string})
+export default function LikeCount({ count, title, animation }: {count: any, title:string, animation: boolean})
 { 
   let [count2, setCount] = useState(count); 
   let insertLike=async() =>{ 
@@ -19,12 +19,12 @@ export default function LikeCount({ count, title }: {count: any, title:string})
   }
   
   return ( 
-      <button className="flex cursor-pointer border light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl border-2 pt-2 pr-2 pl-2" onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
+      <button className={animation?"flex cursor-pointer pt-2 pr-2 pl-2 border light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl border-2": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
       <img
           alt="like"
           title="like"
           src={links.iconLike}
-          className="forcedImage cursor-pointer animate-bounce pt-1 click:animate-ping"
+          className={animation?'forcedImage cursor-pointer pt-1 click:animate-ping animate-bounce':"forcedImage cursor-pointer pb-1 click:animate-ping"}
           width={30}
           height={30} 
         /> 

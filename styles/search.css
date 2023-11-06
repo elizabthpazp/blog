@@ -22,4 +22,10 @@
 }
 
 @media (min-width:796px){.containerItem{padding-left:34%;} .containerItemsSearch{margin-left: 25%;}}
+
+@media (min-width:860px){.itemsSearch{margin-right:50%}}
+
+@media (min-width:450px) and (max-width:860px){.itemsSearch{margin-right:90%}}
+
+@media (max-width:450px){.itemsSearch{margin-right:100%}}
  

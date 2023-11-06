@@ -95,6 +95,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
     slug: "",
     date: matterResult.data.date,
     image: matterResult.data.image,
+    likes: matterResult.data.likes
   };
   titlePage = matterResult.data.title;
   return post;
@@ -233,7 +234,7 @@ export default async function Learn({
       />
 
       <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount count={data} title={slug}></LikeCount>
+        <LikeCount count={data} title={slug} animation={false}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">

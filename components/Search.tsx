@@ -16,11 +16,7 @@ const getPostContent = (postMetadata: PostMetadata[], title: string) => {
   
   postMetadata = postMetadata.filter((item) =>
     item.subtitle.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(title.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase()) 
-  );    
-  // const postPreviews = postMetadata.map((post) => ( 
-  //   <PostPreview key={post.slug} {...post} /> 
-  // )); 
-  // return postPreviews;
+  );     
   return postMetadata;
 }; 
 
@@ -72,8 +68,8 @@ export default function Search({
        </div>
       </div> 
   </div>
-  <div style={input!=''&&listResult?.length!=0&&postPreviews ? {display:'block'}: {display:'none'}}>
-  <div className='grid place-items-center items-center text-center justify-center mr-2 ml-2'>
+  <div className='itemsSearch' style={input!=''&&listResult?.length!=0&&postPreviews ? {display:'block'}: {display:'none'}}>
+  <div className='grid absolute place-items-center items-center text-center justify-center mr-2 ml-2'>
     <div id="style-1" className="border-4 scroll-smooth border-gray-500 border-solid light:bg-white bg-white dark:bg-[#17181C] z-50 overflow-y-scroll" style={{borderRadius:'25px', zoom:'80%', maxHeight:'450px'}}>
      <div className='pt-4 mt-0 pr-6 pl-6 pb-4 divide-y'>{postPreviews}</div> 
     </div>

@@ -4,7 +4,8 @@ export interface PostMetadata{
     description: string,
     slug: string
     date: string
-    image: string
+    image: string,
+    likes: any
 }
 
 export interface PreviewMetadata{ 

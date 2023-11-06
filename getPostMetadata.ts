@@ -19,7 +19,8 @@ const getPostMetaData = (
         description:  '',
         slug:  '',
         date: "",
-        image: ''
+        image: '',
+        likes: 0
       };
     }
     else {
@@ -36,6 +37,7 @@ const getPostMetaData = (
         slug: filename,
         date: matterResult.data.date,
         image: matterResult.data.image,
+        likes: matterResult.data.likes,
       };
     }
   });

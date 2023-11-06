@@ -13,7 +13,11 @@ export default function LikeCount({ count, title, animation }: {count: any, titl
   let insertLike=async() =>{ 
     setCount(count2++) 
       const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}`, {
-        method: 'POST', next: { tags: [title, count2] } })
+        method: 'POST', next: { tags: [title, count2] }, headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        } })
       const data = await res.json() 
       console.log(data) 
   }

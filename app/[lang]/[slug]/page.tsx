@@ -102,7 +102,12 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
 
 const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: 'force-cache' || 'no-store'})
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: 'force-cache' || 'no-store',
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  } })
   const data = await res.json() 
  
   return data?.result?.rows[data?.result?.rows?.length-1]?.count;
@@ -234,7 +239,7 @@ export default async function Learn({
       />
 
       <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount count={data} title={slug} animation={false}></LikeCount>
+        <LikeCount count={data} title={slug} animation={true}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">

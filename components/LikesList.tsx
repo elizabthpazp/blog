@@ -1,7 +1,11 @@
 "use client"  
 
 const getLikesPage = async (slug: any) => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: 'force-cache' || 'no-store'})
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  }, cache: 'force-cache' || 'no-store'})
   const data = await res.json() 
  
   return data?.result?.rows[data?.result?.rows?.length-1]?.count;

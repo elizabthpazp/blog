@@ -67,6 +67,9 @@
   img{ 
     max-width: 300px !important; 
   } 
+  .card-post{
+   zoom: 70%;   
+   }
 }
 
 @media (max-width: 480px) { 

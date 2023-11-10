@@ -108,8 +108,8 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
 
 const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, 
-  {cache: 'no-cache',
+  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {
+  cache: 'force-cache' || 'no-cache',
   method: "GET",
   mode: "cors",
   headers: {

@@ -1,6 +1,12 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
- 
+
+const cors = require("cors");
+const express = require("express");
+const app = express();
+app.use(cors({origin: true}))
+app.use(express.json())
+
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');

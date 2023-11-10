@@ -19,6 +19,8 @@
     "@upstash/redis": "^1.19.1",
     "@vercel/analytics": "^1.1.1",
     "@vercel/postgres": "^0.5.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "framer-motion": "^8.2.4",
     "gray-matter": "^4.0.3",
     "local-ssl-proxy": "^2.0.5",

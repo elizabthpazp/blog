@@ -17,6 +17,12 @@ import { links } from "../../../links-web";
 import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
 import revalidateCache from "../../../revalidate-cache"
+ 
+const cors = require("cors");
+const express = require("express");
+const app = express();
+app.use(cors({origin: true}))
+app.use(express.json())
 
 let titlePage: string, descriptionPage: string;
 export async function generateMetadata({
@@ -103,6 +109,8 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 
 const getLikesPage = async (slug: any): Promise<any> => {
   const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {cache: 'force-cache' || 'no-store',
+  method: "GET",
+  mode: "cors",
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',

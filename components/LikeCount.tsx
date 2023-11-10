@@ -26,7 +26,7 @@ export default function LikeCount({ count, title, animation }: {count: any, titl
   }
   
   return ( 
-      <button className={animation?"flex cursor-pointer absolute mr-btn pt-2 pr-2 pl-2 border light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl border-2": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
+      <button className={animation?"flex cursor-pointer absolute mr-btn pt-2 pr-2 pl-2 border border-2 light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
       <img
           alt="like"
           title="like"

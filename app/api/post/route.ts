@@ -11,10 +11,11 @@ export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
   const count = searchParams.get('count');
-  console.log(id + ' ' + count)
+  const first = searchParams.get('first');
+ 
   try {
     let result;
-    if(count == '0')
+    if(first)
     result = await sql`INSERT INTO posts (id, count) VALUES (${id}, ${count})`;
     else
     result = await sql`UPDATE posts SET count = ${count} WHERE id = ${id}`;

@@ -17,9 +17,10 @@ export async function generateMetadata({
 }) {
   let ogimage = links.logo, sitename = links.username;
   const dictionary = await getDictionary(lang) 
+  let titleMeta = sitename + dictionary.metaTitle, descriptionMeta = dictionary.title+' '+dictionary.title1+' '+dictionary.title2 + ' | ' + dictionary.metaDescription;
   return {
-    title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
-    description: dictionary.subtitle,
+    title: titleMeta,
+    description: descriptionMeta,
     icons: {
       icon: links.icon,
     },
@@ -30,8 +31,8 @@ export async function generateMetadata({
     //  canonical: links.domain,
     //  amphtml: links.domain,
      images: [ogimage],
-     title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
-     description: dictionary.subtitle,
+     title: titleMeta,
+     description: descriptionMeta,
      url: links.domain,
      siteName: sitename,
      locale: lang == 'en' ? "en_US" : "es_ES",
@@ -44,8 +45,8 @@ export async function generateMetadata({
     twitter: { 
      card: "summary_large_image",
      images: [ogimage],
-     title: dictionary.title+' '+dictionary.title1+' '+dictionary.title2,
-     description: dictionary.subtitle,
+     title: titleMeta,
+     description: descriptionMeta,
     },
     link: {
       canonical: links.domain +"/"+slug, 

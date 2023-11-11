@@ -14,8 +14,8 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 } 
 
-let title = "Learn about Web Development with me";
-let description = "It doesn't matter if you are just starting out or you are an expert, there is always something new that you can learn and I would really like to be able to share it with you.";
+let title = "elizabthpazp | Frontend, JavaScript, CSS, TypeScript, Vue, React";
+let description = "Learn about Web Development with me | Articles, videos, resources and tutorials on Web Development, Frontend, JavaScript, CSS, TypeScript, Vue and React";
 let ogimage = links.logo;
 let sitename = links.username;
  

@@ -11,8 +11,8 @@ export const links = {
     facebook: "https://m.facebook.com/100006840368095/", 
     logo: "/logo.png",
     icon: "/fav.png",
-    iconSpain: "/spain.png",
-    iconUsa: "/usa.png",
+    iconSpain: "/spain.webp",
+    iconUsa: "/usa.webp",
     iconLike: "/icons/amor.png"
 } as const
  

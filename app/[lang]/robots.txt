@@ -1,7 +1,0 @@
-User-agent: *
-Disallow:  
-
-User-agent: *
-Allow: /
-
-Sitemap: https://blog-elizabthpazp.vercel.app/sitemap.xml 

@@ -8,4 +8,13 @@
 
 ### Million articles for you ✨ with love 💜
 
+#### Made with:
+
+##### ✨ Next & React
+##### ✨ Tailwind CSS
+##### ✨ Vercel 
+##### ✨ Markdown
+##### ✨ Typescript
+##### ✨ PostgreSQL
+
 #### Website: https://blog-elizabthpazp.vercel.app/

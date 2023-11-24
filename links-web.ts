@@ -13,6 +13,6 @@ export const links = {
     icon: "/fav.png",
     iconSpain: "/spain.webp",
     iconUsa: "/usa.webp",
-    iconLike: "/icons/amor.png"
+    iconLike: "/icons/amor.webp"
 } as const
  

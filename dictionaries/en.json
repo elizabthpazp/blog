@@ -14,5 +14,12 @@
     "posts": "Latest articles",
     "related": "Related articles",
     "notFound": "No results found",
-    "search": "Search for articles..."
+    "search": "Search for articles...",
+    "btnSubscribe": "Subscribe",
+    "error": "An error has occurred. Try again.",
+    "thanks": "Thanks for subscribing! Please check your email to confirm your subscription.",
+    "thanksShort": "Thanks for subscribing!",
+    "incorrectEmail": "You have entered an incorrect email. Try again.",
+    "newsletter": "Subscribe to the newsletter!",
+    "newsDescription": "You will receive quality articles about web development and all the news I am working on. No spam!"
 }

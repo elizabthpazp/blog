@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer"; 
+import EmailPlantilla from "../../components/EmailPlantilla";
 import Header from "../../components/Header"; 
 import PostPreview from "../../components/PostPreview"; 
 import SquigglyLines from "../../components/SquigglyLines";
@@ -9,6 +10,7 @@ import { Locale } from '../../i18n-config'
 import { links } from '../../links-web'    
 import getPostMetaData from "../../getPostMetadata";  
 import Search from "../../components/Search";
+import dynamic from 'next/dynamic'
  
 export async function generateMetadata({
   params: { lang, slug },
@@ -71,6 +73,8 @@ export default async function HomePage({
  
   let originalList = getPostMetaData(lang, false);  
 
+  const NoSSR = dynamic(() => import('../../components/EmailPlantilla'), { ssr: false })
+
   return (
     <div className="max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header actual={lang} />
@@ -105,7 +109,9 @@ export default async function HomePage({
           <span className="text-violet-600">{dictionary.here}</span>
         </a>
 
-        <div>
+      <EmailPlantilla title={dictionary.newsletter} description={dictionary.newsDescription} btnSubscribe={dictionary.btnSubscribe} error={dictionary.error} thanks={dictionary.thanks} incorrectEmail={dictionary.incorrectEmail} thanksShort={dictionary.thanksShort} />
+      
+       <div>
           <h3 className="mx-auto light:text-gray-800 mb-10 mt-14 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
             {dictionary.posts}
           </h3>
@@ -113,6 +119,7 @@ export default async function HomePage({
           {postPreviews}
         </div>
       </main> 
+      
       <Footer copy={dictionary.copy} />
     </div>
   );

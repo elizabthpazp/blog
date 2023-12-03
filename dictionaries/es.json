@@ -14,5 +14,12 @@
     "posts": "Últimos artículos",
     "related": "Artículos relacionados",
     "notFound": "No se encontraron resultados",
-    "search": "Buscar artículos ..."
+    "search": "Buscar artículos ...",
+    "btnSubscribe": "Suscribirse",
+    "error": "Se ha producido un error. Intentar otra vez.",
+    "thanks": "¡Gracias por suscribirte! Por favor revise su correo para confirmar su suscripción.",
+    "thanksShort": "¡Gracias por suscribirte!",
+    "incorrectEmail": "Has ingresado un correo electrónico incorrecto. Inténtalo de nuevo",
+    "newsletter": "¡Suscríbete a la newsletter!",
+    "newsDescription": "Recibirás artículos de calidad sobre desarrollo web y todas las novedades en las que vaya trabajando. ¡Nada de spam!"
 }

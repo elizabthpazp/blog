@@ -7,6 +7,7 @@ import RouteActualLink from "../../../components/RouteActualLink";
 import { getDictionary } from "../../../get-dictionary";
 import SquigglyLines from "../../../components/SquigglyLines";
 import { Locale } from "../../../i18n-config";
+import EmailPlantilla from "../../../components/EmailPlantilla";
 import matter from "gray-matter";
 import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
 import getPostMetaData from "../../../getPostMetadata";
@@ -309,9 +310,9 @@ export default async function Learn({
             <RouteActualLink titlePage={titlePage} title={dictionary.share} />
           </div>
         </div>
-
+        
         <div
-          className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 mb-20 pb-10"
+          className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 pb-10"
           style={{ margin: "0 auto" }}
         >
           <h3 className="mx-auto justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
@@ -319,6 +320,10 @@ export default async function Learn({
           </h3>
 
           {postPreviews}
+        </div>
+
+        <div className="flex flex-col items-center justify-center mb-20"> 
+           <EmailPlantilla title={dictionary.newsletter} description={dictionary.newsDescription} btnSubscribe={dictionary.btnSubscribe} error={dictionary.error} thanks={dictionary.thanks} incorrectEmail={dictionary.incorrectEmail} thanksShort={dictionary.thanksShort} />
         </div>
       </main>
 

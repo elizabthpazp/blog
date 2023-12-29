@@ -13,12 +13,13 @@ import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
 import getPostMetaData from "../../../getPostMetadata";
 import Image from "next/image";
 import Search from "../../../components/Search";
+import CopyCode from "../../../components/CopyCode";
 import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
 import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
-import revalidateCache from "../../../revalidate-cache"
- 
+import revalidateCache from "../../../revalidate-cache"  
+
 const cors = require("cors");
 const express = require("express");
 const app = express();
@@ -210,6 +211,22 @@ export default async function Learn({
       <li>* {children}</li>   
     </div>
   );
+  
+
+  const MyCode = ({
+    children,
+    params,
+  }: {
+    children: React.ReactNode;
+    params: { lang: string };
+  }) => (  
+    <span className="cont-code">
+    <code className="lang-css textToCopy" id={children?.toString()}>
+     {children} 
+    </code> 
+    <CopyCode code={children?.toString()}></CopyCode>
+    </span>
+  );
 
   const MyImg = ({
     children,
@@ -291,6 +308,12 @@ export default async function Learn({
                 props: {
                   className: "foo",
                 },
+              },
+              code: {
+                component: MyCode,
+                props: {
+                  className: "foo",
+                },
               }
               // img: {
               //   component: MyImg,
@@ -326,7 +349,7 @@ export default async function Learn({
            <EmailPlantilla title={dictionary.newsletter} description={dictionary.newsDescription} btnSubscribe={dictionary.btnSubscribe} error={dictionary.error} thanks={dictionary.thanks} incorrectEmail={dictionary.incorrectEmail} thanksShort={dictionary.thanksShort} />
         </div>
       </main>
-
+      
       <Footer copy={dictionary.copy} />
     </div>
   );

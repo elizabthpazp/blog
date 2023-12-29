@@ -111,4 +111,20 @@
 .mr-btn{margin-left: -60px !important;}
 .mr-btn:hover{border-color: rgb(120, 87, 174) !important;}
 
+.cont-code {
+  border-radius: 15px;
+  background: #1f1f1f ;
+  padding: 20px;
+  margin: 20px auto; 
+  max-width: 800px;
+  text-wrap: nowrap;
+  overflow-wrap: break-word;
+}
+:not(.cont-code) > code[class*="language-"],
+.cont-code[class*="language-"] {
+  background:#1f1f1f ; 
+}
+
+ 
+
 /* Animation */@keyframes fadeInUp{from{transform:translate3d(0,0,0);opacity:0;}to{transform:translate3d(0,-8px,0);opacity:1;}}@-webkit-keyframes fadeInUp{from{transform:translate3d(0,0,0);opacity:0;}to{transform:translate3d(0,-8px,0);opacity:1;}}.blog-animation{animation-duration:300ms;animation-fill-mode:both;-webkit-animation-duration:300ms;-webkit-animation-fill-mode:both;opacity:-1;animation-name:fadeInUp;-webkit-animation-name:fadeInUp;}

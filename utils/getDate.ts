@@ -1,4 +1,4 @@
-const monthsTranslations = {
+const  monthsTranslations: any = {
     enero: 'January',
     febrero: 'February',
     marzo: 'March',
@@ -13,7 +13,7 @@ const monthsTranslations = {
     diciembre: 'December',
 };
 
-export default function getDate(dateStr: string): Date {
+export default function getDate(dateStr:any): any {
     const parts = dateStr.split(" ");
     if (parts.length > 0) {
         const month = parts[1].toLowerCase();

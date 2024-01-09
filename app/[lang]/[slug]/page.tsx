@@ -18,7 +18,8 @@ import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
 import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
-import revalidateCache from "../../../revalidate-cache"  
+import revalidateCache from "../../../revalidate-cache";
+import getDate from "../../../utils/getDate";
 
 const cors = require("cors");
 const express = require("express");
@@ -245,9 +246,9 @@ export default async function Learn({
   );
   let originalList = getPostMetaData(lang, false);
   let relatedList = getPostMetaData(lang, true, slug);
-  relatedList.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+
+  relatedList.sort((a, b) => getDate(b.date) - getDate(a.date));
+
   const postPreviews = relatedList.map((post) => (
     <PostPreview key={post.slug} {...post} />
   ));

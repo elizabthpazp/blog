@@ -36,7 +36,7 @@ export default function Header({
  
       <Link
         className="items-center justify-center rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
-        href={links.github}
+        href={links.githubBlog}
         title="github"   
         target="_blank"
         rel="noopener noreferrer"

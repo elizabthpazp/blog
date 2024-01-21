@@ -246,8 +246,11 @@ export default async function Learn({
   );
   let originalList = getPostMetaData(lang, false);
   let relatedList = getPostMetaData(lang, true, slug);
-
-  relatedList.sort((a, b) => getDate(b.date) - getDate(a.date));
+ 
+  if(lang == 'es')
+   relatedList.sort((a, b) => getDate(b.date) - getDate(a.date));
+  else
+   relatedList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const postPreviews = relatedList.map((post) => (
     <PostPreview key={post.slug} {...post} />

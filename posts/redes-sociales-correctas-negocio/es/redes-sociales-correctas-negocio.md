@@ -2,7 +2,7 @@
 title: Portal Digital de CateWebs
 subtitle: "Elegir las Plataformas de Redes Sociales Correctas para tu Negocio: Consejos y Estrategias"
 description: En un mundo cada vez más digital, las redes sociales se han convertido en un elemento esencial para promocionar cualquier negocio. Sin embargo, la elección de las plataformas de redes sociales adecuadas y la optimización de tus estrategias en ellas son pasos cruciales para alcanzar el éxito. En este artículo, exploraremos las principales redes sociales y ofreceremos consejos prácticos para aprovechar al máximo cada una de ellas.
-date: 04 noviembre 2023
+date: 4 noviembre 2023
 image: ./agencia5_mk_digital.png
 ---
 

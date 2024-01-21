@@ -2,7 +2,7 @@
 title: CateWebs Digital Portal
 subtitle: "Choosing the Right Social Media Platforms for Your Business: Tips and Strategies"
 description: In an increasingly digital world, social networks have become an essential element to promote any business. However, choosing the right social media platforms and optimizing your strategies on them are crucial steps to achieving success. In this article, we'll explore the major social networks and offer practical tips to get the most out of each of them.
-date: 04 November 2023
+date: November 4, 2023
 image: ./agencia5_mk_digital.png
 ---
 

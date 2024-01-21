@@ -11,6 +11,7 @@ import { links } from '../../links-web'
 import getPostMetaData from "../../getPostMetadata";  
 import Search from "../../components/Search";
 import dynamic from 'next/dynamic'
+import getDate from "../../utils/getDate";
 
 export async function generateMetadata({
   params: { lang, slug },
@@ -64,8 +65,11 @@ export default async function HomePage({
 }) {
   const dictionary = await getDictionary(lang) 
   let postMetadata = getPostMetaData(lang, false); 
-
-  postMetadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+ 
+ if(lang == 'es')
+  postMetadata.sort((a, b) => getDate(b.date) - getDate(a.date));
+ else
+ postMetadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   
   const postPreviews = postMetadata.map((post) => ( 
     <PostPreview key={post.slug} {...post} /> 

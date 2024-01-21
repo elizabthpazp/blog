@@ -26,7 +26,7 @@ export default function CopyCode(code: any) {
     }
   };
   return (
-    <button className="copyButton ml-10" onClick={() => copyCode()}>
+    <button onClick={() => copyCode()} className="btn-copy">
       {" "}
       📋{" "}
       <span style={showCopy ? { display: "block" } : { display: "none" }}>

@@ -112,14 +112,19 @@
 .mr-btn:hover{border-color: rgb(120, 87, 174) !important;}
 
 .cont-code {
-  border-radius: 15px;
-  background: #1f1f1f ;
+  border-radius: 15px; 
   padding: 20px;
   margin: 20px auto; 
   max-width: 800px;
   text-wrap: nowrap;
   overflow-wrap: break-word;
+  white-space: pre;
+  /* border: 2px solid gray */
 }
+div.code {
+  white-space: pre;
+}
+ 
 :not(.cont-code) > code[class*="language-"],
 .cont-code[class*="language-"] {
   background:#1f1f1f ; 

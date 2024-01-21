@@ -23,7 +23,7 @@ image: ./next-desde-cero(1).jpg
 
 #### Para comenzar, necesitarás tener Node.js instalado en tu sistema. Una vez que esté listo, puedes inicializar un nuevo proyecto de Next.js utilizando el siguiente comando:
 
-``` npx create-next-app nombre-de-tu-proyecto ```
+``` npx create-next-app nombre-proyecto ```
 
 
 #### Esto configurará rápidamente la estructura inicial de tu proyecto, incluyendo las dependencias necesarias y una estructura de carpetas concisa.
@@ -32,15 +32,18 @@ image: ./next-desde-cero(1).jpg
 
 #### Luego de que se complete la instalación, podemos iniciar el servidor de desarrollo ejecutando el siguiente comando:
 
-` cd <nombre-de-tu-proyecto> `   
-
-` npm run dev `  
+    cd <nombre-proyecto>  
+    npm run dev 
 
 #### Si visitas localhost:3000 podrás ver en vivo tu nueva aplicación de Next.js.
 
 #### Luego abrimos el archivo package.json y añadimos los siguientes scripts:
 
-` "scripts": { "dev": "next dev", "build": "next build", "start": "next start" } `
+    "scripts": { 
+       "dev": "next dev", 
+       "build": "next build", 
+       "start": "next start" 
+    } `
 
 #### También puedes utilizar Next.js instalando manualmente los paquetes: next, react y react-dom
 
@@ -58,32 +61,40 @@ image: ./next-desde-cero(1).jpg
 
 #### Las páginas están asociadas con una ruta basada en el nombre del archivo. Por ejemplo pages/perfil.js resultará en la ruta /perfil.
 
-``export default function Perfil() { return <div>¡Bienvenido a mi perfil!</div>; }``
+    export default function Perfil() { 
+        return <div>¡Bienvenido!</div>; 
+    }
 
 #### Prueba el código anterior ubicándolo en (pages/perfil.js) por tu cuenta y visita localhost:3000/perfil para ver los resultados.
 
 ### Rutas Index
 #### Los archivos con nombre index dirigen hacia la raíz del directorio que lo contiene.
 
-* pages/index.js → /
-* pages/blog/index.js → /blog
+    pages/index.js → /
+     pages/blog/index.js → /blog
 
 ### Rutas Anidadas
 #### Supongamos que queremos acceder a la siguiente ruta: /blog/post/:id
 #### Necesitaremos anidar las carpetas de la siguiente manera:
 
-* |- pages
- *  |- index.js
-  *   |- blog
-   *     |- post
-    *       |- [id].js # id dinámico para cada post
+    |- pages
+     |- index.js
+      |- blog
+       |- post
+        |- [id].js #id dinámico 
+                   para cada post
 
 ### Páginas con Rutas Dinámicas
 #### También podemos utilizar rutas dinámicas si agregamos corchetes al nombre del archivo. Por ejemplo, si creamos un archivo llamado pages/post/[id].js podremos acceder a el en las rutas post/1, post/2, y así sucesivamente.
 
 ` import { useRouter } from "next/router"; `
 
-`export default function Post(){const router=useRouter(),{id}=router.query;return<p>Post:{id}</p>;}`
+    export default function Post(){
+        const router=useRouter();
+        const {id}=router.query;
+
+     return <p>Post:{id}</p>;
+    }
 
 #### En pages/post/[id].js Como puedes observar, en el código anterior utilizamos el hook useRouter de Next.js para acceder al objeto router, dicho objeto contiene propiedades muy útiles, las partes dinámicas de cada ruta se almacenan en router.query.
 
@@ -94,13 +105,19 @@ image: ./next-desde-cero(1).jpg
 
 #### Por ejemplo, para crear un componente botón reusable, primero creamos componentes/Boton.module.css con el siguiente contenido:
 
-`.peligro { color: white; }`
+`.p { color: white; }`
  
 #### Y un archivo componentes/Boton.js donde importar y usar el módulo CSS antes creado.
 
 `import estilos from "./Boton.module.css";`
 
-`export default function Boton(){return(<button className={estilos.peligro}>X</button>);}`
+    export default function Boton(){
+        return(
+          <button className={estilos.p}>
+           X
+          </button>
+        );
+    }`
 
 #### La clase peligro es una propiedad del objeto estilos importado. Así de fácil es usar los Módulos de CSS en Next.js, recuerda que también tenemos más opciones de estilo a nuestra disposición, tales como Sass, Less o CSS en JavaScript.
 

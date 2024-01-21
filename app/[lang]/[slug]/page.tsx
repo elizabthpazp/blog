@@ -19,8 +19,12 @@ import { links } from "../../../links-web";
 import { getLikesApi } from "../../../get-likes";
 import PostPreview from "../../../components/PostPreview"; 
 import revalidateCache from "../../../revalidate-cache";
-import getDate from "../../../utils/getDate";
+import getDate from "../../../utils/getDate"; 
+import dynamic from 'next/dynamic'
 
+const CodeHighlight = dynamic(() => import("../../../components/CodeHighlight"), {
+  ssr: false,
+})
 const cors = require("cors");
 const express = require("express");
 const app = express();
@@ -220,13 +224,8 @@ export default async function Learn({
   }: {
     children: React.ReactNode;
     params: { lang: string };
-  }) => (  
-    <span className="cont-code">
-    <code className="lang-css textToCopy" id={children?.toString()}>
-     {children} 
-    </code> 
-    <CopyCode code={children?.toString()}></CopyCode>
-    </span>
+  }) => (    
+    <CodeHighlight code={children?.toString()}></CodeHighlight> 
   );
 
   const MyImg = ({

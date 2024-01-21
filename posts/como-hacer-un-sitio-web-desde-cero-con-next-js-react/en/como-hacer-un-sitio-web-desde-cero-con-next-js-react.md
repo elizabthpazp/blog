@@ -23,7 +23,7 @@ December 28, 2023
 
 #### To get started, you will need to have Node.js installed on your system. Once it's ready, you can initialize a new Next.js project using the following command:
 
-``` npx create-next-app your-project-name ```
+``` npx create-next-app project-name ```
 
 
 #### This will quickly set up the initial structure of your project, including necessary dependencies and a concise folder structure.
@@ -32,15 +32,18 @@ December 28, 2023
 
 #### After the installation is complete, we can start the development server by running the following command:
 
-` cd <your-project-name> `
-
-`npm run dev`
+    cd <project-name>  
+    npm run dev 
 
 #### If you visit localhost:3000 you will be able to see your new Next.js application live.
 
 #### Then we open the package.json file and add the following scripts:
 
-` "scripts": { "dev": "next dev", "build": "next build", "start": "next start" } `
+    "scripts": { 
+       "dev": "next dev", 
+       "build": "next build", 
+       "start": "next start" 
+    } `
 
 #### You can also use Next.js by manually installing the packages: next, react and react-dom
 
@@ -58,32 +61,40 @@ December 28, 2023
 
 #### Pages are associated with a path based on the file name. For example pages/perfil.js will result in the path /perfil.
 
-``export default function Profile() { return <div>Welcome to my profile!</div>; }``
+    export default function Perfil() { 
+        return <div>Welcome!</div>; 
+    }
 
 #### Try the above code by placing it in (pages/profile.js) on your own and visit localhost:3000/profile to see the results.
 
 ### Index Routes
 #### Files named index point to the root of the directory that contains them.
 
-* pages/index.js → /
-* pages/blog/index.js → /blog
+    pages/index.js → /
+     pages/blog/index.js → /blog
 
 ### Nested Routes
 #### Suppose we want to access the following path: /blog/post/:id
 #### We will need to nest the folders as follows:
 
-* |- pages
-  * |- index.js
-   * |- blog
-    * |- post
-     * |- [id].js # dynamic id for each post
+    |- pages
+     |- index.js
+      |- blog
+       |- post
+        |- [id].js #id dinámico 
+                   para cada post
 
 ### Pages with Dynamic Routes
 #### We can also use dynamic paths by adding square brackets to the file name. For example, if we create a file called pages/post/[id].js we can access it in the routes post/1, post/2, and so on.
 
 ` import { useRouter } from "next/router"; `
 
-`export default function Post(){const router=useRouter(),{id}=router.query;return<p>Post:{id}</p>;}`
+    export default function Post(){
+        const router=useRouter();
+        const {id}=router.query;
+
+     return <p>Post:{id}</p>;
+    }
 
 #### In pages/post/[id].js As you can see, in the previous code we use the Next.js useRouter hook to access the router object, said object contains very useful properties, the dynamic parts of each route are stored in router.query.
 
@@ -94,13 +105,19 @@ December 28, 2023
 
 #### For example, to create a reusable button component, we first create components/Button.module.css with the following content:
 
-`.danger { color: white; }`
+`.d { color: white; }`
  
 #### And a components/Button.js file where you can import and use the CSS module created before.
 
 `import styles from "./Button.module.css";`
 
-`export default function Button(){return(<button className={styles.danger}>X</button>);}`
+    export default function Button(){
+        return(
+          <button className={estilos.d}>
+           X
+          </button>
+        );
+    }`
 
 #### The danger class is a property of the imported styles object. That's how easy it is to use CSS Modules in Next.js, remember that we also have more style options at our disposal, such as Sass, Less or CSS in JavaScript.
 

@@ -87,7 +87,7 @@ image: ./next-desde-cero(1).jpg
 ### Páginas con Rutas Dinámicas
 #### También podemos utilizar rutas dinámicas si agregamos corchetes al nombre del archivo. Por ejemplo, si creamos un archivo llamado pages/post/[id].js podremos acceder a el en las rutas post/1, post/2, y así sucesivamente.
 
-` import { useRouter } from "next/router"; `
+`import {useRouter} from "next/router"`
 
     export default function Post(){
         const router=useRouter();
@@ -109,17 +109,17 @@ image: ./next-desde-cero(1).jpg
  
 #### Y un archivo componentes/Boton.js donde importar y usar el módulo CSS antes creado.
 
-`import estilos from "./Boton.module.css";`
+`import style from "./B.module.css"`
 
-    export default function Boton(){
+    export default function B(){
         return(
-          <button className={estilos.p}>
+          <button className={style.p}>
            X
           </button>
         );
     }`
 
-#### La clase peligro es una propiedad del objeto estilos importado. Así de fácil es usar los Módulos de CSS en Next.js, recuerda que también tenemos más opciones de estilo a nuestra disposición, tales como Sass, Less o CSS en JavaScript.
+#### La clase peligro es una propiedad del objeto style importado. Así de fácil es usar los Módulos de CSS en Next.js, recuerda que también tenemos más opciones de estilo a nuestra disposición, tales como Sass, Less o CSS en JavaScript.
 
 ### SSG vs SSR
 #### Pre-renderizado

@@ -87,7 +87,7 @@ December 28, 2023
 ### Pages with Dynamic Routes
 #### We can also use dynamic paths by adding square brackets to the file name. For example, if we create a file called pages/post/[id].js we can access it in the routes post/1, post/2, and so on.
 
-` import { useRouter } from "next/router"; `
+`import {useRouter} from "next/router"`
 
     export default function Post(){
         const router=useRouter();
@@ -109,17 +109,17 @@ December 28, 2023
  
 #### And a components/Button.js file where you can import and use the CSS module created before.
 
-`import styles from "./Button.module.css";`
+`import style from "./B.module.css"`
 
-    export default function Button(){
+    export default function B(){
         return(
-          <button className={estilos.d}>
+          <button className={style.d}>
            X
           </button>
         );
     }`
 
-#### The danger class is a property of the imported styles object. That's how easy it is to use CSS Modules in Next.js, remember that we also have more style options at our disposal, such as Sass, Less or CSS in JavaScript.
+#### The danger class is a property of the imported style object. That's how easy it is to use CSS Modules in Next.js, remember that we also have more style options at our disposal, such as Sass, Less or CSS in JavaScript.
 
 ### SSG vs SSR
 #### Pre-rendered

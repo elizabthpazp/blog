@@ -76,6 +76,9 @@
   .mobileNot{ 
    display: none !important;
   }
+  .code-snippet{
+    zoom:85%;
+  }
 }
  
   .sombrita{-webkit-box-shadow: 0px 0px 30px -11px rgba(0,0,0,0.53);

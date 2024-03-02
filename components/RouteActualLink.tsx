@@ -12,7 +12,7 @@ export default function Links({
     title: string 
   }) {
   const pathname = usePathname() 
-  const share = `https://twitter.com/share?url=${links.domain}${pathname}&text=${titlePage} por @${links.username}`;
+  const share = `https://twitter.com/share?url=${encodeURIComponent(links.domain)}${encodeURIComponent(pathname)}&text=${encodeURIComponent(titlePage)} by @${links.username}`;
   return (
     <Link
     className="sombrita text-sm bg-white text-gray-800 light:bg-white light:text-gray-800 dark:bg-[#1d1f24] dark:text-white rounded-2xl flex group font-medium px-3 py-2 sm:mt-10 mt-8 hover:bg-violet-500 transition"

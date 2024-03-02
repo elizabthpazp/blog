@@ -1,8 +1,6 @@
 'use client' 
-import Link from "next/link";
-import getPostMetaData from "../getPostMetadata";
-import { PostMetadata } from "../PostMetadata";
-import LikesList from "./LikesList";
+import Link from "next/link"; 
+import { PostMetadata } from "../PostMetadata"; 
  
 const Postpreview = (props: PostMetadata) => {  
   return ( 

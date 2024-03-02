@@ -11,7 +11,12 @@ const getPostMetaData = (
   const folder = "posts/";
   const files = fs.readdirSync(folder);
   
-  const posts = files.map((filename) => {
+  let posts = files.map((filename) => {
+    const fileContents = fs.readFileSync(
+      `posts/${filename}/${lang}/${filename}.md`,
+      "utf8"
+    );
+    const matterResult = matter(fileContents);
     if (related && filename == actual) { 
       return {
         title: '',
@@ -24,23 +29,19 @@ const getPostMetaData = (
       };
     }
     else {
-      const fileContents = fs.readFileSync(
-        `posts/${filename}/${lang}/${filename}.md`,
-        "utf8"
-      );
-      const matterResult = matter(fileContents);
-
+     
       return {
         title: matterResult.data.title,
         subtitle: matterResult.data.subtitle,
         description: matterResult.data.title,
         slug: filename,
         date: matterResult.data.date,
-        image: matterResult.data.image,
+        image: matterResult.data.image == './css1.png' ? './css.png': matterResult.data.image,
         likes: matterResult.data.likes,
       };
     }
   });
+
   return posts;
 };
 

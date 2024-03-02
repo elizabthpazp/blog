@@ -16,7 +16,7 @@ export default function CodeHighlight(code: any) {
         hljs.initHighlighting();
     }, []); 
   return (  
-    <div className='flex mt-6 flex-1 w-full flex-col items-center justify-center'>
+    <div className='flex mt-6 flex-1 w-full flex-col items-center justify-center code-snippet'>
     <pre><code className="js" style={{borderRadius: '22px', padding: '30px'}}>
     {code?.code}
     </code> 

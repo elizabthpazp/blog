@@ -1,6 +1,5 @@
 import fs from "fs";
-import Markdown from "markdown-to-jsx";
-import Link from "next/link";
+import Markdown from "markdown-to-jsx"; 
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import RouteActualLink from "../../../components/RouteActualLink";
@@ -10,15 +9,11 @@ import { Locale } from "../../../i18n-config";
 import EmailPlantilla from "../../../components/EmailPlantilla";
 import matter from "gray-matter";
 import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
-import getPostMetaData from "../../../getPostMetadata";
-import Image from "next/image";
-import Search from "../../../components/Search";
-import CopyCode from "../../../components/CopyCode";
+import getPostMetaData from "../../../getPostMetadata"; 
+import Search from "../../../components/Search"; 
 import LikeCount from "../../../components/LikeCount";
-import { links } from "../../../links-web";
-import { getLikesApi } from "../../../get-likes";
-import PostPreview from "../../../components/PostPreview"; 
-import revalidateCache from "../../../revalidate-cache";
+import { links } from "../../../links-web"; 
+import PostPreview from "../../../components/PostPreview";  
 import getDate from "../../../utils/getDate"; 
 import dynamic from 'next/dynamic'
 
@@ -110,7 +105,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
     image: matterResult.data.image,
     likes: matterResult.data.likes
   };
-  titlePage = matterResult.data.title;
+  titlePage = matterResult.data.subtitle;
   return post;
 };
 
@@ -224,7 +219,7 @@ export default async function Learn({
   }: {
     children: React.ReactNode;
     params: { lang: string };
-  }) => (    
+  }) => (     
     <CodeHighlight code={children?.toString()}></CodeHighlight> 
   );
 
@@ -236,7 +231,7 @@ export default async function Learn({
     src: string;
   }) => (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
-      <img className="blog-animation" width={100} height={100}>
+      <img className="blog-animation img-blog" width={100} height={100}>
         {children}
       </img>
       {src}
@@ -245,7 +240,7 @@ export default async function Learn({
   );
   let originalList = getPostMetaData(lang, false);
   let relatedList = getPostMetaData(lang, true, slug);
- 
+   
   if(lang == 'es')
    relatedList.sort((a, b) => getDate(b.date) - getDate(a.date));
   else
@@ -341,9 +336,9 @@ export default async function Learn({
           className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 pb-10"
           style={{ margin: "0 auto" }}
         >
-          <h3 className="mx-auto justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
+          <p className="mx-auto text-3xl justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
             {dictionary.related}
-          </h3>
+          </p>
 
           {postPreviews}
         </div>

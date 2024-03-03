@@ -16,6 +16,7 @@ import { links } from "../../../links-web";
 import PostPreview from "../../../components/PostPreview";  
 import getDate from "../../../utils/getDate"; 
 import dynamic from 'next/dynamic'
+import { Children } from "react";
 
 const CodeHighlight = dynamic(() => import("../../../components/CodeHighlight"), {
   ssr: false,
@@ -124,6 +125,14 @@ const getLikesPage = async (slug: any): Promise<any> => {
   return data?.result?.rows[data?.result?.rows?.length-1]?.count;
 };
 
+function readingTime(post: any) {
+  const WORDS_PER_MINUTE = 200;
+  const regex = /\w+/g;
+  const wordCount = post.match(regex)?.length || 0;
+
+  return Math.ceil(wordCount / WORDS_PER_MINUTE);
+}
+ 
 export default async function Learn({
   params: { lang, slug },
 }: {
@@ -131,7 +140,8 @@ export default async function Learn({
 }) {
   const content = getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
-
+  const time = readingTime(content);
+ 
   const MyH1 = ({
     children,
     params,
@@ -166,11 +176,17 @@ export default async function Learn({
   }: {
     children: React.ReactNode;
     params: { lang: string };
-  }) => (
+  }) => {
+   // console.log(children?.toString()) 
+    return(
     <p className="light:text-gray-600 dark:text-gray-400 mt-8 text-center">
       {children}
+      <span style={children?.toString() == '[object Object]' ? {display:"none"} : {}}>
+      &nbsp; · &nbsp; {time} {dictionary.minutes}
+      </span>
     </p>
-  );
+  )
+    };
 
   const MyH3 = ({
     children,

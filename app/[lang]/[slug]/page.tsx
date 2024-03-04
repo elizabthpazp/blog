@@ -27,7 +27,7 @@ const app = express();
 app.use(cors({origin: true}))
 app.use(express.json())
 
-let titlePage: string, descriptionPage: string;
+let titlePage: string, descriptionPage: string, languageProgramming:string;
 export async function generateMetadata({
   params: { lang, slug },
 }: {
@@ -107,6 +107,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
     likes: matterResult.data.likes
   };
   titlePage = matterResult.data.subtitle;
+  languageProgramming = matterResult.data.language;
   return post;
 };
 
@@ -149,7 +150,7 @@ export default async function Learn({
     children: React.ReactNode;
     params: { lang: string };
   }) => (
-    <h1 className="mx-auto text-gray-800 light:text-gray-800 dark:text-gray-300 text-center max-w-5xl font-display text-4xl font-bold tracking-normal sm:text-6xl">
+    <h1 className="mx-auto text-gray-800 light:text-gray-800 dark:text-gray-300 mobileshort text-center max-w-5xl font-display text-4xl font-bold tracking-normal sm:text-6xl">
       {children}
     </h1>
   );
@@ -182,11 +183,11 @@ export default async function Learn({
     <p className="light:text-gray-600 dark:text-gray-400 mt-8 text-center">
       {children}
       <span style={children?.toString() == '[object Object]' ? {display:"none"} : {}}>
-      &nbsp; · &nbsp; {time} {dictionary.minutes}
+      &nbsp;·&nbsp;{time} {dictionary.minutes}
       </span>
     </p>
   )
-    };
+ };
 
   const MyH3 = ({
     children,
@@ -236,7 +237,7 @@ export default async function Learn({
     children: React.ReactNode;
     params: { lang: string };
   }) => (     
-    <CodeHighlight code={children?.toString()}></CodeHighlight> 
+    <CodeHighlight code={children?.toString()} language={languageProgramming}></CodeHighlight> 
   );
 
   const MyImg = ({

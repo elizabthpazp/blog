@@ -4,6 +4,7 @@ subtitle: Building your Website from Scratch with Next.js. A React-Powered Devel
 description: Developing a website from scratch is an exciting challenge that combines the creativity of design with the logic of development. With Next.js, a powerful web development platform based on React, you have at your disposal all the necessary tools to build a dynamic, fast and highly functional website. In this article, we will explore the exciting process of developing a website from scratch with Next.js.
 date: December 28, 2023
 image: ./next-desde-cero(1).jpg
+language: "js"
 ---
 
 # Building your Website from Scratch with Next.js: A Development Journey

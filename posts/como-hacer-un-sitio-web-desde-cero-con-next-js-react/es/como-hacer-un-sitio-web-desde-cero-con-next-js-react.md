@@ -4,6 +4,7 @@ subtitle: Construyendo tu Sitio Web desde Cero con Next.js. Un Viaje de Desarrol
 description: Desarrollar un sitio web desde cero es un emocionante desafío que combina la creatividad del diseño con la lógica del desarrollo. Con Next.js, una poderosa plataforma de desarrollo web basada en React, tienes a tu disposición todas las herramientas necesarias para construir una web dinámica, rápida y altamente funcional. En este artículo, exploraremos el emocionante proceso de desarrollo de una web desde cero con Next.js.
 date: 28 diciembre 2023
 image: ./next-desde-cero(1).jpg
+language: "js"
 ---
 
 # Construyendo tu Sitio Web desde Cero con Next.js: Un Viaje de Desarrollo

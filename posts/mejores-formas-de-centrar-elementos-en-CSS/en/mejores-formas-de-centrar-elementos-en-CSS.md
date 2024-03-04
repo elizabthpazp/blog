@@ -4,6 +4,7 @@ subtitle: Best ways to center elements in CSS
 description: If you're a web developer, you've probably faced the challenge of centering elements in CSS. Nowadays, centering elements both horizontally and vertically is no longer a difficult task.
 date: March 5, 2024
 image: ./css1.png
+language: "css"
 ---
 
 ![css](./css.png)

@@ -6,24 +6,14 @@ export default function CopyCode(code: any) {
   let [showCopy, setCopy] = useState(false);
 
   const copyCode = () => {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    const textToCopy: any = document.getElementsByClassName("textToCopy");
-
-    var i = 0;
-    while (i <= 9) {
-      if (textToCopy[i].textContent == code?.code) {
-        range?.selectNodeContents(textToCopy[i]);
-        selection?.removeAllRanges();
-        selection?.addRange(range);
-        const successful = document.execCommand("copy");
-        if (successful) {
-          setCopy((showCopy = true));
-        }
-        window?.getSelection()?.removeAllRanges();
-        i = 9;
-      } else i++;
-    }
+    navigator.clipboard
+      .writeText(code?.code?.code)
+      .then(() => {
+        setCopy((showCopy = true));
+      })
+      .catch((err) => {
+        console.error("Error al copiar al portapapeles:", err);
+      });
   };
   return (
     <button onClick={() => copyCode()} className="btn-copy">

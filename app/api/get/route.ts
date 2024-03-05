@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   const id = searchParams.get('id');
   try {
     const result =
-      await sql`SELECT count FROM posts WHERE id = ${id}`;
+      await sql`SELECT count FROM posts WHERE id = ${id} ORDER BY count DESC`;
       
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) { 

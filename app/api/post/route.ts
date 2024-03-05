@@ -12,14 +12,15 @@ export async function POST(request: Request) {
   const id = searchParams.get('id');
   const count = searchParams.get('count');
   const first = searchParams.get('first');
- 
+ console.log(searchParams)
   try {
     let result;
     if(first)
     result = await sql`INSERT INTO posts (id, count) VALUES (${id}, ${count})`;
     else
     result = await sql`UPDATE posts SET count = ${count} WHERE id = ${id}`;
-    return NextResponse.json({ result }, { status: 200 });
+    console.log(result)
+    return NextResponse.json({ result }, { status: 200 }); 
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

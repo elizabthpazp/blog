@@ -14,7 +14,7 @@ hljs.registerLanguage('javascript', javascript);
  
 export default function CodeHighlight(code: any, language: string) {
     useEffect(() => {
-        hljs.initHighlighting();
+        hljs.highlightAll();
     }, []); 
   return (  
     <div className='flex mt-6 flex-1 w-full flex-col items-center justify-center code-snippet'>

@@ -8,11 +8,13 @@ app.use(cors({origin: true}))
 app.use(express.json())
 
 export async function POST(request: Request) {
+  console.log('entraaa')
+  console.log(request)
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
   const count = searchParams.get('count');
   const first = searchParams.get('first');
- console.log(searchParams)
+ console.log('params '+ searchParams)
   try {
     let result;
     if(first)

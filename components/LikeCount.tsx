@@ -1,11 +1,6 @@
-"use client"
-import Link from "next/link";
-import getPostMetaData from "../getPostMetadata";
-import { PostMetadata } from "../PostMetadata";
-import { useState } from "react";
-import Image from "next/image";
-import { links } from "../links-web"; 
-import { insertLikeSql, updateLikeSql } from "../get-likes";
+"use client"  
+import { useState } from "react"; 
+import { links } from "../links-web";  
 
 export default function LikeCount({ count, title, animation }: {count: any, title:string, animation: boolean})
 { 
@@ -27,7 +22,7 @@ export default function LikeCount({ count, title, animation }: {count: any, titl
   }
   
   return ( 
-      <button className={animation?"flex cursor-pointer absolute mr-btn pt-2 pr-2 pl-2 border border-2 light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}} name="like" title="like"> 
+      <div className={animation?"flex cursor-pointer absolute mr-btn pt-2 pr-2 pl-2 border border-2 light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}}> 
       <img
           alt="like"
           title="like"
@@ -37,7 +32,7 @@ export default function LikeCount({ count, title, animation }: {count: any, titl
           height={30} 
         /> 
         <p className="ml-2 relative">{count2}</p>
-      </button>
+      </div>
     )
 }
  

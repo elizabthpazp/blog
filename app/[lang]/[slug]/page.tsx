@@ -112,7 +112,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
 
 const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {
+  const res = await fetch(`http://localhost:3000/api/get?id=${slug}`, {
   //cache: 'force-cache' || 'no-cache',
   method: "GET",
   mode: "cors",
@@ -122,8 +122,8 @@ const getLikesPage = async (slug: any): Promise<any> => {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   } })
   const data = await res.json() 
- 
-  return data?.result?.rows[data?.result?.rows?.length-1]?.count;
+   
+  return data?.result?.rows[0]?.count;
 };
 
 function readingTime(post: any) {

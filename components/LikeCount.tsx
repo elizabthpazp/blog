@@ -7,7 +7,7 @@ export default function LikeCount({ count, title, animation }: {count: any, titl
   let [count2, setCount] = useState(count == undefined ? 0 : count); 
   let insertLike=async() =>{   
     setCount(count2++) 
-    console.log(count)
+ 
       const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}&first=${count == undefined ? true : false}`, {
         //cache: 'force-cache' || 'no-cache',
         method: 'POST',

@@ -15,8 +15,7 @@ import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web"; 
 import PostPreview from "../../../components/PostPreview";  
 import getDate from "../../../utils/getDate"; 
-import dynamic from 'next/dynamic'
-import { Children } from "react";
+import dynamic from 'next/dynamic' 
 
 const CodeHighlight = dynamic(() => import("../../../components/CodeHighlight"), {
   ssr: false,
@@ -110,21 +109,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
   languageProgramming = matterResult.data.language;
   return post;
 };
-
-const getLikesPage = async (slug: any): Promise<any> => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {
-  //cache: 'force-cache' || 'no-cache',
-  method: "GET",
-  mode: "cors",
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  } })
-  const data = await res.json()  
-  return data?.result?.rows[0]?.count;
-};
-
+ 
 function readingTime(post: any) {
   const WORDS_PER_MINUTE = 200;
   const regex = /\w+/g;
@@ -265,8 +250,6 @@ export default async function Learn({
   const postPreviews = relatedList.map((post) => (
     <PostPreview key={post.slug} {...post} />
   ));
-
-  const data = await getLikesPage(slug);
    
   return (
     <div className="max-w-6xl mx-auto items-center justify-center py-2">
@@ -280,7 +263,7 @@ export default async function Learn({
       />
 
       <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount count={data} title={slug} animation={true}></LikeCount>
+        <LikeCount slug={slug} title={slug} animation={true}></LikeCount>
       </div>
 
       <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">

@@ -1,26 +1,34 @@
 "use client"  
-import { useState } from "react"; 
+import { useEffect, useState } from "react"; 
 import { links } from "../links-web";  
+import { getLikesPage } from "../get-likes-post";
 
-export default function LikeCount({ count, title, animation }: {count: any, title:string, animation: boolean})
-{ 
-  let [count2, setCount] = useState(count == undefined ? 0 : count); 
-  let insertLike=async() =>{   
+export default function LikeCount({ slug, title, animation }: {slug: any, title:string, animation: boolean})
+{  
+  let [count2, setCount] = useState(0); 
+  let [isFirst, setFirst] = useState(false);  
+  useEffect( () => {
+      (async()=>{
+        const count = await getLikesPage(slug);
+        setFirst(count == undefined)
+        setCount(count);
+      })() 
+  }, []) 
+   
+  let insertLike=() =>{   
     setCount(count2++) 
- 
-      const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}&first=${count == undefined ? true : false}`, {
-        //cache: 'force-cache' || 'no-cache',
+   
+    fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}&first=${isFirst}`, {
+        cache: 'no-cache',
         method: 'POST',
         mode: "cors",
         headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      } })
-      const data = await res.json() 
-      console.log(data) 
+      } }) 
   }
-  
+ 
   return ( 
       <div className={animation?"flex cursor-pointer absolute mr-btn pt-2 pr-2 pl-2 border border-2 light:border-gray-300 dark:border-gray-800 hover:border-violet-500 shadow-xl": "flex cursor-pointer pt-2 pr-2 pl-2"} onClick={() => insertLike()} style={{borderRadius:'20px'}}> 
       <img

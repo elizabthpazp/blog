@@ -16,8 +16,11 @@ export default function CopyCode(code: any) {
       });
   };
   return (
-    <button onClick={() => copyCode()} className="btn-copy">
+    <button onClick={() => copyCode()} className="btn-copy flex">
       {" "}
+      <span style={!showCopy ? { display: "block" } : { display: "none" }}>
+       Copy
+      </span> 
       📋{" "}
       <span style={showCopy ? { display: "block" } : { display: "none" }}>
         Copied!

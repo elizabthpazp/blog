@@ -5,7 +5,7 @@ import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
 import { useEffect } from 'react';
 //import { CopyButtonPlugin } from 'highlightjs-copy/dist/highlightjs-copy.min.js';
-import 'highlightjs-copy/dist/highlightjs-copy.min.css';
+//import 'highlightjs-copy/dist/highlightjs-copy.min.css';
 import CopyCode from './CopyCode';
 hljs.registerLanguage('javascript', javascript);
 // hljs.addPlugin(new CopyButtonPlugin({

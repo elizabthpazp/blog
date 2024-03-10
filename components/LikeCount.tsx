@@ -10,7 +10,7 @@ export default function LikeCount({ slug, title, animation }: {slug: any, title:
   useEffect( () => {
       (async()=>{
         const count = await getLikesPage(slug);
-        setFirst(count == undefined)
+        setFirst(count == undefined || count == 0) 
         setCount(count);
       })() 
   }, []) 

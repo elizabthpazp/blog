@@ -107,7 +107,7 @@ export default async function HomePage({
           href={links.tiktok}
           target="_blank"
           rel="noreferrer"
-          className="border flex blog-animation border-gray-700 rounded-xl mt-14 p-3 light:text-gray-500 dark:text-gray-400 text-sm mb-5 duration-300 ease-in-out"
+          className="border flex blog-animation border-gray-700 rounded-xl mt-14 p-3 light:text-gray-500 dark:text-gray-400 text-md mb-5 duration-300 ease-in-out"
         >
           {dictionary.request}{" "} 
           &nbsp;
@@ -133,8 +133,20 @@ export default async function HomePage({
 
           {postPreviews}
         </div>
-      </main> 
+
+        <a
+          href={links.web}
+          target="_blank"
+          rel="noreferrer"
+          className="border flex blog-animation border-gray-700 rounded-xl mt-14 p-3 light:text-gray-500 dark:text-gray-400 text-md mb-5 duration-300 ease-in-out"
+        >
+          {dictionary.about}{" "} 
+          
+          👩🏻‍💻💜
+        </a>
       
+      </main> 
+ 
       <Footer copy={dictionary.copy} />
     </div>
   );

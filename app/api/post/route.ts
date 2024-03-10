@@ -14,11 +14,11 @@ export async function POST(request: Request) {
   const first = searchParams.get('first');
  
   try {
-    //let result;
-    // if(first)
-    // result = await sql`INSERT INTO posts (id, count) VALUES (${id}, ${count})`;
-    // else
-    let result = await sql`UPDATE posts SET count = ${count} WHERE id = ${id}`;
+    let result;
+    if(first)
+    result = await sql`INSERT INTO posts (id, count) VALUES (${id}, ${count})`;
+    else
+    result = await sql`UPDATE posts SET count = ${count} WHERE id = ${id}`;
  
     return NextResponse.json({ result }, { status: 200 }); 
   } catch (error) {

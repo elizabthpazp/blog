@@ -51,6 +51,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang}>
+      <head> 
+       <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
+      </head>
       <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
         <Providers>
          {children} 

@@ -20,7 +20,7 @@ const Postpreview = (props: PostMetadata) => {
           <p className="mx-auto light:text-violet-800 mb-2 dark:text-violet-600 max-w-lg font-display text-1xl font-bold tracking-normal text-violet-600">
             {props.title}
           </p>
-          <p style={{opacity: '.7'}}>{props.date}</p>
+          <p className="text-sm" style={{opacity: '.7'}}>{props.date}</p>
  
           {/* {/* @ts-expect-error */}
          {/*    <LikesList slug={props.slug}></LikesList> */}

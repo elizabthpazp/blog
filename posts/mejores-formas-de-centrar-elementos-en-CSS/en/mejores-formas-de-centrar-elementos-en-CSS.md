@@ -21,7 +21,6 @@ March 5, 2024
 #### Using **grid** together with the **place-content** property makes centering elements on both axes a simple process. It's especially effective for larger layouts, although it's important to note that contained elements will take on the width of the widest element.
 
      .container {
-       display: grid;
-       place_content: center;
+       display: grid
+       placecontent: center
      }
- 

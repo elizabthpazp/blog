@@ -55,6 +55,7 @@ export default function RootLayout({
     <html lang={params.lang}>
       <head> 
        <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
+       <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
       </head>
       <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
         <Providers>
@@ -62,7 +63,7 @@ export default function RootLayout({
          
          <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="rgb(124 58 237)" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
          {/* <script defer src="https://app.embed.im/snow.js"></script> */}  
-       
+  
          <GoogleAnalytics gaId="G-92CHRN38WP" />
         </Providers>
         <Analytics /> 

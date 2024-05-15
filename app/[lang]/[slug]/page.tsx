@@ -111,11 +111,12 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
 };
  
 function readingTime(post: any) {
-  const WORDS_PER_MINUTE = 200;
-  const regex = /\w+/g;
-  const wordCount = post.match(regex)?.length || 0;
+  // const WORDS_PER_MINUTE = 200;
+  // const regex = /\w+/g;
+  // const wordCount = post.match(regex)?.length || 0;
 
-  return Math.ceil(wordCount / WORDS_PER_MINUTE);
+  // return Math.ceil(wordCount / WORDS_PER_MINUTE);
+  return 3;
 }
  
 export default async function Learn({

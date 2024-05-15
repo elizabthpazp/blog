@@ -10,6 +10,7 @@ export const links = {
     linkedin: "https://www.linkedin.com/in/elizabeth-de-la-paz-portal-4b864b209",
     discord: "https://discord.com/users/1062024233577893918",
     facebook: "https://m.facebook.com/100006840368095/", 
+    twitter: "https://twitter.com/elizabthpazp", 
     logo: "/logo.png",
     icon: "/fav.png",
     iconFav: "/favicon.ico",

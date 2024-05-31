@@ -96,7 +96,7 @@ module.exports = {
 
 ### Comienza a usar Tailwind en tu HTML
 
-#### Agrega el archivo CSS al <head> y comienza a usar las clases de Tailwind para diseñar su contenido.
+#### Agrega el archivo CSS al head y comienza a usar las clases de Tailwind para diseñar su contenido.
  
 ```
 <head>

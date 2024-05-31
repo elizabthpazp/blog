@@ -26,7 +26,7 @@ const app = express();
 app.use(cors({origin: true}))
 app.use(express.json())
 
-let titlePage: string, descriptionPage: string, languageProgramming:string;
+let descriptionPage: string, languageProgramming:string;
 export async function generateMetadata({
   params: { lang, slug },
 }: {
@@ -105,7 +105,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
     image: matterResult.data.image,
     likes: matterResult.data.likes
   };
-  titlePage = matterResult.data.subtitle;
+  
   languageProgramming = matterResult.data.language;
   return post;
 };
@@ -126,6 +126,7 @@ export default async function Learn({
   const content = getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
   const time = readingTime(content);
+  let titlePage = getPostMetaData2(slug, lang).subtitle;
  
   const MyH1 = ({
     children,

@@ -89,8 +89,8 @@ module.exports = {
  
 ```
 "scripts": {
-  "build:css": "postcss src/styles.css 
-  -o public/styles.css"
+  "build:css": "postcss src/my.css 
+  -o public/my.css"
 }
 ```
 
@@ -101,7 +101,7 @@ module.exports = {
 ```
 <head>
  <meta charset="UTF-8"> 
- <link href="./my.css" rel="stylesheet">
+ <link href="my.css" rel="stylesheet">
 </head>
 ```
 
@@ -114,9 +114,9 @@ module.exports = {
 #### Creando un Layout Responsivo
  
 ```
-<div class="container mx-auto p-4">
+<div class="container mx-auto">
  <div class="grid grid-cols-1 
-  md:grid-cols-2 lg:grid-cols-3 gap-4">
+  md:grid-cols-2 lg:grid-cols-3">
    <div class="bg-white p-6 
    rounded-lg">C1</div>
    <div class="bg-white p-6 

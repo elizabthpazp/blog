@@ -1,0 +1,37 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<urlset xmlns="https://blog-elizabthpazp.vercel.app/"></urlset>
+	<url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>1.0</priority>
+	
+	<url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/mejores-formas-de-centrar-elementos-en-CSS</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	
+	<url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/como-usar-tailwind-css-para-disenos-modernos-responsivos</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.4</priority>
+
+	<url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/como-hacer-un-sitio-web-desde-cero-con-next-js-react</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.3/priority>
+      
+  <url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/como-desarrollar-una-web-desde-cero</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+
+  <url></url>
+		<loc>https://blog-elizabthpazp.vercel.app/desarrollo-web-frontend</loc>
+		<lastmod>2024-08-06</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.1</priority>

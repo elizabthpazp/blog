@@ -97,7 +97,7 @@ export default async function HomePage({
         {dictionary.subtitle}
         </h2>
         <Link
-          className="bg-violet-600 blog-animation rounded-2xl text-white font-medium p-3 sm:mt-10 mt-8 hover:bg-violet-500"
+          className="bg-violet-600 mb-5 blog-animation rounded-2xl text-white font-medium p-3 sm:mt-10 mt-8 hover:bg-violet-500"
           href="/desarrollo-web-frontend"
         >
           {dictionary.cta}

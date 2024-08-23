@@ -46,7 +46,7 @@ export default function EmailSubs ({
     setMsg("");
     const email = emailRef.current?.value;
 
-    if (email ) {//&& emailRegex.test(email)
+    if (email && emailRegex.test(email)) {
       setShowErrorMsg(false);
       await subscribe(email);
     } else {

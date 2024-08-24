@@ -89,8 +89,9 @@ module.exports = {
  
 ```
 "scripts": {
-  "build:css": "postcss src/my.css 
-  -o public/my.css"
+  "build:css": "postcss 
+   src/my.css -o 
+   public/my.css"
 }
 ```
 

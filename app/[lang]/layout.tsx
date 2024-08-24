@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { i18n, Locale } from '../../i18n-config'
 import { links } from '../../links-web'  
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const cors = require("cors");
 const express = require("express");
@@ -67,6 +68,7 @@ export default function RootLayout({
          <GoogleAnalytics gaId="G-92CHRN38WP" />
         </Providers>
         <Analytics /> 
+        <SpeedInsights/>
       </body>
     </html>
   );

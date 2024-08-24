@@ -57,7 +57,6 @@ export default function RootLayout({
       <head> 
        <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
        <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"></meta>
       </head>
       <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
         <Providers>

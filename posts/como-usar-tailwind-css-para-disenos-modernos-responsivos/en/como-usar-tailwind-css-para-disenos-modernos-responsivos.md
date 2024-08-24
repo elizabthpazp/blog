@@ -101,7 +101,8 @@ module.exports = {
 ```
 <head>
  <meta charset="UTF-8">
- <link href="my.css" rel="stylesheet">
+ <link href="my.css" 
+      rel="stylesheet">
 </head>
 ```
 

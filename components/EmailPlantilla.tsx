@@ -88,8 +88,8 @@ export default function EmailPlantilla({
             className="formkit-submit formkit-submit"
             style={{
               color: "rgb(255, 255, 255)",
-              backgroundColor: "rgb(103, 91, 190)",
-              borderRadius: "20px",
+              backgroundColor: "rgb(124 58 237)",
+              borderRadius: "1rem",
               fontWeight: "700",
             }}>
             <div className="formkit-spinner">

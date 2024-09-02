@@ -31,13 +31,14 @@ language: "js"
 #### Es un hook que permite agregar estado a un componente funcional. Devuelve un par de valores: el estado actual y una función para actualizarlo.
 
 ```
-import React, { useState } from 'react';
+import React, 
+      { useState } from 'react';
 
 function Counter() {
-  const [count, setCount] = useState(0);
+ const [count, setCount]=useState(0);
   return <button onClick={() => 
-  setCount(count + 1)}>
-  Count: {count}</button>;
+    setCount(count + 1)}>
+      Count: {count}</button>;
 }
 ```  
 
@@ -46,14 +47,17 @@ function Counter() {
 #### Este hook se utiliza para realizar efectos secundarios en componentes funcionales, como suscribirse a servicios, realizar solicitudes de datos o manipular el DOM. Se ejecuta después de que el componente se renderiza.
 
 ```
-import React, { useEffect } from 'react';
+import React, 
+         { useEffect } from 'react';
 
-function Logger() {
+function UpdateTitle() {
+ const [count, setCount]=useState(0);
   useEffect(() => {
-    console.log('Component mounted');
-  }, []);
-  return <div>Check the console!</div>;
+   document.title = 
+   `You clicked ${count} times`;
+  }, [count]); 
 }
+
 ```  
 
 ### 3. useContext: Compartiendo Estado Global
@@ -61,14 +65,17 @@ function Logger() {
 #### Permite acceder al contexto de React, lo que permite compartir valores (como un tema o el usuario autenticado) entre componentes sin necesidad de pasar props manualmente por cada nivel.
 
 ```
-import React, { useContext } from 'react';
+import React, 
+       { useContext } from 'react';
 
 const ThemeContext = 
-React.createContext('light');
+      React.createContext('light');
 
 function ThemedComponent() {
-  const theme = useContext(ThemeContext);
-  return <div>Theme: {theme}</div>;
+ const theme=useContext(ThemeContext);
+  return ( 
+    <div>Theme: {theme}</div>
+  );
 }
 ```  
 
@@ -77,14 +84,16 @@ function ThemedComponent() {
 #### Es similar a useState, pero es útil para manejar estados complejos o cuando las actualizaciones de estado dependen de un flujo de acciones. Utiliza un reducer para gestionar las actualizaciones de estado basadas en la acción enviada.
 
 ```
-import React, { useReducer } from 'react';
+import React, 
+  { useReducer } from 'react';
 
 function Counter() {
-  const [count, dispatch] = 
-  useReducer((state, action) => 
+ const [count, dispatch] = 
+ useReducer((state, action) => 
   state + action, 0);
   return <button onClick={() => 
-  dispatch(1)}>Count: {count}</button>;
+   dispatch(1)}>
+   Count: {count}</button>;
 }
 
 ```  
@@ -94,11 +103,14 @@ function Counter() {
 #### Proporciona una forma de acceder a elementos DOM directamente o guardar valores mutables que no requieren volver a renderizar el componente cuando cambian. También es útil para mantener referencias a valores previos de estado.
 
 ```
-import React, { useRef } from 'react';
+import React, 
+      { useRef } from 'react';
 
-function TextInput() {
-  const inputRef = useRef(null);
-  return <input ref={inputRef} />;
+function FocusInput() {
+ const inputRef = useRef(null);
+ const focusInput = () => {
+  inputRef.current.focus();
+ };
 }
 
 ```  
@@ -108,12 +120,17 @@ function TextInput() {
 #### Este hook se utiliza para memorizar cálculos costosos o funciones para evitar recalcularlos en cada renderizado, mejorando así el rendimiento. Solo recalcula el valor memorizado cuando cambian sus dependencias.
 
 ```
-import React, { useMemo } from 'react';
+import React, 
+    { useMemo } from 'react';
 
 function Square({ num }) {
-  const result = useMemo(() => 
+ const result = useMemo(() => 
   num * num, [num]);
-  return <div>Square: {result}</div>;
+  return (
+     <div>
+       Square: {result}
+     </div>
+  );
 }
 
 
@@ -124,17 +141,19 @@ function Square({ num }) {
 #### Memoriza funciones para evitar que se vuelvan a crear en cada renderizado. Es útil cuando se pasan funciones como props a componentes hijos que dependen de la referencia de la función para evitar renderizados innecesarios.
 
 ```
-import React, { useCallback } from 'react';
+import React, 
+    { useCallback } from 'react';
 
 function Button({ onClick }) {
-  return <button 
-  onClick={onClick}>Click me</button>;
+ return <button onClick={onClick}
+  >Click me</button>;
 }
 
 function Parent() {
-  const handleClick = useCallback(() 
+ const handleClick = useCallback(() 
   => console.log('Clicked!'), []);
-  return <Button onClick={handleClick} />;
+ return 
+   <Button onClick={handleClick} />;
 }
 
 ```  

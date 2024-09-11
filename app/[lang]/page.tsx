@@ -97,11 +97,22 @@ export default async function HomePage({
         {dictionary.subtitle}
         </h2>
         <Link
-          className="bg-violet-600 mb-5 blog-animation rounded-2xl text-white font-medium p-3 sm:mt-10 mt-8 hover:bg-violet-500"
+          className="bg-violet-600 blog-animation rounded-2xl text-white font-medium p-3 sm:mt-10 mt-8 hover:bg-violet-500"
           href="/desarrollo-web-frontend"
         >
           {dictionary.cta}
         </Link> 
+
+        <a
+          href={links.cv}
+          target="_blank"
+          rel="noreferrer"
+          className="border flex blog-animation border-gray-700 rounded-xl mt-14 p-3 light:text-gray-500 dark:text-gray-400 text-md mb-5 duration-300 ease-in-out"
+        >
+          {dictionary.request}{" "} 
+          &nbsp;
+          💜
+        </a>
 
       <EmailPlantilla title={dictionary.newsletter} description={dictionary.newsDescription} btnSubscribe={dictionary.btnSubscribe} error={dictionary.error} thanks={dictionary.thanks} incorrectEmail={dictionary.incorrectEmail} thanksShort={dictionary.thanksShort} />
       

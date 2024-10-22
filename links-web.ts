@@ -12,6 +12,7 @@ export const links = {
     facebook: "https://m.facebook.com/100006840368095/", 
     twitter: "https://twitter.com/elizabthpazp", 
 	threads: "https://www.threads.net/@elizabthpazp.js",
+    youtube: "https://www.youtube.com/@elijsdev",
     cv: "https://cv-template-elizabthpazp.vercel.app/",
     logo: "/logo.png",
     icon: "/fav.png",

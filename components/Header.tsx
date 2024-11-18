@@ -16,7 +16,7 @@ export default function Header({
   return (
     <header className="columns-2 relative flex flex-col sm:flex-row xs:flex-col justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
        
-      <Link href="/" className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">  
+      <Link href="/" className="sm:text-3xl text-xl font-bold ml-2 tracking-tight logo-filter">  
         <Image
           alt={links.username}
           title={links.username}

@@ -140,4 +140,8 @@ div.code {
   position: absolute; bottom: 10px; 
  } */
 
+ .logo-filter{
+  filter:drop-shadow(0 0 2px purple);
+ }
+ 
 /* Animation */@keyframes fadeInUp{from{transform:translate3d(0,0,0);opacity:0;}to{transform:translate3d(0,-8px,0);opacity:1;}}@-webkit-keyframes fadeInUp{from{transform:translate3d(0,0,0);opacity:0;}to{transform:translate3d(0,-8px,0);opacity:1;}}.blog-animation{animation-duration:300ms;animation-fill-mode:both;-webkit-animation-duration:300ms;-webkit-animation-fill-mode:both;opacity:-1;animation-name:fadeInUp;-webkit-animation-name:fadeInUp;}

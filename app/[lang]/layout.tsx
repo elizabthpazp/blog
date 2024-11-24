@@ -23,6 +23,7 @@ let ogimage = links.logo;
 let sitename = links.username;
  
 export const metadata: Metadata = { 
+  metadataBase: new URL('http://localhost:3000'),
   title,
   description,
   icons: {

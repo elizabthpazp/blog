@@ -1,7 +1,7 @@
 export const links = {
     domain: "https://blog-elizabthpazp.vercel.app",
     github: "https://github.com/elizabthpazp",
-    web: "https://elizabthpazp.github.io",
+    web: "https://elijs.dev",
     githubBlog: "https://github.com/elizabthpazp/blog",
     username: "elizabthpazp",
     telegram: "https://t.me/elizabthpazp",

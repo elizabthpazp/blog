@@ -10,7 +10,7 @@ interface SiteData {
 }
 
 const siteData: SiteData = {  
-  url: "https://blog-elizabthpazp.vercel.app",  
+  url: "https://blog.elijs.dev",  
   confirmEmail: true,
 };
 

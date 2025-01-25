@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/</loc>
+        <loc>https://blog.elijs.dev/</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/mejores-formas-de-centrar-elementos-en-CSS</loc>
+        <loc>https://blog.elijs.dev/mejores-formas-de-centrar-elementos-en-CSS</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/como-usar-tailwind-css-para-disenos-modernos-responsivos</loc>
+        <loc>https://blog.elijs.dev/como-usar-tailwind-css-para-disenos-modernos-responsivos</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/como-hacer-un-sitio-web-desde-cero-con-next-js-react</loc>
+        <loc>https://blog.elijs.dev/como-hacer-un-sitio-web-desde-cero-con-next-js-react</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/como-desarrollar-una-web-desde-cero</loc>
+        <loc>https://blog.elijs.dev/como-desarrollar-una-web-desde-cero</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://blog-elizabthpazp.vercel.app/desarrollo-web-frontend</loc>
+        <loc>https://blog.elijs.dev/desarrollo-web-frontend</loc>
         <lastmod>2024-07-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

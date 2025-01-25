@@ -1,5 +1,5 @@
 export const links = {
-    domain: "https://blog-elizabthpazp.vercel.app",
+    domain: "https://blog.elijs.dev",
     github: "https://github.com/elizabthpazp",
     web: "https://elijs.dev",
     githubBlog: "https://github.com/elizabthpazp/blog",
@@ -13,7 +13,7 @@ export const links = {
     twitter: "https://twitter.com/elijs_dev", 
 	threads: "https://www.threads.net/@elijs.dev",
     youtube: "https://www.youtube.com/@elijsdev",
-    cv: "https://cv-template-elizabthpazp.vercel.app/",
+    cv: "https://cv-template.elijs.dev/",
     logo: "/logo.png",
     icon: "/fav.png",
     iconFav: "/favicon.ico",

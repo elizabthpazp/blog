@@ -17,4 +17,4 @@
 ##### ✨ Typescript
 ##### ✨ PostgreSQL
 
-#### Website: https://blog-elizabthpazp.vercel.app/
+#### Website: https://blog.elijs.dev

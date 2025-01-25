@@ -18,7 +18,7 @@ export default function LikeCount({ slug, title, animation }: {slug: any, title:
   let insertLike=() =>{   
     setCount(count2++) 
    
-    fetch(`https://blog-elizabthpazp.vercel.app/api/post?id=${title}&count=${count2}&first=${isFirst}`, {
+    fetch(`https://blog.elijs.dev/api/post?id=${title}&count=${count2}&first=${isFirst}`, {
         cache: 'no-cache',
         method: 'POST',
         mode: "cors",

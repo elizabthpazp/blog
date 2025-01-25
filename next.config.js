@@ -16,7 +16,7 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['https://blog-elizabthpazp.vercel.app'],//domains: ["upcdn.io", "replicate.delivery"],
+    domains: ['https://blog.elijs.dev'],//domains: ["upcdn.io", "replicate.delivery"],
   },
   // i18n: { 
   //   locales: ['en', 'es'], 

@@ -1,7 +1,7 @@
 "use client"  
 
 const getLikesPage = async (slug: any) => {
-  const res = await fetch(`https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`, {
+  const res = await fetch(`https://blog.elijs.dev/api/get?id=${slug}`, {
     cache: 'force-cache' || 'no-cache',
     method: "GET",
     mode: "cors",

@@ -1,6 +1,6 @@
 export async function getLikesPage(slug: any): Promise<any> {
   const res = await fetch(
-    `https://blog-elizabthpazp.vercel.app/api/get?id=${slug}`,
+    `https://blog.elijs.dev/api/get?id=${slug}`,
     {
       cache: 'no-cache',
       method: "GET",

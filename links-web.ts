@@ -4,7 +4,7 @@ export const links = {
     web: "https://elijs.dev",
     githubBlog: "https://github.com/elizabthpazp/blog",
     username: "elijs.dev",
-    telegram: "https://t.me/elizabthpazp",
+    telegram: "https://t.me/elijs_dev",
     instagram: "https://instagram.com/elijs.dev",
     tiktok: "https://www.tiktok.com/@elijs.dev",
     linkedin: "https://www.linkedin.com/in/elizabeth-de-la-paz-portal-4b864b209",

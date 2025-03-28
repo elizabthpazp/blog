@@ -11,7 +11,7 @@ import { links } from '../../links-web'
 import getPostMetaData from "../../getPostMetadata";  
 import Search from "../../components/Search";
 import dynamic from 'next/dynamic'
-import getDate from "../../utils/getDate";
+import getDate from "../../utils/getDate"; 
 
 export async function generateMetadata({
   params: { lang, slug },
@@ -82,7 +82,7 @@ export default async function HomePage({
   return (
     <div className="max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header actual={lang} />
-      
+       
       <Search list={originalList} failedText={dictionary.notFound} lang={lang} title={dictionary.search}/> 
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-8 mt-8 background-gradient mb-10">
         <h1 className="mx-auto light:text-gray-800 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800 sm:text-7xl">
@@ -104,7 +104,7 @@ export default async function HomePage({
         </Link> 
 
         <a
-          href={links.cv}
+          href={links.interaUi}
           target="_blank"
           rel="noreferrer"
           className="border flex blog-animation border-gray-700 rounded-xl mt-14 p-3 light:text-gray-500 dark:text-gray-400 text-md mb-5 duration-300 ease-in-out"

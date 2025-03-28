@@ -14,6 +14,7 @@ export const links = {
 	threads: "https://www.threads.net/@elijs.dev",
     youtube: "https://www.youtube.com/@elijsdev",
     cv: "https://cv-template.elijs.dev/",
+    interaUi: "https://intera-ui.elijs.dev/",
     logo: "/logo.png",
     icon: "/fav.png",
     iconFav: "/favicon.ico",

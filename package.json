@@ -6,6 +6,9 @@
     "start": "next start",
     "preview": "next preview"
   },
+  "engines": {
+  "node": "22.x"
+  },
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@bytescale/upload-widget-react": "^4.19.0",

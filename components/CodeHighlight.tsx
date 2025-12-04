@@ -18,7 +18,7 @@ export default function CodeHighlight({ code, language }: { code: any; language?
     }, []);
 
   return (
-    <div className='flex mt-6 flex-1 w-full flex-col items-center justify-center code-snippet'>
+    <div className='mt-6 max-w-4xl mx-auto'>
       <pre>
         <code className={language} style={{borderRadius: '22px', padding: '30px'}}>
           {code}

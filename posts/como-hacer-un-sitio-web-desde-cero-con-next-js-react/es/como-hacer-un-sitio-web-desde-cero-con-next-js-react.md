@@ -24,7 +24,7 @@ language: "js"
 
 #### Para comenzar, necesitarás tener Node.js instalado en tu sistema. Una vez que esté listo, puedes inicializar un nuevo proyecto de Next.js utilizando el siguiente comando:
 
-``` npx create-next-app nombre-proyecto ```
+    npx create-next-app nombre-proyecto ```
 
 
 #### Esto configurará rápidamente la estructura inicial de tu proyecto, incluyendo las dependencias necesarias y una estructura de carpetas concisa.

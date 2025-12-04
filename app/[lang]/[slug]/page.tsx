@@ -1,5 +1,6 @@
 import fs from "fs";
 import Markdown from "markdown-to-jsx"; 
+import React from "react"; 
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import RouteActualLink from "../../../components/RouteActualLink";
@@ -235,13 +236,22 @@ export default async function Learn({
 
   const MyCode = ({
     children,
-    params,
   }: {
     children: React.ReactNode;
-    params: { lang: string };
   }) => (     
-    <CodeHighlight code={children?.toString()} language={languageProgramming}></CodeHighlight> 
+    <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">
+      {children}
+    </code>
   );
+
+  const MyPre = ({
+    children,
+  }: {
+    children: React.ReactNode;
+  }) => {
+    const codeText = React.isValidElement(children) ? (children?.props?.children as string) : '';
+    return <CodeHighlight code={codeText} language={languageProgramming} />;
+  };
 
   const MyImg = ({
     children,
@@ -327,9 +337,9 @@ export default async function Learn({
               },
               code: {
                 component: MyCode,
-                props: {
-                  className: "foo",
-                },
+              },
+              pre: {
+                component: MyPre,
               }
               // img: {
               //   component: MyImg,

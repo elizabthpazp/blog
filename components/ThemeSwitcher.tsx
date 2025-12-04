@@ -17,9 +17,11 @@ export function ThemeSwitcher({ classNameProp }: { classNameProp: string }) {
 
   return (
     <div>
+      {/* @ts-ignore */}
       <Expand
         onToggle={() => setTheme(theme == "dark" ? "light" : "dark")}
-        duration={750} idPrefix={'moon'}
+        duration={750} 
+        idPrefix={'moon'}
         style={{ width: "55px", height: "30px", paddingTop: "6px", marginTop: "0px", fontSize: "25px" }} />
     </div>
   );

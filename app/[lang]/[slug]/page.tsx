@@ -249,7 +249,7 @@ export default async function Learn({
   }: {
     children: React.ReactNode;
   }) => {
-    const codeText = React.isValidElement(children) ? (children?.props?.children as string) : '';
+    const codeText = React.isValidElement(children) && typeof (children.props as any).children === 'string' ? (children.props as any).children : '';
     return <CodeHighlight code={codeText} language={languageProgramming} />;
   };
 

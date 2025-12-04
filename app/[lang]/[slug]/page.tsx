@@ -15,23 +15,15 @@ import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web"; 
 import PostPreview from "../../../components/PostPreview";  
 import getDate from "../../../utils/getDate"; 
-import dynamic from 'next/dynamic' 
-
-const CodeHighlight = dynamic(() => import("../../../components/CodeHighlight"), {
-  ssr: false,
-})
-const cors = require("cors");
-const express = require("express");
-const app = express();
-app.use(cors({origin: true}))
-app.use(express.json())
+import CodeHighlight from "../../../components/CodeHighlight";
 
 let descriptionPage: string, languageProgramming:string;
 export async function generateMetadata({
-  params: { lang, slug },
+  params,
 }: {
-  params: { lang: Locale; slug: any };
+  params: Promise<{ lang: Locale; slug: any }>;
 }) {
+  const { lang, slug } = await params;
   let sitename = links.username;
   const dictionary = await getDictionary(lang);
   return {
@@ -71,12 +63,21 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async () => {
-  const postMetadata = getPostMetaData("es", false);
+  // Return params for every locale + slug combination so `params.lang` is
+  // always provided when prerendering nested routes.
+  const locales = ["es", "en"] as const;
+  let list: { lang: string; slug: string }[] = [];
 
-  let list: PreviewMetadata[] = [];
-  const posts = postMetadata.map((file) => {
-    list.push({ slug: file.slug });
-  });
+  for (const locale of locales) {
+    try {
+      const postMetadata = getPostMetaData(locale as any, false);
+      for (const file of postMetadata) {
+        list.push({ lang: locale, slug: file.slug });
+      }
+    } catch (e) {
+      // ignore missing locale-specific files
+    }
+  }
 
   return list;
 };
@@ -84,30 +85,46 @@ export const generateStaticParams = async () => {
 const getPostContent = (slug: string, lang: Locale) => {
   const folder = "posts/";
   const file = `${folder}${slug}/${lang}/${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
-
-  return matterResult.content;
+  try {
+    const content = fs.readFileSync(file, "utf8");
+    const matterResult = matter(content);
+    return matterResult.content;
+  } catch (e) {
+    // If file is missing or unreadable during build, return empty content
+    return "";
+  }
 };
 
 const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
   const folder = "posts/";
   const file = `${folder}${slug}/${lang}/${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
+  try {
+    const content = fs.readFileSync(file, "utf8");
+    const matterResult = matter(content);
 
-  const post: PostMetadata = {
-    title: matterResult.data.title,
-    subtitle: matterResult.data.subtitle,
-    description: matterResult.data.description,
-    slug: "",
-    date: matterResult.data.date,
-    image: matterResult.data.image,
-    likes: matterResult.data.likes
-  };
-  
-  languageProgramming = matterResult.data.language;
-  return post;
+    const post: PostMetadata = {
+      title: matterResult.data.title,
+      subtitle: matterResult.data.subtitle,
+      description: matterResult.data.description,
+      slug: "",
+      date: matterResult.data.date,
+      image: matterResult.data.image,
+      likes: matterResult.data.likes,
+    };
+
+    languageProgramming = matterResult.data.language;
+    return post;
+  } catch (e) {
+    return {
+      title: "",
+      subtitle: "",
+      description: "",
+      slug: "",
+      date: "",
+      image: "",
+      likes: 0,
+    };
+  }
 };
  
 function readingTime(post: any) {
@@ -119,10 +136,11 @@ function readingTime(post: any) {
 }
  
 export default async function Learn({
-  params: { lang, slug },
+  params,
 }: {
-  params: { lang: Locale; slug: any };
+  params: Promise<{ lang: Locale; slug: any }>;
 }) {
+  const { lang, slug } = await params;
   const content = getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
   const time = readingTime(content);

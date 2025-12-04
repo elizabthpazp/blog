@@ -13,9 +13,9 @@ const app = express();
 app.use(cors({origin: true}))
 app.use(express.json())
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }))
-} 
+export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
+  return i18n.locales.map((locale) => ({ lang: locale as Locale }))
+}
 
 let title = "elizabthpazp | Frontend, JavaScript, CSS, TypeScript, Vue, React";
 let description = "Learn about Web Development with me | Articles, videos, resources and tutorials on Web Development, Frontend, JavaScript, CSS, TypeScript, Vue and React";
@@ -47,14 +47,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;  params: { lang: Locale }
-}) {
+export default async function RootLayout({ children, params }: any) {
+  const resolvedParams = await params;
   return (
-    <html lang={params.lang}>
+    <html lang={resolvedParams?.lang ?? 'en'} suppressHydrationWarning>
       <head> 
        <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
        <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>

@@ -9,7 +9,7 @@ export default function Header({
   actual, 
   showHome, 
 }: { 
- actual: Locale , 
+ actual?: Locale , 
  showHome?: boolean
 }) {
     

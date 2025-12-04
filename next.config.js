@@ -16,7 +16,12 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['https://blog.elijs.dev'],//domains: ["upcdn.io", "replicate.delivery"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'blog.elijs.dev',
+      },
+    ],
   },
   // i18n: { 
   //   locales: ['en', 'es'], 

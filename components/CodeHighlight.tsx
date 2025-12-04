@@ -12,17 +12,19 @@ hljs.registerLanguage('javascript', javascript);
 //     lang: "en",  
 //   }));
  
-export default function CodeHighlight(code: any, language: string) {
+export default function CodeHighlight({ code, language }: { code: any; language?: string }) {
     useEffect(() => {
         hljs.highlightAll();
-    }, []); 
-  return (  
+    }, []);
+
+  return (
     <div className='flex mt-6 flex-1 w-full flex-col items-center justify-center code-snippet'>
-    <pre><code className={language} style={{borderRadius: '22px', padding: '30px'}}>
-     {code?.code}
-    </code> 
-    </pre> 
-    {/* <CopyCode code={code}></CopyCode> */}
+      <pre>
+        <code className={language} style={{borderRadius: '22px', padding: '30px'}}>
+          {code}
+        </code>
+      </pre>
+      {/* <CopyCode code={code}></CopyCode> */}
     </div>
   );
 }

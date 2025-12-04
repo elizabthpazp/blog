@@ -9,9 +9,10 @@ export default function LocaleSwitcher({
   actual,
   classNameProp
 }: { 
- actual: string ,
+ actual?: string ,
  classNameProp: string ,
 }) {
+  const actualLang = actual || 'en';
   const pathName = usePathname()
   const redirectedPathName = (locale: string) => {
     if (!pathName) return '/'
@@ -23,11 +24,11 @@ export default function LocaleSwitcher({
   return (  
     <div className={classNameProp}>
         <div className='current-lang flex'>
-         <img className='lang-flag forcedImage' src={getSrc(actual)}  alt={links.username} title={links.username} width={100} height={100}></img>
-         <p className="lang-text light:text-white dark:text-white">{actual.toUpperCase()}</p>
+         <img className='lang-flag forcedImage' src={getSrc(actualLang)}  alt={links.username} title={links.username} width={100} height={100}></img>
+         <p className="lang-text light:text-white dark:text-white">{actualLang.toUpperCase()}</p>
         </div>
           {i18n.locales.map((locale: Locale) => {
-            if (locale !=actual) {
+            if (locale !=actualLang) {
     return (
         <div className='lang-dropdown absolute' key={locale}>
         <Link href={redirectedPathName(locale)}>

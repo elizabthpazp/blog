@@ -1,6 +1,7 @@
 export async function getLikesPage(slug: any): Promise<any> {
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://blog.elijs.dev';
   const res = await fetch(
-    `https://blog.elijs.dev/api/get?id=${slug}`,
+    `${baseUrl}/api/get?id=${slug}`,
     {
       cache: 'no-cache',
       method: "GET",

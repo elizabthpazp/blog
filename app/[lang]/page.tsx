@@ -10,14 +10,17 @@ import { Locale } from '../../i18n-config'
 import { links } from '../../links-web'    
 import getPostMetaData from "../../getPostMetadata";  
 import Search from "../../components/Search";
-import dynamic from 'next/dynamic'
+// `next/dynamic` with `ssr: false` is not allowed in Server Components.
+// The `EmailPlantilla` component is a client component, so import and
+// render it directly from this server component instead of using dynamic.
 import getDate from "../../utils/getDate"; 
 
 export async function generateMetadata({
-  params: { lang, slug },
+  params,
 }: {
-  params: { lang: Locale; slug: any };
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params;
   let ogimage = links.logo, sitename = links.username;
   const dictionary = await getDictionary(lang) 
   let titleMeta = sitename + dictionary.metaTitle, descriptionMeta = dictionary.title+' '+dictionary.title1+' '+dictionary.title2 + ' | ' + dictionary.metaDescription;
@@ -40,29 +43,22 @@ export async function generateMetadata({
      siteName: sitename,
      locale: lang == 'en' ? "en_US" : "es_ES",
      type: "website",
-     link: {
-      canonical: links.domain +"/"+slug, 
-      amphtml: links.domain +"/"+slug,
-     }  
     },
     twitter: { 
      card: "summary_large_image",
      images: [ogimage],
      title: titleMeta,
      description: descriptionMeta,
-    },
-    link: {
-      canonical: links.domain +"/"+slug, 
-      amphtml: links.domain +"/"+slug,
-     }  
+    },  
   };
 }
 
 export default async function HomePage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params;
   const dictionary = await getDictionary(lang) 
   let postMetadata = getPostMetaData(lang, false); 
  
@@ -76,8 +72,6 @@ export default async function HomePage({
   ));
  
   let originalList = getPostMetaData(lang, false);  
-
-  const NoSSR = dynamic(() => import('../../components/EmailPlantilla'), { ssr: false })
 
   return (
     <div className="max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">

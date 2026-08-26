@@ -3,14 +3,14 @@ import { Metadata } from "next";
 import "../../styles/globals.css"
 import { Providers } from "./providers";
 import { i18n, Locale } from '../../i18n-config'
-import { links } from '../../links-web'  
+import { links } from '../../links-web'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const cors = require("cors");
 const express = require("express");
 const app = express();
-app.use(cors({origin: true}))
+app.use(cors({ origin: true }))
 app.use(express.json())
 
 export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
@@ -21,16 +21,16 @@ let title = "elizabthpazp | Frontend, JavaScript, CSS, TypeScript, Vue, React";
 let description = "Learn about Web Development with me | Articles, videos, resources and tutorials on Web Development, Frontend, JavaScript, CSS, TypeScript, Vue and React";
 let ogimage = links.logo;
 let sitename = links.username;
- 
-export const metadata: Metadata = { 
+
+export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title,
   description,
   icons: {
     icon: links.icon,
-  },  
+  },
   keywords: 'blog, desarrollo web, marketing digital, elizabthpazp, seo, web, programación, curso, web development, frontend, developer, desarrollador',
-  openGraph: {  
+  openGraph: {
     images: [ogimage],
     title,
     description,
@@ -51,21 +51,21 @@ export default async function RootLayout({ children, params }: any) {
   const resolvedParams = await params;
   return (
     <html lang={resolvedParams?.lang ?? 'en'} suppressHydrationWarning>
-      <head> 
-       <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
-       <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
+      <head>
+        <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
+        <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
       </head>
       <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
         <Providers>
-         {children} 
-         
-         <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="rgb(124 58 237)" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
-         {/* <script defer src="https://app.embed.im/snow.js"></script> */}  
-  
-         <GoogleAnalytics gaId="G-92CHRN38WP" />
+          {children}
+
+          <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="#7c3aed" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
+          {/* <script defer src="https://app.embed.im/snow.js"></script> */}
+
+          <GoogleAnalytics gaId="G-92CHRN38WP" />
         </Providers>
-        <Analytics /> 
-        <SpeedInsights/>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

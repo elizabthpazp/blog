@@ -10,11 +10,11 @@ const emailRegex = new RegExp(
   "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
 );
 
-export default function EmailSubs ({
-  title, description, error, thanks, incorrectEmail, thanksShort, btnSubscribe ,
+export default function EmailSubs({
+  title, description, error, thanks, incorrectEmail, thanksShort, btnSubscribe,
 }: {
- title: string, description: string, error: string, thanks: string, incorrectEmail: string, thanksShort: string, btnSubscribe: string 
-})  {
+  title: string; description: string; error: string; thanks: string; incorrectEmail: string; thanksShort: string; btnSubscribe: string; 
+}) {
   const [msg, setMsg] = useState<string>("");
   const [showErrorMsg, setShowErrorMsg] = useState<boolean>(false);
   const [showLoading, setShowLoading] = useState<boolean>(false);
@@ -24,22 +24,15 @@ export default function EmailSubs ({
   useEffect(() => {
     if (isError) {
       setShowErrorMsg(true);
-      setMsg(
-        siteData.inputFeedback?.error ?? error
-      );
+      setMsg(siteData.inputFeedback?.error ?? error);
     } else if (isSuccess && siteData.confirmEmail) {
       setShowErrorMsg(false);
-      setMsg(
-        siteData.inputFeedback?.emailSuccess ??
-        thanks
-      );
+      setMsg(siteData.inputFeedback?.emailSuccess ?? thanks);
     } else if (isSuccess && !siteData.confirmEmail) {
       setShowErrorMsg(false);
-      setMsg(
-        siteData.inputFeedback?.noEmailSuccess ?? thanksShort
-      );
+      setMsg(siteData.inputFeedback?.noEmailSuccess ?? thanksShort);
     }
-  }, [isError, isSuccess]);
+  }, [isError, isSuccess, error, thanks, thanksShort]);
 
   const handleClick = async () => {
     setShowLoading(true);
@@ -51,54 +44,49 @@ export default function EmailSubs ({
       await subscribe(email);
     } else {
       setShowErrorMsg(true);
-      setMsg(
-        siteData.inputFeedback?.incorrectEmail ??
-        incorrectEmail
-      );
+      setMsg(siteData.inputFeedback?.incorrectEmail ?? incorrectEmail);
     }
 
     setShowLoading(false);
   };
 
   return (
-    <div className="justify-center p-10 border-2 border border-gray-400 light:border-gray-400 dark:border-gray-700 text-center mb-16 mt-16" style={{borderRadius: "40px"}}>
-      <div className="flex-row p-0 justify-center text-center">
-        <div className="text-center justify-center text-center">
-         <h1 className="mx-auto light:text-gray-800 text-center dark:text-white max-w-xl font-display text-3xl font-bold text-gray-800">
-          {title}
-         </h1>
-          <p className="my-4 text-center px-4 mx-auto max-w-xl text-lg light:text-gray-600 dark:text-gray-400">{description} 💜</p>
-          <div className="flex flex-row sm:flex-col xs:flex-col md:flex-row xl:flex-row lg:flex-row gap-3 justify-center text-center">
-          <div className="justify-center mt-3">
-            <input
-              type="email"
-              placeholder="Your email here"
-              className="input2 text-gray-800 light:text-gray-800 dark:text-white shadow-xl"
-              autoComplete="email"
-              ref={emailRef}
-            /> 
-          
-          </div>
-          <div
-          className="bg-violet-600 cursor-pointer blog-animation rounded-2xl text-white font-medium p-3 mt-4 hover:bg-violet-500 text-center justify-center md:mx-0 xl:mx-0 lg:mx-0 sm:mx-20 xs:mx-20"
-           onClick={handleClick}
+    <div className="my-12 w-full max-w-2xl mx-auto rounded-3xl p-6 sm:p-10 backdrop-blur-xl bg-gradient-to-br from-violet-500/[0.07] via-transparent to-indigo-500/[0.05] border border-violet-500/20 shadow-xl text-center">
+      <h3 className="font-display text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+        ✨ {title} ✨
+      </h3>
+      <p className="mt-3 mb-6 text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto leading-relaxed">
+        {description} 💜
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto items-stretch">
+        <input
+          type="email"
+          placeholder="Your email here"
+          className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#121520] border border-violet-500/20 dark:border-white/10 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-500 transition-all duration-200 text-sm shadow-inner autofill:!bg-white dark:autofill:!bg-[#121520]"
+          autoComplete="email"
+          ref={emailRef}
+          style={{ colorScheme: 'light dark' }}
+        /> 
+        
+        <button
+          className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-md hover:shadow-violet-500/25 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer flex items-center justify-center min-w-[120px]"
+          onClick={handleClick}
+          type="button"
         >
-           {showLoading ? (
-                <span className="animate-spin text-white">.....</span>
-              ) : (
-          btnSubscribe
+          {showLoading ? (
+            <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          ) : (
+            btnSubscribe
           )}
-        </div> 
-        </div>
-          <p
-            className={`text-sm mt-1.5 justify-center justify-center ${
-              showErrorMsg ? "text-rose-600" : "text-green-600"
-            }`}
-          >
-            {msg}
-          </p>
-        </div>
+        </button> 
       </div>
+
+      {msg && (
+        <p className={`text-sm mt-3 font-medium ${showErrorMsg ? "text-rose-500" : "text-emerald-500"}`}>
+          {msg}
+        </p>
+      )}
     </div>
   );
 };

@@ -7,12 +7,6 @@ import { links } from '../../links-web'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const cors = require("cors");
-const express = require("express");
-const app = express();
-app.use(cors({ origin: true }))
-app.use(express.json())
-
 export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
   return i18n.locales.map((locale) => ({ lang: locale as Locale }))
 }
@@ -50,17 +44,19 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children, params }: any) {
   const resolvedParams = await params;
   return (
-    <html lang={resolvedParams?.lang ?? 'en'} suppressHydrationWarning>
+    <html lang={resolvedParams?.lang ?? 'es'} className="dark" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
         <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
       </head>
-      <body className="light:bg-[#4D4D4D] light:text-black dark:bg-[#17181C] dark:text-white">
+      <body className="bg-[#ffffff] dark:bg-[#0b0d14] text-gray-900 dark:text-[#e8e8f0] font-sans antialiased selection:bg-violet-500/30 selection:text-violet-400 min-h-screen transition-colors duration-200">
         <Providers>
           {children}
 
           <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="#7c3aed" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
-          {/* <script defer src="https://app.embed.im/snow.js"></script> */}
 
           <GoogleAnalytics gaId="G-92CHRN38WP" />
         </Providers>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b172e"/>
+      <stop offset="50%" stop-color="#060e1f"/>
+      <stop offset="100%" stop-color="#02050d"/>
+    </linearGradient>
+    <linearGradient id="tsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="tsCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="400" rx="32" fill="url(#tsBg)"/>
+  
+  <!-- Glowing Background Hexagon -->
+  <polygon points="200,60 320,130 320,270 200,340 80,270 80,130" fill="#1e3a8a" fill-opacity="0.25" stroke="url(#tsCyan)" stroke-width="2" stroke-dasharray="8 6"/>
+
+  <!-- TypeScript Blue Shield -->
+  <rect x="110" y="100" width="180" height="180" rx="28" fill="url(#tsBlue)" stroke="#60a5fa" stroke-width="3" filter="drop-shadow(0 8px 24px rgba(59, 130, 246, 0.4))"/>
+  
+  <!-- TS Lettermark -->
+  <text x="200" y="225" font-family="'Outfit', 'Inter', sans-serif" font-size="95" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-3">TS</text>
+
+  <!-- 2026 Pro Badge -->
+  <rect x="130" y="300" width="140" height="34" rx="17" fill="url(#tsCyan)"/>
+  <text x="200" y="322" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PRO 2026</text>
+</svg>

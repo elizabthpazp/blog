@@ -1,6 +1,6 @@
 import fs from "fs";
-import Markdown from "markdown-to-jsx"; 
-import React from "react"; 
+import Markdown from "markdown-to-jsx";
+import React from "react";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import RouteActualLink from "../../../components/RouteActualLink";
@@ -9,16 +9,17 @@ import SquigglyLines from "../../../components/SquigglyLines";
 import { Locale } from "../../../i18n-config";
 import EmailPlantilla from "../../../components/EmailPlantilla";
 import matter from "gray-matter";
-import { PostMetadata, PreviewMetadata } from "../../../PostMetadata";
-import getPostMetaData from "../../../getPostMetadata"; 
-import Search from "../../../components/Search"; 
+import { PostMetadata } from "../../../PostMetadata";
+import getPostMetaData from "../../../getPostMetadata";
+import Search from "../../../components/Search";
 import LikeCount from "../../../components/LikeCount";
-import { links } from "../../../links-web"; 
-import PostPreview from "../../../components/PostPreview";  
-import getDate from "../../../utils/getDate"; 
+import { links } from "../../../links-web";
+import PostPreview from "../../../components/PostPreview";
+import getDate from "../../../utils/getDate";
 import CodeHighlight from "../../../components/CodeHighlight";
 
-let descriptionPage: string, languageProgramming:string;
+let languageProgramming: string;
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,35 +27,33 @@ export async function generateMetadata({
 }) {
   const { lang, slug } = await params;
   let sitename = links.username;
-  const dictionary = await getDictionary(lang);
+  const postMeta = getPostMetaData2(slug, lang);
+
   return {
-    //metadataBase: links.domain + "/" + slug,
-    title: getPostMetaData2(slug, lang).subtitle,
-    description: getPostMetaData2(slug, lang).description,
+    title: postMeta.subtitle,
+    description: postMeta.description,
     icons: {
       icon: links.icon,
     },
     canonical: links.domain + "/" + slug,
     amphtml: links.domain + "/" + slug,
     keywords:
-     getPostMetaData2(slug, lang).title +
+      postMeta.title +
       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
     openGraph: {
-      //canonical: links.domain + "/" + slug,
-      //amphtml: links.domain + "/" + slug,
-      images: [getPostMetaData2(slug, lang).image],
-      title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description,
+      images: [postMeta.image],
+      title: postMeta.subtitle,
+      description: postMeta.description,
       url: links.domain + "/" + slug,
       siteName: sitename,
-      locale: lang == "en" ? "en_US" : "es_ES",
+      locale: lang === "en" ? "en_US" : "es_ES",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      images: [getPostMetaData2(slug, lang).image],
-      title: getPostMetaData2(slug, lang).subtitle,
-      description: getPostMetaData2(slug, lang).description, 
+      images: [postMeta.image],
+      title: postMeta.subtitle,
+      description: postMeta.description,
     },
     link: {
       canonical: links.domain + "/" + slug,
@@ -64,8 +63,6 @@ export async function generateMetadata({
 }
 
 export const generateStaticParams = async () => {
-  // Return params for every locale + slug combination so `params.lang` is
-  // always provided when prerendering nested routes.
   const locales = ["es", "en"] as const;
   let list: { lang: string; slug: string }[] = [];
 
@@ -91,7 +88,6 @@ const getPostContent = (slug: string, lang: Locale) => {
     const matterResult = matter(content);
     return matterResult.content;
   } catch (e) {
-    // If file is missing or unreadable during build, return empty content
     return "";
   }
 };
@@ -127,255 +123,282 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
     };
   }
 };
- 
+
 function readingTime(post: any) {
   const WORDS_PER_MINUTE = 200;
   const regex = /\w+/g;
-  const wordCount = post.match(regex)?.length || 0;
+  const wordCount = post?.match(regex)?.length || 0;
 
   return Math.ceil(wordCount / WORDS_PER_MINUTE);
 }
- 
+
+const formatImageSrc = (img?: string) => {
+  if (!img) return "";
+  let cleaned = img.replace('./', '');
+  if (!cleaned.startsWith('/')) cleaned = '/' + cleaned;
+  return cleaned;
+};
+
+// Limpia el markdown para evitar duplicar header (imagen, título, fecha, descripción) que ya se renderiza desde frontmatter
+function cleanContent(raw: string, meta: PostMetadata): string {
+  let lines = raw.split('\n');
+  let idx = 0;
+  const isEmpty = (l: string) => l.trim() === '';
+  const isDateLine = (l: string) => /^\d{1,2}\s+\w+\s+\d{4}\s*$/.test(l.trim());
+
+  while (idx < lines.length && isEmpty(lines[idx])) idx++;
+  if (idx < lines.length && lines[idx].trim().startsWith('![')) {
+    idx++;
+    while (idx < lines.length && isEmpty(lines[idx])) idx++;
+  }
+  if (idx < lines.length && lines[idx].trim().startsWith('# ') && !lines[idx].trim().startsWith('##')) {
+    idx++;
+    while (idx < lines.length && isEmpty(lines[idx])) idx++;
+  }
+  if (idx < lines.length && lines[idx].trim().startsWith('## ')) {
+    idx++;
+    while (idx < lines.length && isEmpty(lines[idx])) idx++;
+  }
+  if (idx < lines.length && isDateLine(lines[idx])) {
+    idx++;
+    while (idx < lines.length && isEmpty(lines[idx])) idx++;
+  }
+  if (idx < lines.length && lines[idx].trim().startsWith('####')) {
+    const h4Text = lines[idx].replace(/^####\s*/, '').trim().toLowerCase();
+    const descNorm = (meta.description || '').toLowerCase();
+    const h4Start = h4Text.slice(0, 30);
+    const descStart = descNorm.slice(0, 30);
+    const isDesc = h4Text && descNorm && (h4Start.startsWith(descStart.slice(0, 20)) || descStart.startsWith(h4Start.slice(0, 20)));
+    if (isDesc) {
+      idx++;
+      while (idx < lines.length && isEmpty(lines[idx])) idx++;
+      if (idx < lines.length && lines[idx].trim().startsWith('![')) {
+        idx++;
+        while (idx < lines.length && isEmpty(lines[idx])) idx++;
+      }
+    }
+  } else {
+    if (idx < lines.length && lines[idx].trim().startsWith('![')) {
+      idx++;
+      while (idx < lines.length && isEmpty(lines[idx])) idx++;
+    }
+  }
+  if (idx < lines.length && lines[idx].trim().startsWith('### ')) {
+    let j = idx + 1;
+    while (j < lines.length && isEmpty(lines[j])) j++;
+    if (j < lines.length && lines[j].trim().startsWith('####')) {
+      const h4Text = lines[j].replace(/^####\s*/, '').trim().toLowerCase();
+      const descNorm = (meta.description || '').toLowerCase();
+      const h4Start = h4Text.slice(0, 30);
+      const descStart = descNorm.slice(0, 30);
+      if (h4Text && descNorm && (h4Start.startsWith(descStart.slice(0, 20)) || descStart.startsWith(h4Start.slice(0, 20)))) {
+        lines.splice(j, 1);
+        let k = j;
+        while (k < lines.length && isEmpty(lines[k])) k++;
+        if (k < lines.length && lines[k].trim().startsWith('![')) {
+          lines.splice(k, 1);
+        }
+      }
+    }
+  }
+  return lines.slice(idx).join('\n').trimStart();
+}
+
 export default async function Learn({
   params,
 }: {
   params: Promise<{ lang: Locale; slug: any }>;
 }) {
   const { lang, slug } = await params;
-  const content = getPostContent(slug, lang);
+  const rawContent = getPostContent(slug, lang);
   const dictionary = await getDictionary(lang);
-  const time = readingTime(content);
+  const time = readingTime(rawContent);
   let titlePage = getPostMetaData2(slug, lang).subtitle;
- 
-  const MyH1 = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => (
-    <h1 className="mx-auto text-gray-800 light:text-gray-800 dark:text-gray-300 mobileshort text-center max-w-5xl font-display text-4xl font-bold tracking-normal sm:text-6xl">
+  const meta = getPostMetaData2(slug, lang);
+  const content = cleanContent(rawContent, meta);
+
+  const MyH1 = ({ children }: { children: React.ReactNode }) => (
+    <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center tracking-tight leading-[1.2] max-w-4xl mx-auto my-6">
       {children}
     </h1>
   );
 
-  const MyH2 = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => (
-    <h2 className="mx-auto text-gray-800 light:text-gray-800 dark:text-gray-300 text-center max-w-5xl font-display text-4xl font-bold tracking-normal sm:text-6xl">
-      {" "}
-      <span className="relative whitespace-nowrap text-violet-600">
+  const MyH2 = ({ children }: { children: React.ReactNode }) => (
+    <h2 className="font-display text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center my-6 max-w-4xl mx-auto">
+      <span className="relative whitespace-nowrap inline-block text-violet-600 dark:text-violet-400">
         <SquigglyLines />
-        <span className="relative mobileshort">{children}</span>
+        <span className="relative">{children}</span>
       </span>
     </h2>
   );
 
-  const MyP = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => {
-   // console.log(children?.toString()) 
-    return(
-    <p className="light:text-gray-600 dark:text-gray-400 mt-8 text-center">
-      {children}
-      <span style={children?.toString() == '[object Object]' ? {display:"none"} : {}}>
-      &nbsp;·&nbsp;{time} {dictionary.minutes}
-      </span>
-    </p>
-  )
- };
-
-  const MyH3 = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => (
-    <div className="containerContentBlog font-normal max-w-4xl justify-center">
-      <h1 className="mx-auto mt-12 text-2xl font-medium sm:text-white-400 text-white-500 leading-8 text-center text-violet-600">
+  const MyP = ({ children }: { children: React.ReactNode }) => {
+    return (
+      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed my-5 max-w-4xl mx-auto font-normal">
         {children}
-      </h1>
-    </div>
-  );
+      </p>
+    );
+  };
 
-  const MyH4 = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => (
-    <div className="containerContentBlog font-normal max-w-4xl justify-center">
-      <h2 className="mx-auto mt-12 text-xl sm:text-white-400 text-white-500 leading-8">
+  const MyH3 = ({ children }: { children: React.ReactNode }) => (
+    <div className="max-w-4xl mx-auto mt-10 mb-4 text-left">
+      <h3 className="font-display text-xl sm:text-2xl font-bold text-violet-600 dark:text-violet-400 tracking-tight">
         {children}
-      </h2>
+      </h3>
     </div>
   );
 
-  const MyLi = ({
-    children,
-    params,
-  }: {
-    children: React.ReactNode;
-    params: { lang: string };
-  }) => (
-    <div className="containerContentBlog font-normal max-w-4xl justify-center mx-auto pt-6 text-xl sm:text-white-400 text-white-500 leading-8">
-      <li>* {children}</li>   
+  const MyH4 = ({ children }: { children: React.ReactNode }) => (
+    <div className="max-w-4xl mx-auto mt-8 mb-3 text-left">
+      <h4 className="font-display text-lg sm:text-xl font-normal text-gray-700 dark:text-gray-300 leading-relaxed">
+        {children}
+      </h4>
     </div>
   );
-  
 
-  const MyCode = ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => (     
-    <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">
+  const MyLi = ({ children }: { children: React.ReactNode }) => (
+    <div className="max-w-4xl mx-auto my-2 text-left">
+      <li className="flex items-start gap-2.5 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed list-none">
+        <span className="inline-block w-2 h-2 rounded-full bg-violet-500 mt-2.5 flex-shrink-0" />
+        <span>{children}</span>
+      </li>
+    </div>
+  );
+
+  const MyCode = ({ children }: { children: React.ReactNode }) => (
+    <code className="px-1.5 py-0.5 rounded-lg bg-violet-500/10 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 font-mono text-sm border border-violet-500/20">
       {children}
     </code>
   );
 
-  const MyPre = ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => {
-    const codeText = React.isValidElement(children) && typeof (children.props as any).children === 'string' ? (children.props as any).children : '';
+  const MyPre = ({ children }: { children: React.ReactNode }) => {
+    const codeText = React.isValidElement(children) && typeof (children.props as any).children === 'string'
+      ? (children.props as any).children
+      : '';
     return <CodeHighlight code={codeText} language={languageProgramming} />;
   };
 
-  const MyImg = ({
-    children,
-    src,
-  }: {
-    children: React.ReactNode;
-    src: string;
-  }) => (
-    <div className="max-w-6xl mx-auto items-center justify-center py-2">
-      <img className="blog-animation img-blog" width={100} height={100}>
-        {children}
-      </img>
-      {src}
-      {lang}
-    </div>
-  );
   let originalList = getPostMetaData(lang, false);
   let relatedList = getPostMetaData(lang, true, slug);
-   
-  if(lang == 'es')
-   relatedList.sort((a, b) => getDate(b.date) - getDate(a.date));
-  else
-   relatedList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // relatedList ya viene ordenado por relevancia (TF-IDF + categoria + language). No reordenar por fecha para mantener los realmente relacionados arriba.
 
   const postPreviews = relatedList.map((post) => (
     <PostPreview key={post.slug} {...post} />
   ));
-   
+
+  const heroSrc = formatImageSrc(meta.image);
+
   return (
-    <div className="max-w-6xl mx-auto items-center justify-center py-2">
+    <div className="flex flex-col min-h-screen">
       <Header showHome={true} actual={lang} />
 
-      <Search
-        list={originalList}
-        failedText={dictionary.notFound}
-        lang={lang}
-        title={dictionary.search} 
-      />
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 background-gradient relative">
+        <Search
+          list={originalList}
+          failedText={dictionary.notFound}
+          lang={lang}
+          title={dictionary.search}
+        />
 
-      <div className="float-right row-auto mr-6 likeCounter"> 
-        <LikeCount slug={slug} title={slug} animation={true}></LikeCount>
-      </div>
-
-      <main className="w-full items-center justify-center px-4 xs:mt-16 sm:mt-9 mt-9 background-gradient">
-        <Markdown
-          options={{
-            overrides: {
-              h1: {
-                component: MyH1,
-                props: {
-                  className: "foo",
-                },
-              },
-              h2: {
-                component: MyH2,
-                props: {
-                  className: "foo",
-                },
-              },
-              h3: {
-                component: MyH3,
-                props: {
-                  className: "foo",
-                },
-              },
-              h4: {
-                component: MyH4,
-                props: {
-                  className: "foo",
-                },
-              },
-              p: {
-                component: MyP,
-                props: {
-                  className: "foo",
-                },
-              },
-              li: {
-                component: MyLi,
-                props: {
-                  className: "foo",
-                },
-              },
-              code: {
-                component: MyCode,
-              },
-              pre: {
-                component: MyPre,
-              }
-              // img: {
-              //   component: MyImg,
-              //   props: {
-              //     className: "foo",
-              //     src: 'foo'
-              //   },
-              // },
-            },
-          }}
-        >
-          {content}
-        </Markdown>
-
-        <div className="flex flex-1 flex-col items-center justify-center mt-20 pt-3">
-          <div className="bottom-3 fixed z-50">
-            <RouteActualLink titlePage={titlePage} title={dictionary.share} />
+        {/* Header del artículo - orden correcto: imagen → título → meta → descripción (no negrita) */}
+        <div className="max-w-4xl mx-auto text-center mt-8">
+          {heroSrc && (
+            <div className="w-full max-w-3xl mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border border-black/5 dark:border-white/10">
+              <img
+                src={heroSrc}
+                alt={meta.subtitle || meta.title}
+                className="w-full h-auto max-h-[420px] object-cover forcedImage"
+              />
+            </div>
+          )}
+          {meta.subtitle && (
+            <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.2]">
+              {meta.subtitle}
+            </h1>
+          )}
+          <div className="flex items-center justify-center gap-3 mt-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] text-sm text-gray-500 dark:text-gray-400">
+            {meta.date && <span>{meta.date}</span>}
+            {meta.date && <span>·</span>}
+            <span>{time} {dictionary.minutes}</span>
+            <span className="ml-2"><LikeCount slug={slug} title={slug} animation={true} /></span>
           </div>
-        </div>
-        
-        <div
-          className="w-full max-w-xl items-center justify-center text-center mt-0 pt-0 pb-10"
-          style={{ margin: "0 auto" }}
-        >
-          <p className="mx-auto text-3xl justify-center text-center light:text-gray-800 mb-10 dark:text-white max-w-4xl font-display text-4xl font-bold tracking-normal text-gray-800">
-            {dictionary.related}
-          </p>
-
-          {postPreviews}
+          {meta.description && (
+            <p className="mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+              {meta.description}
+            </p>
+          )}
         </div>
 
-        <div className="flex flex-col items-center justify-center mb-20"> 
-           <EmailPlantilla title={dictionary.newsletter} description={dictionary.newsDescription} btnSubscribe={dictionary.btnSubscribe} error={dictionary.error} thanks={dictionary.thanks} incorrectEmail={dictionary.incorrectEmail} thanksShort={dictionary.thanksShort} />
+        {/* Article Content - ya sin header duplicado, ancho 4xl igual que code */}
+        <article className="w-full text-center sm:text-left mt-8">
+          <Markdown
+            options={{
+              overrides: {
+                h1: {
+                  component: MyH1,
+                },
+                h2: {
+                  component: MyH2,
+                },
+                h3: {
+                  component: MyH3,
+                },
+                h4: {
+                  component: MyH4,
+                },
+                p: {
+                  component: MyP,
+                },
+                li: {
+                  component: MyLi,
+                },
+                code: {
+                  component: MyCode,
+                },
+                pre: {
+                  component: MyPre,
+                },
+              },
+            }}
+          >
+            {content}
+          </Markdown>
+        </article>
+
+        {/* Floating Share Button */}
+        <div className="fixed bottom-6 right-6 z-40">
+          <RouteActualLink titlePage={titlePage} title={dictionary.share} />
         </div>
+
+        {/* Related Articles */}
+        {postPreviews.length > 0 && (
+          <section className="max-w-4xl mx-auto mt-16 pt-10 border-t border-black/[0.06] dark:border-white/[0.08]">
+            <div className="text-center mb-8">
+              <h3 className="section-heading text-2xl sm:text-3xl text-gray-900 dark:text-white">
+                {dictionary.related}
+              </h3>
+            </div>
+
+            <div className="space-y-4">
+              {postPreviews}
+            </div>
+          </section>
+        )}
+
+        {/* Newsletter Box */}
+        <section className="max-w-4xl mx-auto mt-12 mb-16">
+          <EmailPlantilla
+            title={dictionary.newsletter}
+            description={dictionary.newsDescription}
+            btnSubscribe={dictionary.btnSubscribe}
+            error={dictionary.error}
+            thanks={dictionary.thanks}
+            incorrectEmail={dictionary.incorrectEmail}
+            thanksShort={dictionary.thanksShort}
+          />
+        </section>
       </main>
-      
+
       <Footer copy={dictionary.copy} />
     </div>
   );

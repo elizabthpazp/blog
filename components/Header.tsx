@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import LocaleSwitcher from './LocaleSwitcher'
 import {ThemeSwitcher} from './ThemeSwitcher' 
@@ -9,51 +8,56 @@ export default function Header({
   actual, 
   showHome, 
 }: { 
- actual?: Locale , 
- showHome?: boolean
+  actual?: Locale, 
+  showHome?: boolean
 }) {
-    
   return (
-    <header className="columns-2 relative flex flex-col sm:flex-row xs:flex-col justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
-       
-      <Link href="/" className="sm:text-3xl text-xl font-bold ml-2 tracking-tight logo-filter">  
-        <Image
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/75 dark:bg-[#0b0d14]/75 border-b border-black/5 dark:border-white/10 px-4 sm:px-6 py-3 flex items-center justify-between w-full transition-all duration-200 shadow-sm">
+      <Link href="/" className="flex items-center gap-2 group logo-filter">  
+        <img
           alt={links.username}
           title={links.username}
           src={links.logo}
-          className="w-auto h-auto forcedImage xs:max-w-xs"
-          width={500}
-          height={500}
+          className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
         /> 
       </Link>  
 
-     <div className="flex float-right xs:mt-2">
-      <Home show={showHome} className={'mr-8 mt-1 light:fill-gray-800 dark:fill-white fill-gray-800'}/> 
+      <div className="flex items-center gap-3 sm:gap-4">
+        {showHome && (
+          <Link 
+            href="/" 
+            className="p-2 rounded-xl text-gray-700 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-500/10 transition-colors"
+            title="Home"
+          >
+            <HomeIcon className="w-5 h-5" />
+          </Link>
+        )}
 
-      <LocaleSwitcher actual={actual} classNameProp={'mt-1 switch-lang mr-8'} />
-      
-      <ThemeSwitcher classNameProp={'mt-1 cursor-pointer mr-8'}/>
- 
-      <Link
-        className="items-center justify-center rounded-2xl border border-violet-600 text-white px-3 py-2 text-sm shadow-md hover:bg-violet-500 bg-violet-600 font-medium transition"
-        href={links.githubBlog}
-        title="github"   
-        target="_blank"
-        rel="noopener noreferrer"
-      > 
-         <Github />  
-      </Link>  
-    </div>   
+        <LocaleSwitcher actual={actual} classNameProp="switch-lang" />
+        
+        <div className="p-1 rounded-xl hover:bg-violet-500/10 transition-colors">
+          <ThemeSwitcher classNameProp="cursor-pointer flex items-center" />
+        </div>
+   
+        <Link
+          className="btn-primary !py-2 !px-3.5 !rounded-xl !text-sm flex items-center gap-2 shadow-sm"
+          href={links.githubBlog}
+          title="GitHub"   
+          target="_blank"
+          rel="noopener noreferrer"
+        > 
+          <GithubIcon className="w-4 h-4" />
+          <span className="hidden sm:inline text-xs font-semibold">GitHub</span>
+        </Link>  
+      </div>   
     </header>
   );
 }
 
-function Github({ className }: { className?: string }) {
+function GithubIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
       fill="currentColor"
       viewBox="0 0 24 24"
       className={className}
@@ -63,25 +67,20 @@ function Github({ className }: { className?: string }) {
   );
 }
 
-function Home({ className, show }: { className?: string, show?: boolean }) {
+function HomeIcon({ className }: { className?: string }) {
   return (
-    <Link href="/" style={show? {display:'block'}: {display:'none'}}>
-    <svg className={className} fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  
-	 width="25px" height="25px" viewBox="0 0 495.398 495.398">
-<g>
-	<g>
-		<g>
-			<path d="M487.083,225.514l-75.08-75.08V63.704c0-15.682-12.708-28.391-28.413-28.391c-15.669,0-28.377,12.709-28.377,28.391
-				v29.941L299.31,37.74c-27.639-27.624-75.694-27.575-103.27,0.05L8.312,225.514c-11.082,11.104-11.082,29.071,0,40.158
-				c11.087,11.101,29.089,11.101,40.172,0l187.71-187.729c6.115-6.083,16.893-6.083,22.976-0.018l187.742,187.747
-				c5.567,5.551,12.825,8.312,20.081,8.312c7.271,0,14.541-2.764,20.091-8.312C498.17,254.586,498.17,236.619,487.083,225.514z"/>
-			<path d="M257.561,131.836c-5.454-5.451-14.285-5.451-19.723,0L72.712,296.913c-2.607,2.606-4.085,6.164-4.085,9.877v120.401
-				c0,28.253,22.908,51.16,51.16,51.16h81.754v-126.61h92.299v126.61h81.755c28.251,0,51.159-22.907,51.159-51.159V306.79
-				c0-3.713-1.465-7.271-4.085-9.877L257.561,131.836z"/>
-		</g>
-	</g>
-</g>
-</svg>
-</Link>
+    <svg 
+      className={className} 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeWidth={2} 
+        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" 
+      />
+    </svg>
   );
 }

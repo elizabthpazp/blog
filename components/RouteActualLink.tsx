@@ -4,27 +4,28 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { links } from '../links-web' 
 
-export default function Links({ 
-    titlePage,
-    title
-  }: { 
-    titlePage: string ,
-    title: string 
-  }) {
-  const pathname = usePathname() 
-  const share = `https://twitter.com/intent/tweet?text=${encodeURIComponent(titlePage)} by @${links.username} ${encodeURIComponent(links.domain)}${encodeURIComponent(pathname)}`;
+export default function RouteActualLink({ 
+  titlePage,
+  title
+}: { 
+  titlePage: string;
+  title: string;
+}) {
+  const pathname = usePathname();
+  const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(titlePage)} by @${links.username} ${encodeURIComponent(links.domain)}${encodeURIComponent(pathname || '')}`;
+
   return (
     <Link
-    className="sombrita text-sm bg-white text-gray-800 light:bg-white light:text-gray-800 dark:bg-[#1d1f24] dark:text-white rounded-2xl flex group font-medium px-3 py-2 sm:mt-10 mt-8 hover:bg-violet-500 transition"
-    href={share} target="_blank"  
-    aria-label={title}
-  > 
-  {title}  &nbsp;
-  
-  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 30 30" fill="rgba(37,185,252,1)">
-   <path d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z"></path>
-  </svg>
-
-  </Link>  
-  )
+      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl backdrop-blur-xl bg-white/80 dark:bg-[#161926]/90 border border-black/10 dark:border-white/15 text-gray-800 dark:text-gray-100 font-semibold text-xs sm:text-sm shadow-xl hover:shadow-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300"
+      href={shareUrl}
+      target="_blank"  
+      rel="noopener noreferrer"
+      aria-label={title}
+    > 
+      <span>{title}</span>
+      <svg className="w-4 h-4 text-[#1DA1F2] fill-current" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </Link>  
+  );
 }

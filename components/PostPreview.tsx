@@ -18,7 +18,9 @@ const Postpreview = (props: PostMetadata) => {
   const categoryTag = props.title || 'Desarrollo Web';
   const headline = props.subtitle || props.title || props.slug;
   const publishDate = props.date || '';
-  const imageSrc = formatImageSrc(props.image);
+  // Prefer square icon for cards (48-80px), fallback to banner image for legacy posts
+  const hasIcon = Boolean((props as any).icon);
+  const imageSrc = formatImageSrc((props as any).icon || props.image);
 
   return ( 
     <Link 
@@ -26,13 +28,13 @@ const Postpreview = (props: PostMetadata) => {
       className="group block card-post p-4 sm:p-5 mb-4 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-white/80 dark:bg-[#131622]/90 border border-black/10 dark:border-white/10 rounded-2xl"
     >
       <div className="flex flex-row items-center gap-3 sm:gap-5 w-full min-w-0">
-        {/* Image Container */}
-        <div className="relative flex-shrink-0 w-12 h-12 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden bg-violet-500/10 border border-violet-500/20 p-1 sm:p-1.5 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+        {/* Image Container - square icon optimized for small cards */}
+        <div className={`relative flex-shrink-0 w-12 h-12 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden border flex items-center justify-center group-hover:scale-105 transition-transform duration-300 ${hasIcon ? 'bg-white dark:bg-[#1a1d2e] border-black/5 dark:border-white/10 p-0' : 'bg-violet-500/10 border-violet-500/20 p-1 sm:p-1.5'}`}>
           <img 
             alt={headline}
             title={headline}
             src={imageSrc}
-            className="w-full h-full object-contain forcedImage rounded-lg sm:rounded-xl"
+            className={`w-full h-full forcedImage ${hasIcon ? 'object-cover rounded-xl sm:rounded-2xl' : 'object-contain rounded-lg sm:rounded-xl'}`}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/web.png';
             }}

@@ -1,0 +1,58 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rust WASM Icon">
+  <defs>
+    <linearGradient id="g_rust" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a00"/>
+      <stop offset="52%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_rust)"/>
+  <g opacity="0.07" fill="#fff">
+    <circle cx="80" cy="80" r="5"/><circle cx="150" cy="80" r="5"/><circle cx="220" cy="80" r="5"/><circle cx="290" cy="80" r="5"/><circle cx="360" cy="80" r="5"/><circle cx="430" cy="80" r="5"/>
+  </g>
+  <circle cx="256" cy="256" r="148" fill="#ffffff" opacity="0.06"/>
+  <!-- central gear -->
+  <g transform="translate(256, 248)">
+    <!-- gear outer -->
+    <circle r="92" fill="#ffffff"/>
+    <!-- gear teeth -->
+    <g fill="#f97316" opacity="1">
+      <!-- 8 teeth -->
+      <g id="tooth">
+        <rect x="-18" y="-122" width="36" height="38" rx="8" fill="#ffffff" stroke="#f97316" stroke-width="3"/>
+      </g>
+      <use href="#tooth" transform="rotate(45)"/>
+      <use href="#tooth" transform="rotate(90)"/>
+      <use href="#tooth" transform="rotate(135)"/>
+      <use href="#tooth" transform="rotate(180)"/>
+      <use href="#tooth" transform="rotate(225)"/>
+      <use href="#tooth" transform="rotate(270)"/>
+      <use href="#tooth" transform="rotate(315)"/>
+    </g>
+    <circle r="82" fill="#ffffff" stroke="#f97316" stroke-width="4"/>
+    <!-- inner WASM cube -->
+    <g transform="translate(0, 2)">
+      <!-- cube top -->
+      <path d="M -48 -18 L 0 -52 L 48 -18 L 0 16 Z" fill="#f97316" opacity="0.14" stroke="#f97316" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M -48 -18 L -48 22 L 0 56 L 0 16 Z" fill="#ffffff" stroke="#7c2d12" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 48 -18 L 48 22 L 0 56 L 0 16 Z" fill="#fdba74" stroke="#7c2d12" stroke-width="3" stroke-linejoin="round"/>
+      <!-- WASM text -->
+      <g transform="translate(0, 8)">
+        <text x="0" y="8" text-anchor="middle" font-family="monospace" font-size="18" font-weight="900" fill="#7c2d12">WASM</text>
+      </g>
+      <!-- central circle R -->
+      <circle r="28" fill="#7c2d12" stroke="#ffffff" stroke-width="3"/>
+      <text x="0" y="10" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="900" fill="#ffffff">R</text>
+    </g>
+    <!-- small 10x badge -->
+    <g transform="translate(62, -62)">
+      <rect x="-28" y="-14" width="56" height="28" rx="14" fill="#16a34a" stroke="#ffffff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-family="monospace" font-size="13" font-weight="900" fill="#ffffff">10×</text>
+    </g>
+  </g>
+  <!-- bottom pill -->
+  <g transform="translate(256, 428)">
+    <rect x="-76" y="-18" width="152" height="36" rx="18" fill="#ffffff"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="900" letter-spacing="1.4" fill="#7c2d12">RUST • WASM</text>
+  </g>
+</svg>

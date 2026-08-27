@@ -107,6 +107,7 @@ const getPostMetaData2 = (slug: string, lang: Locale): PostMetadata => {
       slug: "",
       date: matterResult.data.date,
       image: matterResult.data.image,
+      icon: matterResult.data.icon ? String(matterResult.data.icon) : undefined,
       likes: matterResult.data.likes,
     };
 

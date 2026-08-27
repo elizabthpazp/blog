@@ -5,6 +5,7 @@ export interface PostMetadata{
     slug: string
     date: string
     image: string,
+    icon?: string,
     likes: any,
     language?: string
 }

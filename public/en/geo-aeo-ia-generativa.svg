@@ -1,0 +1,83 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0b1e"/>
+      <stop offset="50%" stop-color="#2d1b6b"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="18" result="c"/>
+      <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="0" fill="url(#bg)"/>
+  <circle cx="980" cy="140" r="180" fill="#a855f7" opacity="0.15"/>
+  <circle cx="200" cy="520" r="220" fill="#7c3aed" opacity="0.12"/>
+  <!-- Grid -->
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Left text area -->
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#a78bfa" opacity="0.95">GEO • AEO • 2026</text>
+  <text x="64" y="155" font-family="Inter, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1.5">GEO &amp; AEO</text>
+  <text x="64" y="210" font-family="Inter, sans-serif" font-size="52" font-weight="900" fill="#a78bfa" letter-spacing="-1.5">Posicionamiento</text>
+  <text x="64" y="265" font-family="Inter, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1.5">en la IA</text>
+  <text x="64" y="312" font-family="Inter, sans-serif" font-size="18" fill="#ddd6fe" opacity="0.9">Cómo aparecer en ChatGPT, Perplexity</text>
+  <text x="64" y="337" font-family="Inter, sans-serif" font-size="18" fill="#ddd6fe" opacity="0.9">y Google AI Overviews</text>
+  <g transform="translate(64, 368)">
+    <rect width="172" height="40" rx="20" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.2"/>
+    <text x="18" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="1">LLMS.TXT • E-E-A-T</text>
+  </g>
+  <g transform="translate(250, 368)">
+    <rect width="168" height="40" rx="20" fill="#7c3aed"/>
+    <text x="20" y="25" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">ANSWER CAPSULE</text>
+  </g>
+  <!-- Right card - AI Search mock -->
+  <g transform="translate(660, 88)">
+    <rect width="476" height="420" rx="28" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+    <!-- window dots -->
+    <circle cx="32" cy="32" r="7" fill="#ff5f57"/><circle cx="54" cy="32" r="7" fill="#ffbd2e"/><circle cx="76" cy="32" r="7" fill="#28c840"/>
+    <rect x="112" y="22" width="220" height="20" rx="10" fill="#ffffff" opacity="0.12"/>
+    <text x="122" y="36" font-family="monospace" font-size="11" fill="#ffffff" opacity="0.7">chatgpt.com • perplexity.ai</text>
+    <!-- Search bar -->
+    <rect x="24" y="68" width="428" height="54" rx="16" fill="#ffffff" opacity="0.96"/>
+    <circle cx="52" cy="95" r="14" fill="#f3f0ff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="45" y="100" font-family="sans-serif" font-size="16" fill="#7c3aed">⌕</text>
+    <text x="76" y="99" font-family="Inter, sans-serif" font-size="14" fill="#4c1d95" font-weight="600">Mejor framework frontend 2026?</text>
+    <text x="400" y="99" font-family="sans-serif" font-size="14" fill="#7c3aed">✦</text>
+    <!-- AI answer card -->
+    <rect x="24" y="138" width="428" height="122" rx="18" fill="#ffffff" opacity="0.98"/>
+    <rect x="36" y="152" width="36" height="36" rx="10" fill="#ede9fe"/>
+    <text x="44" y="175" font-size="18">✦</text>
+    <text x="84" y="168" font-family="Inter, sans-serif" font-size="11" font-weight="800" letter-spacing="1" fill="#7c3aed">RESPUESTA IA • CITANDO TU WEB</text>
+    <text x="84" y="186" font-family="Inter, sans-serif" font-size="12" fill="#1e1b4b" font-weight="600">Según blog.elijs.dev, el stack recomendado...</text>
+    <text x="84" y="204" font-family="Inter, sans-serif" font-size="11" fill="#6b7280">Answer Capsule • 24 palabras • E-E-A-T verificado ✓</text>
+    <g transform="translate(36, 228)">
+      <rect width="78" height="18" rx="9" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
+      <text x="10" y="13" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#6d28d9">blog.elijs.dev</text>
+      <rect x="88" width="78" height="18" rx="9" fill="#ede9fe"/>
+      <text x="98" y="13" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#6d28d9">★ CITADO</text>
+    </g>
+    <!-- Schema tags -->
+    <g transform="translate(24, 282)">
+      <rect width="136" height="32" rx="16" fill="#7c3aed"/>
+      <text x="16" y="21" font-family="monospace" font-size="10" font-weight="800" fill="#ffffff">{"@type":"FAQ"}</text>
+      <rect x="148" width="92" height="32" rx="16" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.25"/>
+      <text x="162" y="21" font-family="monospace" font-size="10" font-weight="700" fill="#ffffff">llms.txt ✓</text>
+      <rect x="252" width="110" height="32" rx="16" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.25"/>
+      <text x="268" y="21" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#ffffff">E-E-A-T ★★★</text>
+    </g>
+    <text x="24" y="348" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" opacity="0.75">↗ Visibilidad GEO +40% con datos verificables</text>
+    <text x="24" y="368" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" opacity="0.65">↗ 72,4% de posts citados usan Answer Capsules</text>
+    <g transform="translate(24, 382)">
+      <rect width="428" height="6" rx="3" fill="#ffffff" opacity="0.12"/>
+      <rect width="308" height="6" rx="3" fill="#a78bfa"/>
+    </g>
+  </g>
+  <text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.35">BLOG.ELIJS.DEV • SEO GENERATIVO • AEO • GEO</text>
+</svg>

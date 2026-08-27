@@ -1,0 +1,75 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#1a0a00"/>
+    <stop offset="50%" stop-color="#7c2d12"/>
+    <stop offset="100%" stop-color="#f97316"/>
+  </linearGradient>
+  <linearGradient id="glass3" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg3)"/>
+<circle cx="1020" cy="120" r="170" fill="#fb923c" opacity="0.12"/>
+<circle cx="180" cy="540" r="220" fill="#f97316" opacity="0.08"/>
+<g opacity="0.05" stroke="#fff" stroke-width="1">
+  <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+  <line x1="300" y1="0" x2="300" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/>
+</g>
+<text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">RUST • WASM • TAURI • 2026</text>
+<text x="64" y="158" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#ffffff" letter-spacing="-1.8">Rust + WASM</text>
+<text x="64" y="218" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#fdba74" letter-spacing="-1.8">para Frontend</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#ffedd5" opacity="0.9">Velocidad nativa en el navegador y desktop</text>
+<text x="64" y="312" font-family="Inter, sans-serif" font-size="15" fill="#ffedd5" opacity="0.72">Tauri • WebAssembly • Performance extrema</text>
+<g transform="translate(64, 348)">
+  <rect width="138" height="38" rx="19" fill="#ffffff"/>
+  <text x="16" y="24" font-family="monospace" font-size="11" font-weight="900" fill="#9a3412">⚡ 10× FASTER</text>
+  <rect x="152" width="170" height="38" rx="19" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.25"/>
+  <text x="168" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&lt; 5MB binario</text>
+</g>
+<!-- Right card -->
+<g transform="translate(640, 66)">
+  <rect width="496" height="464" rx="28" fill="url(#glass3)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+  <!-- code preview -->
+  <rect x="24" y="24" width="448" height="174" rx="18" fill="#0c0a09"/>
+  <circle cx="38" cy="38" r="5.5" fill="#ff5f57"/><circle cx="54" cy="38" r="5.5" fill="#ffbd2e"/><circle cx="70" cy="38" r="5.5" fill="#28c840"/>
+  <text x="92" y="42" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.55">lib.rs — Rust → WASM</text>
+  <text x="24" y="74" font-family="monospace" font-size="11" fill="#fdba74">#[wasm_bindgen]</text>
+  <text x="24" y="92" font-family="monospace" font-size="11" fill="#ffffff"><tspan fill="#fb923c">pub fn</tspan> <tspan fill="#7dd3fc">fibonacci</tspan>(n: <tspan fill="#f472b6">u32</tspan>) -> <tspan fill="#f472b6">u32</tspan> {</text>
+  <text x="36" y="110" font-family="monospace" font-size="11" fill="#a3a3a3">  <tspan fill="#fb923c">if</tspan> n &lt;= 1 { <tspan fill="#fb923c">return</tspan> n; }</text>
+  <text x="36" y="128" font-family="monospace" font-size="11" fill="#a3a3a3">  fibonacci(n-1) + fibonacci(n-2)</text>
+  <text x="24" y="146" font-family="monospace" font-size="11" fill="#ffffff">}</text>
+  <text x="24" y="170" font-family="monospace" font-size="10" fill="#22c55e" opacity="0.9">✓ Compiled to wasm32 • 12.4 kB gzipped</text>
+  <!-- comparison -->
+  <g transform="translate(24, 214)">
+    <rect width="448" height="84" rx="16" fill="#ffffff"/>
+    <text x="16" y="28" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#9a3412">BENCHMARK • FIBONACCI(40)</text>
+    <g transform="translate(16, 38)">
+      <text x="0" y="14" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#44403c">JavaScript</text>
+      <rect x="100" y="4" width="140" height="14" rx="7" fill="#e7e5e4"/>
+      <rect x="100" y="4" width="118" height="14" rx="7" fill="#f97316"/>
+      <text x="252" y="15" font-family="monospace" font-size="11" font-weight="700" fill="#57534e">890ms</text>
+      <text x="0" y="38" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0c0a09">Rust WASM</text>
+      <rect x="100" y="28" width="140" height="14" rx="7" fill="#e7e5e4"/>
+      <rect x="100" y="28" width="22" height="14" rx="7" fill="#16a34a"/>
+      <text x="252" y="39" font-family="monospace" font-size="11" font-weight="800" fill="#16a34a">84ms</text>
+    </g>
+  </g>
+  <!-- Tauri vs Electron -->
+  <g transform="translate(24, 314)">
+    <rect width="214" height="88" rx="16" fill="#ffffff"/>
+    <text x="16" y="26" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#78716c">ELECTRON</text>
+    <text x="16" y="48" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#a8a29e">180 MB</text>
+    <text x="16" y="66" font-family="Inter, sans-serif" font-size="11" fill="#a8a29e">+ Chromium + Node</text>
+    <text x="16" y="80" font-family="Inter, sans-serif" font-size="11" fill="#f97316">✕ Pesado</text>
+    <rect x="234" width="214" height="88" rx="16" fill="#7c2d12"/>
+    <text x="250" y="26" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#fdba74">TAURI (RUST)</text>
+    <text x="250" y="48" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#ffffff">4.2 MB</text>
+    <text x="250" y="66" font-family="Inter, sans-serif" font-size="11" fill="#fed7aa">WebView nativo</text>
+    <text x="250" y="80" font-family="Inter, sans-serif" font-size="11" fill="#22c55e">✓ 42× más ligero</text>
+  </g>
+  <text x="248" y="432" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.6">wasm-pack build --target web • tauri build</text>
+</g>
+<text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.32">BLOG.ELIJS.DEV • RUST • WEBASSEMBLY • TAURI • PERFORMANCE</text>
+</svg>

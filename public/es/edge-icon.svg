@@ -1,0 +1,61 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Edge Computing Icon">
+  <defs>
+    <linearGradient id="g_edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="52%" stop-color="#0f2a5e"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_edge)"/>
+  <!-- dots pattern -->
+  <g opacity="0.07" fill="#fff">
+    <circle cx="80" cy="80" r="5"/><circle cx="150" cy="80" r="5"/><circle cx="220" cy="80" r="5"/><circle cx="290" cy="80" r="5"/><circle cx="360" cy="80" r="5"/><circle cx="430" cy="80" r="5"/>
+    <circle cx="80" cy="430" r="5"/><circle cx="150" cy="430" r="5"/><circle cx="220" cy="430" r="5"/><circle cx="290" cy="430" r="5"/><circle cx="360" cy="430" r="5"/><circle cx="430" cy="430" r="5"/>
+  </g>
+  <!-- outer glow -->
+  <circle cx="256" cy="256" r="158" fill="#ffffff" opacity="0.05"/>
+  <!-- globe -->
+  <g transform="translate(256, 246)">
+    <circle r="108" fill="#ffffff" stroke="#ffffff" stroke-width="0" opacity="0.98"/>
+    <circle r="106" fill="none" stroke="#0ea5e9" stroke-width="3" opacity="0.12"/>
+    <!-- lat/long lines -->
+    <g opacity="0.18" stroke="#0ea5e9" stroke-width="3" fill="none">
+      <ellipse rx="108" ry="54" />
+      <ellipse rx="54" ry="108" />
+      <ellipse rx="108" ry="84" />
+      <line x1="-108" y1="0" x2="108" y2="0"/>
+    </g>
+    <!-- continents abstract -->
+    <g fill="#0ea5e9" opacity="0.09">
+      <ellipse cx="-30" cy="-18" rx="46" ry="28"/>
+      <ellipse cx="42" cy="26" rx="38" ry="22"/>
+      <ellipse cx="18" cy="-52" rx="22" ry="16"/>
+    </g>
+    <!-- edge nodes -->
+    <g>
+      <circle cx="-74" cy="-46" r="18" fill="#0ea5e9" stroke="#ffffff" stroke-width="3"/>
+      <circle cx="-74" cy="-46" r="6" fill="#ffffff"/>
+      <circle cx="76" cy="-54" r="18" fill="#0ea5e9" stroke="#ffffff" stroke-width="3"/>
+      <circle cx="76" cy="-54" r="6" fill="#ffffff"/>
+      <circle cx="-46" cy="72" r="18" fill="#ffffff" stroke="#0ea5e9" stroke-width="3"/>
+      <circle cx="-46" cy="72" r="6" fill="#0ea5e9"/>
+      <!-- active node MAD -->
+      <circle cx="64" cy="62" r="20" fill="#ffffff" stroke="#0ea5e9" stroke-width="4"/>
+      <circle cx="64" cy="62" r="8" fill="#0ea5e9"/>
+      <circle cx="64" cy="62" r="28" fill="none" stroke="#0ea5e9" stroke-width="2.5" opacity="0.22"/>
+      <circle cx="64" cy="62" r="38" fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.12"/>
+      <!-- connections dashed -->
+      <g stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.45" fill="none" stroke-linecap="round">
+        <path d="M -74 -46 Q 0 -78 76 -54"/>
+        <path d="M 76 -54 Q 78 6 64 62"/>
+        <path d="M -46 72 Q -68 14 -74 -46"/>
+        <path d="M -46 72 Q 8 80 64 62"/>
+      </g>
+    </g>
+  </g>
+  <!-- bottom pill -->
+  <g transform="translate(256, 428)">
+    <rect x="-68" y="-18" width="136" height="36" rx="18" fill="#ffffff"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="900" letter-spacing="1.6" fill="#0f2a5e">EDGE • 18ms</text>
+  </g>
+</svg>

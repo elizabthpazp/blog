@@ -108,6 +108,7 @@ function getRelatedScoredPosts(lang: string, actualSlug: string, limit = 3, thre
       const date = matterResult.data.date || "";
       let image = matterResult.data.image || "";
       if (image === "./css1.png") image = "./css.png";
+      let icon = matterResult.data.icon ? String(matterResult.data.icon) : undefined;
       const langField = matterResult.data.language ? String(matterResult.data.language) : undefined;
       const body = matterResult.content || "";
       const combined = `${category} ${headline} ${description} ${category} ${headline} ${description} ${body}`;
@@ -123,6 +124,7 @@ function getRelatedScoredPosts(lang: string, actualSlug: string, limit = 3, thre
         likes: matterResult.data.likes || 0,
         language: langField,
       };
+      if (icon) (metadata as any).icon = icon;
       docs.push({ slug: filename, tokens, category, language: langField, metadata });
     } catch (e) {
       continue;
@@ -258,12 +260,13 @@ const getPostMetaData = (
         const description = matterResult.data.description || headline;
         const date = matterResult.data.date || "";
         let image = matterResult.data.image || "";
+        let icon = matterResult.data.icon ? String(matterResult.data.icon) : undefined;
 
         if (image === "./css1.png") {
           image = "./css.png";
         }
 
-        return {
+        const post: PostMetadata = {
           title: category,
           subtitle: headline,
           description: description,
@@ -272,14 +275,17 @@ const getPostMetaData = (
           image: image,
           likes: matterResult.data.likes || 0,
         };
+        if (icon) (post as any).icon = icon;
+
+        return post;
       } catch (e) {
         return null;
       }
     })
-    .filter((p): p is PostMetadata => p !== null && Boolean(p.slug));
+    .filter((p): p is PostMetadata => p !== null && Boolean((p as PostMetadata).slug));
 
   // Sort posts strictly from newest (2026) to oldest (2024/2023)
-  posts.sort((a, b) => getDate(b.date) - getDate(a.date));
+  posts.sort((a, b) => getDate((b as PostMetadata).date) - getDate((a as PostMetadata).date));
 
   return posts;
 };

@@ -1,0 +1,77 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#041024"/>
+    <stop offset="55%" stop-color="#0f2a5e"/>
+    <stop offset="100%" stop-color="#0ea5e9"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="630" rx="0" fill="url(#bg2)"/>
+<circle cx="1050" cy="100" r="160" fill="#38bdf8" opacity="0.10"/>
+<circle cx="160" cy="560" r="240" fill="#0ea5e9" opacity="0.09"/>
+<!-- grid -->
+<g opacity="0.05" stroke="#fff" stroke-width="1">
+  <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+  <line x1="300" y1="0" x2="300" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/>
+</g>
+<text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#7dd3fc" opacity="0.95">EDGE • SERVERLESS • 2026</text>
+<text x="64" y="155" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Edge Computing</text>
+<text x="64" y="212" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#7dd3fc" letter-spacing="-1.5">&amp; Serverless</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#ffffff" opacity="0.95">Latencia cero, escala infinita</text>
+<text x="64" y="312" font-family="Inter, sans-serif" font-size="16" fill="#e0f2fe" opacity="0.85">Cloudflare Workers • Vercel Edge • AWS Lambda@Edge</text>
+<g transform="translate(64, 350)">
+  <rect width="145" height="38" rx="19" fill="#0ea5e9"/>
+  <text x="16" y="24" font-family="monospace" font-size="12" font-weight="800" fill="#ffffff">&lt; 50ms TTFB</text>
+  <rect x="158" width="170" height="38" rx="19" fill="#ffffff" opacity="0.12" stroke="#ffffff" stroke-opacity="0.22"/>
+  <text x="174" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff">0ms Cold Start</text>
+</g>
+<!-- Right - globe with edge nodes -->
+<g transform="translate(640, 68)">
+  <rect width="496" height="460" rx="28" fill="url(#glass)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+  <!-- globe -->
+  <g transform="translate(248, 190)">
+    <circle r="105" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.4"/>
+    <ellipse rx="105" ry="48" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+    <ellipse rx="48" ry="105" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
+    <ellipse rx="105" ry="78" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="1"/>
+    <circle r="92" fill="#0ea5e9" opacity="0.08"/>
+    <!-- edge nodes -->
+    <circle cx="-70" cy="-45" r="18" fill="#ffffff"/>
+    <text x="-70" y="-39" text-anchor="middle" font-size="10" font-weight="900" fill="#0f172a">NYC</text>
+    <circle cx="68" cy="-58" r="18" fill="#ffffff"/>
+    <text x="68" y="-52" text-anchor="middle" font-size="9" font-weight="900" fill="#0f172a">LON</text>
+    <circle cx="-42" cy="72" r="18" fill="#ffffff"/>
+    <text x="-42" y="78" text-anchor="middle" font-size="9" font-weight="900" fill="#0f172a">SAO</text>
+    <circle cx="72" cy="58" r="18" fill="#38bdf8" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="72" y="64" text-anchor="middle" font-size="9" font-weight="900" fill="#ffffff">MAD</text>
+    <!-- connections -->
+    <line x1="-70" y1="-45" x2="68" y2="-58" stroke="#7dd3fc" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6"/>
+    <line x1="68" y1="-58" x2="72" y2="58" stroke="#7dd3fc" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6"/>
+    <line x1="-42" y1="72" x2="-70" y2="-45" stroke="#7dd3fc" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6"/>
+    <!-- pulse -->
+    <circle cx="72" cy="58" r="26" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="72" cy="58" r="36" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.18"/>
+  </g>
+  <!-- metrics -->
+  <g transform="translate(28, 338)">
+    <rect width="142" height="86" rx="16" fill="#ffffff"/>
+    <text x="18" y="28" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#0ea5e9">LATENCIA</text>
+    <text x="18" y="52" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#0f172a">18ms</text>
+    <text x="18" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b">↘ -84% vs Origin</text>
+    <rect x="158" y="0" width="142" height="86" rx="16" fill="#ffffff"/>
+    <text x="176" y="28" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#0ea5e9">COSTE</text>
+    <text x="176" y="52" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#0f172a">-62%</text>
+    <text x="176" y="70" font-family="Inter, sans-serif" font-size="11" fill="#64748b">pay-per-use</text>
+    <rect x="316" y="0" width="142" height="86" rx="16" fill="#0ea5e9"/>
+    <text x="334" y="28" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#ffffff" opacity="0.9">ESCALA</text>
+    <text x="334" y="52" font-family="Inter, sans-serif" font-size="22" font-weight="900" fill="#ffffff">∞</text>
+    <text x="334" y="70" font-family="Inter, sans-serif" font-size="11" fill="#e0f2fe">auto-scale</text>
+  </g>
+  <text x="248" y="452" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.55">edge.run( request ) → nearest POP in &lt;50ms</text>
+</g>
+<text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.35">BLOG.ELIJS.DEV • EDGE FUNCTIONS • SERVERLESS • PERFORMANCE</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GEO AEO Icon">
+  <defs>
+    <linearGradient id="g_geo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0b1e"/>
+      <stop offset="55%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="g_geo_glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_geo)"/>
+  <!-- subtle grid dots -->
+  <g opacity="0.09" fill="#fff">
+    <circle cx="72" cy="72" r="6"/><circle cx="152" cy="72" r="6"/><circle cx="232" cy="72" r="6"/><circle cx="312" cy="72" r="6"/><circle cx="392" cy="72" r="6"/>
+    <circle cx="72" cy="152" r="6"/><circle cx="152" cy="152" r="6"/><circle cx="232" cy="152" r="6"/><circle cx="312" cy="152" r="6"/><circle cx="392" cy="152" r="6"/>
+    <circle cx="72" cy="440" r="6"/><circle cx="152" cy="440" r="6"/><circle cx="232" cy="440" r="6"/><circle cx="312" cy="440" r="6"/><circle cx="392" cy="440" r="6"/>
+  </g>
+  <!-- outer glow circle -->
+  <circle cx="256" cy="256" r="158" fill="#ffffff" opacity="0.06"/>
+  <circle cx="256" cy="256" r="132" fill="#ffffff" opacity="0.08"/>
+  <!-- Magnifier -->
+  <g transform="translate(256, 250)">
+    <!-- lens outer -->
+    <circle r="92" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+    <circle r="88" fill="none" stroke="#7c3aed" stroke-width="10" opacity="0.18"/>
+    <circle r="76" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="2"/>
+    <!-- lens inner content: AI spark + doc lines -->
+    <!-- spark star -->
+    <g transform="translate(0, -10)">
+      <path d="M 0 -34 L 7 -7 L 34 0 L 7 7 L 0 34 L -7 7 L -34 0 L -7 -7 Z" fill="#7c3aed"/>
+      <circle r="5" fill="#ffffff"/>
+      <g opacity="0.7">
+        <circle cx="-28" cy="-26" r="6" fill="#a78bfa"/>
+        <circle cx="32" cy="-22" r="4" fill="#a78bfa"/>
+        <circle cx="26" cy="28" r="5" fill="#a78bfa"/>
+      </g>
+    </g>
+    <!-- doc lines under spark -->
+    <g transform="translate(-22, 30)" opacity="0.9">
+      <rect width="44" height="7" rx="3.5" fill="#7c3aed" opacity="0.14"/>
+      <rect y="12" width="36" height="6" rx="3" fill="#7c3aed" opacity="0.10"/>
+      <rect y="23" width="28" height="6" rx="3" fill="#7c3aed" opacity="0.10"/>
+    </g>
+    <!-- handle -->
+    <g transform="translate(66, 70) rotate(45)">
+      <rect x="-14" y="-6" width="82" height="28" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="4"/>
+      <rect x="-6" y="2" width="58" height="8" rx="4" fill="#7c3aed" opacity="0.18"/>
+    </g>
+    <!-- small green check badge -->
+    <g transform="translate(58, -58)">
+      <circle r="22" fill="#22c55e" stroke="#ffffff" stroke-width="4"/>
+      <path d="M -8 0 L -1 7 L 8 -7" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <!-- bottom label capsule for accessibility but visible -->
+  <g transform="translate(256, 428)">
+    <rect x="-72" y="-18" width="144" height="36" rx="18" fill="#ffffff"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="900" letter-spacing="1.8" fill="#4c1d95">GEO • AEO</text>
+  </g>
+</svg>

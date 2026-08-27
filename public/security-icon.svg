@@ -1,0 +1,53 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Security Shield Icon">
+  <defs>
+    <linearGradient id="g_sec" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_sec)"/>
+  <g opacity="0.07" fill="#fff">
+    <circle cx="80" cy="80" r="5"/><circle cx="150" cy="80" r="5"/><circle cx="220" cy="80" r="5"/><circle cx="290" cy="80" r="5"/><circle cx="360" cy="80" r="5"/><circle cx="430" cy="80" r="5"/>
+    <circle cx="80" cy="430" r="5"/><circle cx="150" cy="430" r="5"/><circle cx="220" cy="430" r="5"/><circle cx="290" cy="430" r="5"/><circle cx="360" cy="430" r="5"/><circle cx="430" cy="430" r="5"/>
+  </g>
+  <circle cx="256" cy="256" r="148" fill="#ffffff" opacity="0.06"/>
+  <!-- shield -->
+  <g transform="translate(256, 250)">
+    <!-- outer shield shape -->
+    <path d="M 0 -108 L 92 -72 L 92 22 C 92 66 62 104 0 128 C -62 104 -92 66 -92 22 L -92 -72 Z" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+    <path d="M 0 -102 L 86 -69 L 86 20 C 86 62 58 97 0 120 C -58 97 -86 62 -86 20 L -86 -69 Z" fill="none" stroke="#dc2626" stroke-width="5" opacity="0.14"/>
+    <!-- inner shield red -->
+    <path d="M 0 -94 L 78 -63 L 78 18 C 78 56 52 88 0 110 C -52 88 -78 56 -78 18 L -78 -63 Z" fill="#dc2626"/>
+    <!-- inner white highlight -->
+    <path d="M 0 -86 L 68 -58 L 68 16 C 68 48 46 76 0 96 C -46 76 -68 48 -68 16 L -68 -58 Z" fill="#ffffff" opacity="0.96"/>
+    <!-- check -->
+    <g transform="translate(0, 8)">
+      <circle r="42" fill="#dc2626" stroke="#ffffff" stroke-width="0"/>
+      <circle r="38" fill="#dc2626"/>
+      <!-- checkmark -->
+      <path d="M -16 4 L -4 16 L 17 -10" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- shine -->
+      <circle r="38" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.18"/>
+    </g>
+    <!-- lock icon small at top -->
+    <g transform="translate(0, -48)">
+      <rect x="-18" y="-6" width="36" height="26" rx="7" fill="#1e293b" opacity="0.08"/>
+      <!-- lock body -->
+      <rect x="-14" y="4" width="28" height="18" rx="4" fill="#1e293b"/>
+      <rect x="-10" y="-8" width="20" height="14" rx="7" fill="none" stroke="#1e293b" stroke-width="3.5"/>
+      <circle cx="0" cy="13" r="4" fill="#ffffff"/>
+      <rect x="-1" y="13" width="2" height="6" rx="1" fill="#ffffff"/>
+    </g>
+    <!-- npm badge -->
+    <g transform="translate(58, -62)">
+      <rect x="-26" y="-14" width="52" height="28" rx="14" fill="#16a34a" stroke="#ffffff" stroke-width="3"/>
+      <text x="0" y="6" text-anchor="middle" font-family="monospace" font-size="12" font-weight="900" fill="#ffffff">✓</text>
+    </g>
+  </g>
+  <!-- bottom pill -->
+  <g transform="translate(256, 428)">
+    <rect x="-66" y="-18" width="132" height="36" rx="18" fill="#ffffff"/>
+    <text x="0" y="7" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="900" letter-spacing="1.5" fill="#991b1b">SBOM • ✓</text>
+  </g>
+</svg>

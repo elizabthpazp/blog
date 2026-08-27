@@ -1,0 +1,98 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0a0a12"/>
+    <stop offset="50%" stop-color="#1e1b4b"/>
+    <stop offset="100%" stop-color="#06b6d4"/>
+  </linearGradient>
+  <linearGradient id="glass5" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg5)"/>
+<circle cx="1050" cy="130" r="165" fill="#06b6d4" opacity="0.11"/>
+<circle cx="190" cy="560" r="230" fill="#7c3aed" opacity="0.08"/>
+<g opacity="0.05" stroke="#fff" stroke-width="1">
+  <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+  <line x1="300" y1="0" x2="300" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/>
+</g>
+<text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#67e8f9" opacity="0.95">ASTRO • QWIK • NEXT.JS • 2026</text>
+<text x="64" y="158" font-family="Inter, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Arquitectura</text>
+<text x="64" y="212" font-family="Inter, sans-serif" font-size="52" font-weight="900" fill="#67e8f9" letter-spacing="-1.5">de Islas</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#e0f2fe" opacity="0.9">Zero JS por defecto, máxima performance</text>
+<text x="64" y="310" font-family="Inter, sans-serif" font-size="15" fill="#e0f2fe" opacity="0.68">Astro Islands vs Next.js App Router vs Qwik</text>
+<g transform="translate(64, 348)">
+  <rect width="132" height="38" rx="19" fill="#ffffff"/>
+  <text x="16" y="24" font-family="Inter, sans-serif" font-size="11" font-weight="900" fill="#0e7490">⚡ 0 kB JS</text>
+  <rect x="146" width="142" height="38" rx="19" fill="#06b6d4"/>
+  <text x="162" y="24" font-family="Inter, sans-serif" font-size="11" font-weight="800" fill="#ffffff">100 Lighthouse</text>
+  <rect x="302" width="112" height="38" rx="19" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.25"/>
+  <text x="318" y="24" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">Qwik • Astro</text>
+</g>
+<!-- Right - architecture diagram -->
+<g transform="translate(640, 66)">
+  <rect width="496" height="464" rx="28" fill="url(#glass5)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+  <!-- Comparison header -->
+  <g transform="translate(24, 22)">
+    <rect width="144" height="34" rx="17" fill="#ffffff" opacity="0.12" stroke="#ffffff" stroke-opacity="0.18"/>
+    <text x="72" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#ffffff">FRAMEWORK</text>
+    <rect x="156" width="96" height="34" rx="17" fill="#ffffff"/>
+    <text x="204" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#0e7490">JS ENVIADO</text>
+    <rect x="264" width="96" height="34" rx="17" fill="#06b6d4"/>
+    <text x="312" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#ffffff">CARGA</text>
+    <rect x="372" width="76" height="34" rx="17" fill="#22c55e"/>
+    <text x="410" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#ffffff">SCORE</text>
+  </g>
+  <!-- rows -->
+  <g transform="translate(24, 70)">
+    <!-- Astro -->
+    <rect width="448" height="68" rx="16" fill="#ffffff"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#0f172a">🚀 Astro</text>
+    <text x="16" y="38" font-family="Inter, sans-serif" font-size="10" fill="#64748b">Islands • client:idle</text>
+    <text x="204" y="30" text-anchor="middle" font-family="monospace" font-size="12" font-weight="900" fill="#0e7490">2.1 kB</text>
+    <text x="312" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#334155">Instant</text>
+    <text x="410" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#16a34a">100</text>
+    <!-- progress bar -->
+    <rect x="156" y="44" width="96" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="156" y="44" width="18" height="8" rx="4" fill="#06b6d4"/>
+  </g>
+  <g transform="translate(24, 150)">
+    <rect width="448" height="68" rx="16" fill="#ffffff" opacity="0.96"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#0f172a">⚛️ Next.js 16</text>
+    <text x="16" y="38" font-family="Inter, sans-serif" font-size="10" fill="#64748b">RSC • PPR • Streaming</text>
+    <text x="204" y="30" text-anchor="middle" font-family="monospace" font-size="12" font-weight="900" fill="#7c3aed">38 kB</text>
+    <text x="312" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#334155">Fast</text>
+    <text x="410" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#16a34a">98</text>
+    <rect x="156" y="44" width="96" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="156" y="44" width="42" height="8" rx="4" fill="#7c3aed"/>
+  </g>
+  <g transform="translate(24, 230)">
+    <rect width="448" height="68" rx="16" fill="#ffffff" opacity="0.96"/>
+    <text x="16" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#0f172a">⚡ Qwik</text>
+    <text x="16" y="38" font-family="Inter, sans-serif" font-size="10" fill="#64748b">Resumability • 0 hydration</text>
+    <text x="204" y="30" text-anchor="middle" font-family="monospace" font-size="12" font-weight="900" fill="#0891b2">0.9 kB</text>
+    <text x="312" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#334155">Instant</text>
+    <text x="410" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="900" fill="#16a34a">100</text>
+    <rect x="156" y="44" width="96" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="156" y="44" width="12" height="8" rx="4" fill="#06b6d4"/>
+  </g>
+  <!-- islands visual -->
+  <g transform="translate(24, 318)">
+    <rect width="448" height="88" rx="16" fill="#0f172a"/>
+    <text x="16" y="24" font-family="monospace" font-size="10" fill="#67e8f9">─── Static HTML (0 JS) ───</text>
+    <g transform="translate(16, 36)">
+      <rect width="88" height="36" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="44" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">Header</text>
+      <rect x="100" width="88" height="36" rx="10" fill="#06b6d4"/>
+      <text x="144" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="800" fill="#ffffff">Isla ★</text>
+      <rect x="200" width="88" height="36" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="244" y="22" text-anchor="middle" font-family="monospace" font-size="9" fill="#94a3b8">Footer</text>
+      <rect x="300" width="88" height="36" rx="10" fill="#7c3aed"/>
+      <text x="344" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="800" fill="#ffffff">Isla ★</text>
+    </g>
+    <text x="224" y="84" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#64748b">Solo las islas hidratan JS • Resto = HTML puro</text>
+  </g>
+</g>
+<text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.32">BLOG.ELIJS.DEV • ASTRO • QWIK • NEXT.JS • PERFORMANCE</text>
+</svg>

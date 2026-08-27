@@ -244,14 +244,14 @@ export default async function Learn({
   const content = cleanContent(rawContent, meta);
 
   const MyH1 = ({ children }: { children: React.ReactNode }) => (
-    <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center tracking-tight leading-[1.2] max-w-4xl mx-auto my-6 px-2 break-words overflow-hidden">
+    <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center tracking-tight leading-[1.2] max-w-4xl mx-auto my-6 px-2 break-words overflow-visible">
       {children}
     </h1>
   );
 
   const MyH2 = ({ children }: { children: React.ReactNode }) => (
-    <h2 className="font-display text-xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center my-6 max-w-4xl mx-auto px-2 leading-tight break-words overflow-hidden">
-      <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words">
+    <h2 className="font-display text-xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center my-6 max-w-4xl mx-auto px-2 leading-tight break-words overflow-visible">
+      <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words overflow-visible pb-[0.32em] sm:pb-[0.34em]">
         <SquigglyLines />
         <span className="relative break-words whitespace-normal">{children}</span>
       </span>
@@ -328,7 +328,7 @@ export default async function Learn({
         />
 
         {/* Header del artículo - orden correcto: imagen → título → meta → descripción (no negrita) */}
-        <div className="max-w-4xl mx-auto text-center mt-8 overflow-hidden px-2 sm:px-0 w-full">
+        <div className="max-w-4xl mx-auto text-center mt-8 overflow-visible px-2 sm:px-0 w-full">
           {heroSrc && (
             <div className="w-full max-w-3xl mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border border-black/5 dark:border-white/10">
               <img
@@ -339,10 +339,10 @@ export default async function Learn({
             </div>
           )}
           {meta.subtitle && (
-            <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.2] break-words px-2 max-w-full overflow-hidden">
+            <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.35] break-words px-2 max-w-full overflow-visible">
               {titleParts.before}
               {titleParts.keyword && (
-                <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words">
+                <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words overflow-visible pb-[0.12em] sm:pb-[0.14em]">
                   <SquigglyLines />
                   <span className="relative break-words whitespace-normal">{titleParts.keyword}</span>
                 </span>
@@ -364,7 +364,7 @@ export default async function Learn({
         </div>
 
         {/* Article Content - ya sin header duplicado, ancho 4xl igual que code */}
-        <article className="w-full max-w-full text-center sm:text-left mt-8 min-w-0 overflow-hidden">
+        <article className="w-full max-w-full text-center sm:text-left mt-8 min-w-0 overflow-visible">
           <Markdown
             options={{
               overrides: {

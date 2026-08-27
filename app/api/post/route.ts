@@ -1,9 +1,9 @@
-import { neon } from '@neondatabase/serverless';
+import { neon, type NeonQueryFunction } from '@neondatabase/serverless';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
-function getClient() {
+function getClient(): NeonQueryFunction<false, false> {
   const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
   if (!url) {
     throw new Error(
@@ -11,6 +11,17 @@ function getClient() {
     );
   }
   return neon(url);
+}
+
+async function ensureSchema(sql: NeonQueryFunction<false, false>) {
+  await sql`
+    CREATE TABLE IF NOT EXISTS posts (
+      id TEXT PRIMARY KEY,
+      count INTEGER NOT NULL DEFAULT 0
+    )
+  `;
+  await sql`DELETE FROM posts a USING posts b WHERE a.id = b.id AND a.ctid < b.ctid`;
+  await sql`CREATE UNIQUE INDEX IF NOT EXISTS posts_id_unique ON posts (id)`;
 }
 
 export async function POST(request: Request) {
@@ -23,7 +34,7 @@ export async function POST(request: Request) {
 
   try {
     const sql = getClient();
-    await sql`CREATE TABLE IF NOT EXISTS posts (id TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0)`;
+    await ensureSchema(sql);
 
     const rows = await sql`
       INSERT INTO posts (id, count) VALUES (${id}, 1)

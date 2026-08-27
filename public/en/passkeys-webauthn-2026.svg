@@ -1,0 +1,51 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="55%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="14" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="200" fill="#22d3ee" opacity="0.18"/>
+  <circle cx="200" cy="540" r="240" fill="#0891b2" opacity="0.16"/>
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#67e8f9" opacity="0.95">PASSKEYS • WEBAUTHN • 2026</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Passkeys en 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#67e8f9" letter-spacing="-1.5">Autenticación</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">sin contraseñas</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">WebAuthn nivel 3, llaves FIDO2, biometría,</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">phishing-resistente y 0 contraseñas que robar.</text>
+  <!-- Big key -->
+  <g transform="translate(880, 380)" filter="url(#glow)">
+    <circle cx="-70" cy="0" r="50" fill="#67e8f9" stroke="#ffffff" stroke-width="4"/>
+    <circle cx="-70" cy="0" r="22" fill="#0e7490"/>
+    <rect x="-30" y="-12" width="160" height="24" rx="4" fill="#67e8f9"/>
+    <rect x="80" y="12" width="14" height="36" fill="#67e8f9"/>
+    <rect x="106" y="12" width="14" height="22" fill="#67e8f9"/>
+  </g>
+  <!-- Floating chips -->
+  <g transform="translate(720, 110)">
+    <rect x="0" y="0" width="180" height="42" rx="10" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#67e8f9"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">WebAuthn L3 ✅</text>
+  </g>
+  <g transform="translate(740, 165)">
+    <rect x="0" y="0" width="180" height="42" rx="10" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#67e8f9"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">SimpleWebAuthn 13</text>
+  </g>
+  <g transform="translate(760, 220)">
+    <rect x="0" y="0" width="180" height="42" rx="10" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#67e8f9"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Cross-device flow</text>
+  </g>
+</svg>

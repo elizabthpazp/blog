@@ -1,0 +1,36 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Postgres 2026 Icon">
+  <defs>
+    <linearGradient id="g_pg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="55%" stop-color="#0c4a6e"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_pg)"/>
+  <g opacity="0.07" fill="#fff">
+    <circle cx="72" cy="72" r="5"/><circle cx="152" cy="72" r="5"/><circle cx="232" cy="72" r="5"/><circle cx="312" cy="72" r="5"/><circle cx="392" cy="72" r="5"/>
+    <circle cx="72" cy="152" r="5"/><circle cx="152" cy="152" r="5"/><circle cx="232" cy="152" r="5"/><circle cx="312" cy="152" r="5"/><circle cx="392" cy="152" r="5"/>
+    <circle cx="72" cy="392" r="5"/><circle cx="152" cy="392" r="5"/><circle cx="232" cy="392" r="5"/><circle cx="312" cy="392" r="5"/><circle cx="392" cy="392" r="5"/>
+  </g>
+  <circle cx="256" cy="256" r="158" fill="#ffffff" opacity="0.06"/>
+  <circle cx="256" cy="256" r="124" fill="#ffffff" opacity="0.08"/>
+  <!-- Elephant silhouette + DB cylinder -->
+  <g transform="translate(256, 256)">
+    <!-- DB cylinder behind -->
+    <ellipse cx="0" cy="-110" rx="70" ry="18" fill="#7dd3fc" opacity="0.4"/>
+    <rect x="-70" y="-110" width="140" height="180" fill="#7dd3fc" opacity="0.2"/>
+    <ellipse cx="0" cy="70" rx="70" ry="18" fill="#7dd3fc" opacity="0.4"/>
+    <!-- Elephant -->
+    <ellipse cx="0" cy="10" rx="100" ry="68" fill="#ffffff"/>
+    <ellipse cx="62" cy="-26" rx="34" ry="30" fill="#ffffff"/>
+    <path d="M 78 -12 Q 104 -26 122 -8 Q 116 24 92 22" fill="#ffffff"/>
+    <rect x="-72" y="58" width="16" height="32" rx="3" fill="#ffffff"/>
+    <rect x="32" y="58" width="16" height="32" rx="3" fill="#ffffff"/>
+    <circle cx="70" cy="-34" r="4" fill="#0284c7"/>
+    <!-- Vector dots floating -->
+    <circle cx="-100" cy="-90" r="6" fill="#7dd3fc"/>
+    <circle cx="100" cy="-90" r="6" fill="#7dd3fc"/>
+    <circle cx="-110" cy="-50" r="4" fill="#7dd3fc" opacity="0.7"/>
+    <circle cx="110" cy="-50" r="4" fill="#7dd3fc" opacity="0.7"/>
+  </g>
+</svg>

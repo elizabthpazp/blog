@@ -1,0 +1,44 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a00"/>
+      <stop offset="55%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="14" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="200" fill="#fbbf24" opacity="0.18"/>
+  <circle cx="200" cy="540" r="240" fill="#b45309" opacity="0.16"/>
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fcd34d" opacity="0.95">BIOME.JS • 2026 • LINTER EN RUST</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Biome en 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fcd34d" letter-spacing="-1.5">El linter 100x</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">más rápido</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#fde68a" opacity="0.9">Reemplaza ESLint + Prettier con un único binario</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#fde68a" opacity="0.9">compilado en Rust. Cero dependencias en producción.</text>
+  <!-- Lightning bolt -->
+  <g transform="translate(880, 380)" filter="url(#glow)">
+    <path d="M -60 -120 L 30 -120 L -10 -30 L 50 -30 L -40 130 L 0 10 L -60 10 Z" fill="#fcd34d" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <!-- Speed comparison -->
+  <g transform="translate(700, 100)">
+    <rect x="0" y="0" width="240" height="50" rx="10" fill="url(#card)" stroke="#fcd34d" stroke-opacity="0.5"/>
+    <text x="120" y="32" font-family="monospace" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">ESLint: 12.4s</text>
+  </g>
+  <g transform="translate(700, 160)">
+    <rect x="0" y="0" width="240" height="50" rx="10" fill="url(#card)" stroke="#fcd34d" stroke-opacity="0.5"/>
+    <text x="120" y="32" font-family="monospace" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Prettier: 4.2s</text>
+  </g>
+  <g transform="translate(700, 220)">
+    <rect x="0" y="0" width="240" height="50" rx="10" fill="url(#card)" stroke="#34d399" stroke-opacity="0.7"/>
+    <text x="120" y="32" font-family="monospace" font-size="16" font-weight="900" fill="#34d399" text-anchor="middle">Biome: 0.08s ⚡</text>
+  </g>
+</svg>

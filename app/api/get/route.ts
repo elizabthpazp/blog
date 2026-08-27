@@ -12,14 +12,13 @@ export async function GET(request: Request) {
   }
 
   try {
-    await sql`CREATE TABLE IF NOT EXISTS posts (id TEXT PRIMARY KEY, count INTEGER NOT NULL)`;
+    await sql`CREATE TABLE IF NOT EXISTS posts (id TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0)`;
 
     const result = await sql`SELECT count FROM posts WHERE id = ${id}`;
-
-    // result.rows[0]?.count puede ser undefined si no existe
-    return NextResponse.json({ result }, { status: 200 });
+    const count = Number(result.rows[0]?.count ?? 0);
+    return NextResponse.json({ count }, { status: 200 });
   } catch (error: any) {
-    console.error('GET /api/get error', error);
+    console.error('GET /api/get error', error?.message || error);
     return NextResponse.json({ error: error?.message || 'DB error' }, { status: 500 });
   }
 }

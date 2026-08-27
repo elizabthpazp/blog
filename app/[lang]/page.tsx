@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Footer from "../../components/Footer"; 
 import EmailPlantilla from "../../components/EmailPlantilla";
 import Header from "../../components/Header"; 
@@ -73,12 +72,12 @@ export default async function HomePage({
         <Search list={postMetadata} failedText={dictionary.notFound} lang={lang} title={dictionary.search} /> 
 
         {/* Hero Section */}
-        <section className="text-center max-w-4xl mx-auto pt-6 sm:pt-12 pb-10">
-          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6">
+        <section className="text-center max-w-4xl mx-auto pt-6 sm:pt-12 pb-10 px-2 overflow-hidden">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-[1.1] mb-6 break-words">
             {dictionary.title}{" "}
-            <span className="relative whitespace-nowrap inline-block text-violet-600 dark:text-violet-400">
+            <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words">
               <SquigglyLines />
-              <span className="relative">{dictionary.title1}</span>
+              <span className="relative break-words">{dictionary.title1}</span>
             </span>{" "}
             {dictionary.title2}
           </h1>
@@ -87,22 +86,46 @@ export default async function HomePage({
             {dictionary.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              className="px-7 py-3.5 rounded-2xl font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 inline-flex items-center justify-center cursor-pointer"
               href="#articles"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-2xl bg-violet-500 dark:bg-violet-300 text-white dark:text-neutral-900 font-display font-semibold text-base sm:text-lg tracking-tight hover:bg-violet-600 dark:hover:bg-violet-400 hover:-translate-y-px active:translate-y-0 shadow-[0_1px_0_0_rgba(255,255,255,0.18)_inset,0_8px_24px_-12px_rgba(139,92,246,0.45)] hover:shadow-[0_1px_0_0_rgba(255,255,255,0.25)_inset,0_14px_30px_-10px_rgba(139,92,246,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 transition-all duration-200"
             >
-              {dictionary.cta}
-            </a> 
+              <span>{dictionary.cta}</span>
+              <svg
+                className="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-300 ease-out group-hover:translate-x-1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
 
             <a
               href={links.interaUi}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3.5 rounded-2xl font-semibold text-gray-800 dark:text-gray-200 bg-white/80 dark:bg-[#161926]/80 hover:bg-white dark:hover:bg-[#1e2235] border border-black/10 dark:border-white/10 hover:border-violet-500/50 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 inline-flex items-center justify-center gap-2 cursor-pointer"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 sm:px-7 sm:py-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white font-display font-semibold text-base sm:text-lg tracking-tight hover:bg-neutral-200 dark:hover:bg-neutral-800 hover:-translate-y-px active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 transition-all duration-200"
             >
+              <span aria-hidden="true" className="text-violet-500 text-base leading-none transition-transform duration-300 group-hover:scale-110">♥</span>
               <span>{dictionary.request}</span>
-              <span>💜</span>
+              <svg
+                className="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-300 ease-out group-hover:translate-x-1.5 opacity-60 group-hover:opacity-100"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
             </a>
           </div>
         </section>
@@ -137,10 +160,10 @@ export default async function HomePage({
               href={links.web}
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3.5 rounded-2xl font-semibold text-gray-800 dark:text-gray-200 bg-white/80 dark:bg-[#161926]/80 hover:bg-white dark:hover:bg-[#1e2235] border border-black/10 dark:border-white/10 hover:border-violet-500/50 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 inline-flex items-center justify-center gap-2 cursor-pointer"
+              className="group inline-flex items-center gap-2 px-5 py-3 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-white font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 transition-all duration-200"
             >
               <span>{dictionary.about}</span>
-              <span>👩🏻‍💻💜</span>
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </section>

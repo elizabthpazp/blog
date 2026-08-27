@@ -1,23 +1,27 @@
 "use client"
-import Link from 'next/link'
-import { i18n, Locale } from '../i18n-config'
-import Image from "next/image";
-import { links } from '../links-web'
+import { Locale } from '../i18n-config'
 import "../styles/search.css"
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { PostMetadata } from '../PostMetadata';
-import getPostMetaData from "../getPostMetadata";
 import PostPreview from "../components/PostPreview";
-import { useTheme } from "next-themes";
 
 const getPostContent = (postMetadata: PostMetadata[], title: string) => {
+  const normalizedTitle = title
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
 
-  postMetadata.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  postMetadata = postMetadata.filter((item) =>
-    item.subtitle.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(title.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase())
+  const filtered = postMetadata.filter((item) =>
+    item.subtitle
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .includes(normalizedTitle)
   );
-  return postMetadata;
+
+  return filtered.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 };
 
 export default function Search({
@@ -31,50 +35,160 @@ export default function Search({
   failedText: string,
   title: string,
 }) {
-  let [listResult, setListResult] = useState<PostMetadata[]>(list);
+  const [input, setInput] = useState('');
+  const [debouncedInput, setDebouncedInput] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  let postPreviews = listResult?.map((post) => (
-    <PostPreview key={post.slug} {...post} />
-  ));
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedInput(input), 180);
+    return () => clearTimeout(timer);
+  }, [input]);
 
-  let [input, setInput] = useState('');
-  let filteredList = () => {
-    setListResult(listResult = getPostContent(list, input))
-    postPreviews = listResult?.map((post) => (
-      <PostPreview key={post.slug} {...post} />
-    ));
-  }
-  const changeCloseSearch = () => {
-    setInput(input = '')
-    filteredList();
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsFocused(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsFocused(false);
+        inputRef.current?.blur();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const listResult = useMemo(
+    () => getPostContent(list, debouncedInput),
+    [list, debouncedInput]
+  );
+
+  const hasQuery = debouncedInput.trim() !== '';
+  const showResults = hasQuery;
+  const shouldShowDropdown = hasQuery && isFocused;
+  const isEmpty = shouldShowDropdown && listResult.length === 0;
+  const hasResults = shouldShowDropdown && listResult.length > 0;
+
+  const resetSearch = () => {
+    setInput('');
+    setDebouncedInput('');
+    setIsFocused(false);
+    inputRef.current?.blur();
   };
-  const { theme } = useTheme()
 
   return (
-    <div className="flex flex-col justify-between items-center w-full">
-      <div className="container blog-animation mt-6 items-center text-center justify-center">
-        <div className="row-auto flex items-center text-center justify-center">
-          <input type="text" value={input} onChange={e => setInput(input = e.target.value)} className="w-full max-w-xs justify-center shadow-xl border-solid input mb-2 text-gray-800 light:text-gray-800 dark:text-white" placeholder={title} onKeyUp={() => filteredList()} style={theme == 'light' ? { background: "transparent url('/icons/search-light.webp') no-repeat 15px center", backgroundSize: '15px 15px' } : {}} suppressHydrationWarning />
-          <div style={input != '' ? { display: 'block', placeItems: 'center', borderRadius: '22px', height: '48px', maxWidth: '48px', width: '48px', cursor: 'pointer', marginLeft: '2px', marginTop: '-8px' } : { display: 'none' }} onClick={() => changeCloseSearch()} className="columns-1 shadow-xl border-solid border-2 border-red-500 grid">
-            <div className="text-red-500 pt-2 pb-0 font-bold font-large">X</div>
+    <div ref={containerRef} className="w-full max-w-2xl mx-auto px-2 relative z-40">
+      <div className="blog-animation relative">
+        <div
+          className={`flex items-center gap-2 p-1.5 rounded-2xl backdrop-blur-xl bg-white/70 dark:bg-[#121520]/70 border transition-all duration-300 shadow-lg ${
+            shouldShowDropdown
+              ? 'border-violet-500/40 shadow-violet-500/10'
+              : 'border-black/10 dark:border-white/10 hover:border-violet-500/30'
+          }`}
+        >
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/15 to-indigo-500/15 border border-violet-500/20 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="url(#search-gradient)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="search-icon"
+            >
+              <defs>
+                <linearGradient id="search-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#7c3aed" />
+                  <stop offset="100%" stopColor="#6366f1" />
+                </linearGradient>
+              </defs>
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            placeholder={title}
+            aria-label={title}
+            className="flex-1 min-w-0 bg-transparent text-sm sm:text-base text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus:outline-none border-0 px-2 py-2"
+            suppressHydrationWarning
+          />
+
+          {showResults && (
+            <button
+              type="button"
+              onClick={resetSearch}
+              aria-label="Clear search"
+              className="shrink-0 flex items-center justify-center w-9 h-9 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] hover:bg-rose-500/10 hover:text-rose-500 text-gray-500 dark:text-gray-400 transition-all duration-200 cursor-pointer animate-fade-in"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {isEmpty && (
+        <div className="absolute left-2 right-2 top-full mt-3 z-50 animate-fade-in-up">
+          <div className="flex items-center justify-center gap-2.5 px-4 py-3 rounded-2xl backdrop-blur-xl bg-white/95 dark:bg-[#131622]/95 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-sm font-medium shadow-xl shadow-rose-500/5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <span>{failedText}</span>
           </div>
         </div>
-        <div style={input != '' && listResult?.length == 0 ? { display: 'block' } : { display: 'none' }}>
-          <div className='grid place-items-center'>
-            <div className="flex item mr-10 pl-4 pr-8 pb-3 pt-3 shadow-xl w-auto text-gray-800 light:text-gray-800 dark:text-white border-solid border-2 border-red-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgb(239 68 68)" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-4.99-5.58-5.34A6.492 6.492 0 0 0 3.03 9h2.02c.24-2.12 1.92-3.8 4.06-3.98C11.65 4.8 14 6.95 14 9.5c0 2.49-2.01 4.5-4.5 4.5c-.17 0-.33-.03-.5-.05v2.02l.01.01c1.8.13 3.47-.47 4.72-1.55l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49L15.5 14z" /><path fill="rgb(239 68 68)" d="M6.12 11.17L4 13.29l-2.12-2.12c-.2-.2-.51-.2-.71 0c-.2.2-.2.51 0 .71L3.29 14l-2.12 2.12c-.2.2-.2.51 0 .71c.2.2.51.2.71 0L4 14.71l2.12 2.12c.2.2.51.2.71 0c.2-.2.2-.51 0-.71L4.71 14l2.12-2.12c.2-.2.2-.51 0-.71a.513.513 0 0 0-.71 0z" /></svg>
-              <p> {failedText} </p>
+      )}
+
+      {hasResults && (
+        <div className="absolute left-2 right-2 top-full mt-3 z-50 search-results-enter">
+          <div className="rounded-2xl backdrop-blur-xl bg-white/95 dark:bg-[#131622]/95 border border-black/10 dark:border-white/10 shadow-xl shadow-violet-500/10 overflow-hidden">
+            <div className="px-3 sm:px-4 py-3 max-h-[60vh] sm:max-h-[450px] overflow-y-auto search-scroll divide-y divide-black/[0.06] dark:divide-white/[0.06]">
+              {listResult.map((post) => (
+                <PostPreview key={post.slug} {...post} />
+              ))}
             </div>
           </div>
         </div>
-      </div>
-      <div className='itemsSearch' style={input != '' && listResult?.length != 0 && postPreviews ? { display: 'block' } : { display: 'none' }}>
-        <div className='grid absolute place-items-center items-center text-center justify-center mr-2 ml-2'>
-          <div id="style-1" className="border-4 scroll-smooth border-gray-500 border-solid light:bg-white bg-white dark:bg-[#17181C] z-50 overflow-y-scroll" style={{ borderRadius: '25px', zoom: '80%', maxHeight: '450px' }}>
-            <div className='pt-4 mt-0 pr-6 pl-6 pb-4 divide-y'>{postPreviews}</div>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

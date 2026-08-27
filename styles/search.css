@@ -1,31 +1,57 @@
-.input{border:2px solid #b7b6b6!important;background:transparent url("/icons/search-dark.webp") no-repeat 15px center;background-size:15px 15px;border-radius: 22px;padding:10px 45px;}.item{border-radius:22px;}.input[type="text"]:hover{filter:brightness(97%);}
-.input[type="text"]:focus,.input[type="text"]:active{outline:none;filter:brightness(100%);border:2px solid rgb(148, 77, 186)!important;}
+/* ===== Search — Modern Design System ===== */
 
-#style-1::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+.search-results-enter {
+  animation: searchResultsIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-#style-1::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+@keyframes searchResultsIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-#style-1::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
+.search-icon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (min-width:796px){.containerItem{padding-left:34%;} .containerItemsSearch{margin-left: 25%;}}
+input:focus ~ * .search-icon,
+.search-icon {
+  filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.25));
+}
 
-@media (min-width:860px){.itemsSearch{margin-right:50%}}
+input[type="text"]:focus + .search-icon,
+input[type="text"]:focus ~ .search-icon {
+  transform: scale(1.08);
+}
 
-@media (min-width:450px) and (max-width:860px){.itemsSearch{margin-right:90%}}
+/* ===== Custom scrollbar — violet themed ===== */
+.search-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 12px;
+}
 
-@media (max-width:450px){.itemsSearch{margin-right:100%}}
- 
+.search-scroll::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+.search-scroll::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.35), rgba(99, 102, 241, 0.35));
+  transition: background 0.2s ease;
+}
+
+.search-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.55), rgba(99, 102, 241, 0.55));
+}
+
+/* Firefox */
+.search-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.35) transparent;
+}

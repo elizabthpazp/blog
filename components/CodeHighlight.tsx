@@ -31,7 +31,7 @@ export default function CodeHighlight({ code, language = 'javascript' }: { code:
   };
 
   return (
-    <div className="my-6 max-w-4xl mx-auto rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl bg-[#011627] text-left">
+    <div className="code-block my-6 w-full max-w-full sm:max-w-4xl mx-auto rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl bg-[#011627] text-left min-w-0">
       {/* macOS Top Bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-[#0b1320] border-b border-white/5">
         <div className="flex items-center gap-2">
@@ -67,9 +67,9 @@ export default function CodeHighlight({ code, language = 'javascript' }: { code:
         </button>
       </div>
 
-      {/* Code Body */}
-      <pre className="!p-4 sm:!p-6 !m-0 !bg-[#011627] overflow-x-auto text-sm font-mono leading-relaxed">
-        <code className={language}>
+      {/* Code Body - scroll interno, nunca desborda página */}
+      <pre className="!p-4 sm:!p-6 !m-0 !bg-transparent overflow-x-auto max-w-full text-sm font-mono leading-relaxed text-[#d6deeb]">
+        <code className={`${language} whitespace-pre max-w-none !bg-transparent`}>
           {code}
         </code>
       </pre>

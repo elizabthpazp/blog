@@ -16,13 +16,15 @@ export function ThemeSwitcher({ classNameProp }: { classNameProp: string }) {
   if (!mounted) return null;
 
   return (
-    <div>
+    <div className={classNameProp} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       {/* @ts-ignore */}
       <Expand
         onToggle={() => setTheme(theme == "dark" ? "light" : "dark")}
-        duration={750} 
+        duration={750}
         idPrefix={'moon'}
-        style={{ width: "55px", height: "30px", paddingTop: "6px", marginTop: "0px", fontSize: "25px" }} />
+        className="text-gray-700 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+        style={{ width: "42px", height: "24px", fontSize: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}
+      />
     </div>
   );
 }

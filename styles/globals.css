@@ -4,6 +4,41 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent horizontal scroll from any rogue element */
+main, article {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+article {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+article pre,
+article code {
+  overflow-wrap: normal;
+  word-break: normal;
+  word-wrap: normal;
 }
 
 /* ===== Design System ===== */
@@ -137,14 +172,29 @@ html {
 
 /* ===== Images — scoped defaults ===== */
 /* 
-  Only apply max-width and border-radius to markdown content images,
+  Only apply constraints to markdown content images,
   NOT to component images like thumbnails, hero, logo, etc.
+  Cuadradas (1024x1024) limitadas por max-height para no volverse gigantes;
+  panorámicas siguen a max-width:100% pero sin explotar en altura.
 */
 article img,
 .containerContentBlog img {
-  margin: 0 auto;
+  display: block;
+  margin: 1.5rem auto;
   max-width: 100%;
+  max-height: 520px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+:is(.dark) article img,
+:is(.dark) .containerContentBlog img {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* Force override for component images (thumbnails, logos) */
@@ -165,12 +215,9 @@ article img,
 }
 
 @media (max-width: 450px) {
-  article img {
-    max-width: 300px !important;
-  }
-
-  .card-post {
-    zoom: 75%;
+  article img,
+  .containerContentBlog img {
+    max-height: 360px;
   }
 }
 
@@ -223,9 +270,24 @@ div.code {
   white-space: pre;
 }
 
-:not(.cont-code)>code[class*="language-"],
-.cont-code[class*="language-"] {
-  background: #1f1f1f;
+/* El bloque de codigo hereda el fondo del contenedor: sin cortes ni cajas internas */
+.code-block pre,
+.code-block pre code,
+.code-block pre code.hljs,
+.code-block code[class*="language-"] {
+  background: transparent !important;
+  border-radius: 0;
+  margin: 0;
+}
+
+.code-block pre code,
+.code-block pre code.hljs {
+  display: block;
+  padding: 0;
+  overflow: visible;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 100%;
 }
 
 /* .code-snippet{

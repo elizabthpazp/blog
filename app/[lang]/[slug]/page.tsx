@@ -16,6 +16,7 @@ import LikeCount from "../../../components/LikeCount";
 import { links } from "../../../links-web";
 import PostPreview from "../../../components/PostPreview";
 import getDate from "../../../utils/getDate";
+import highlightTitle from "../../../utils/highlightTitle";
 import CodeHighlight from "../../../components/CodeHighlight";
 
 let languageProgramming: string;
@@ -139,69 +140,94 @@ const formatImageSrc = (img?: string) => {
   return cleaned;
 };
 
+const MyImg = ({ alt, src, title, ...rest }: any) => {
+  const cleanedSrc = formatImageSrc(src);
+  return (
+    <img
+      src={cleanedSrc || src}
+      alt={alt || ""}
+      title={title}
+      loading="lazy"
+      decoding="async"
+      className="block mx-auto my-8 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] shadow-sm max-w-full max-h-[360px] sm:max-h-[520px] w-auto h-auto object-contain"
+      {...rest}
+    />
+  );
+};
+
 // Limpia el markdown para evitar duplicar header (imagen, título, fecha, descripción) que ya se renderiza desde frontmatter
 function cleanContent(raw: string, meta: PostMetadata): string {
-  let lines = raw.split('\n');
-  let idx = 0;
-  const isEmpty = (l: string) => l.trim() === '';
-  const isDateLine = (l: string) => /^\d{1,2}\s+\w+\s+\d{4}\s*$/.test(l.trim());
+  const normalize = (text: string) =>
+    (text || "")
+      .toLowerCase()
+      .replace(/[*_`"'“”]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
 
-  while (idx < lines.length && isEmpty(lines[idx])) idx++;
-  if (idx < lines.length && lines[idx].trim().startsWith('![')) {
-    idx++;
+  const body = (raw || "").replace(/\uFEFF/g, "").replace(/\r\n?/g, "\n");
+
+  // Algunos posts repiten el frontmatter dentro del contenido: se descarta ese bloque
+  const strayFrontmatter = body.match(/^\s*---\n([\s\S]*?)\n---[ \t]*\n?/);
+  const withoutStray =
+    strayFrontmatter && /(^|\n)\s*(title|subtitle|description|date|image|language)\s*:/.test(strayFrontmatter[1])
+      ? body.slice(strayFrontmatter[0].length)
+      : body;
+
+  const lines = withoutStray.split("\n");
+  const isEmpty = (l: string) => l.trim() === "";
+  const metaDate = normalize(meta.date).replace(/,/g, "");
+  const metaDesc = normalize(meta.description);
+
+  // El banner ya se muestra desde frontmatter: la primera imagen del contenido siempre sobra
+  const isBannerImage = (l: string) => /^!\[[^\]]*\]\(\s*[^)\s]+/.test(l);
+
+  const isDateLine = (l: string) => {
+    const text = normalize(l).replace(/,/g, "");
+    if (!text) return false;
+    if (metaDate && text === metaDate) return true;
+    return (
+      /^\d{1,2}\s+(de\s+)?[a-záéíóúñ]+\s+(de\s+)?\d{4}$/.test(text) ||
+      /^[a-záéíóúñ]+\s+\d{1,2}\s+\d{4}$/.test(text)
+    );
+  };
+
+  const isDescription = (l: string) => {
+    const text = normalize(l.replace(/^#{1,6}\s*/, ""));
+    if (!text || !metaDesc) return false;
+    return text.slice(0, 20) === metaDesc.slice(0, 20);
+  };
+
+  const used = { banner: false, title: false, subtitle: false, date: false, desc: false };
+  let idx = 0;
+  const skipEmpty = () => {
     while (idx < lines.length && isEmpty(lines[idx])) idx++;
-  }
-  if (idx < lines.length && lines[idx].trim().startsWith('# ') && !lines[idx].trim().startsWith('##')) {
+  };
+
+  skipEmpty();
+  while (idx < lines.length) {
+    const line = lines[idx].trim();
+    if (!used.banner && isBannerImage(line)) used.banner = true;
+    else if (!used.title && /^#(?!#)/.test(line)) used.title = true;
+    else if (!used.subtitle && /^##(?!#)/.test(line)) used.subtitle = true;
+    else if (!used.date && isDateLine(line)) used.date = true;
+    else if (!used.desc && /^####(?!#)/.test(line) && isDescription(line)) used.desc = true;
+    else break;
     idx++;
-    while (idx < lines.length && isEmpty(lines[idx])) idx++;
+    skipEmpty();
   }
-  if (idx < lines.length && lines[idx].trim().startsWith('## ')) {
-    idx++;
-    while (idx < lines.length && isEmpty(lines[idx])) idx++;
-  }
-  if (idx < lines.length && isDateLine(lines[idx])) {
-    idx++;
-    while (idx < lines.length && isEmpty(lines[idx])) idx++;
-  }
-  if (idx < lines.length && lines[idx].trim().startsWith('####')) {
-    const h4Text = lines[idx].replace(/^####\s*/, '').trim().toLowerCase();
-    const descNorm = (meta.description || '').toLowerCase();
-    const h4Start = h4Text.slice(0, 30);
-    const descStart = descNorm.slice(0, 30);
-    const isDesc = h4Text && descNorm && (h4Start.startsWith(descStart.slice(0, 20)) || descStart.startsWith(h4Start.slice(0, 20)));
-    if (isDesc) {
-      idx++;
-      while (idx < lines.length && isEmpty(lines[idx])) idx++;
-      if (idx < lines.length && lines[idx].trim().startsWith('![')) {
-        idx++;
-        while (idx < lines.length && isEmpty(lines[idx])) idx++;
-      }
-    }
-  } else {
-    if (idx < lines.length && lines[idx].trim().startsWith('![')) {
-      idx++;
-      while (idx < lines.length && isEmpty(lines[idx])) idx++;
-    }
-  }
-  if (idx < lines.length && lines[idx].trim().startsWith('### ')) {
+
+  // Variante donde la descripción (y su imagen) vienen después del primer subtítulo de contenido
+  if (!used.desc && idx < lines.length && lines[idx].trim().startsWith("### ")) {
     let j = idx + 1;
     while (j < lines.length && isEmpty(lines[j])) j++;
-    if (j < lines.length && lines[j].trim().startsWith('####')) {
-      const h4Text = lines[j].replace(/^####\s*/, '').trim().toLowerCase();
-      const descNorm = (meta.description || '').toLowerCase();
-      const h4Start = h4Text.slice(0, 30);
-      const descStart = descNorm.slice(0, 30);
-      if (h4Text && descNorm && (h4Start.startsWith(descStart.slice(0, 20)) || descStart.startsWith(h4Start.slice(0, 20)))) {
-        lines.splice(j, 1);
-        let k = j;
-        while (k < lines.length && isEmpty(lines[k])) k++;
-        if (k < lines.length && lines[k].trim().startsWith('![')) {
-          lines.splice(k, 1);
-        }
-      }
+    if (j < lines.length && /^####(?!#)/.test(lines[j].trim()) && isDescription(lines[j].trim())) {
+      lines.splice(j, 1);
+      while (j < lines.length && isEmpty(lines[j])) j++;
+      if (!used.banner && j < lines.length && isBannerImage(lines[j].trim())) lines.splice(j, 1);
     }
   }
-  return lines.slice(idx).join('\n').trimStart();
+
+  return lines.slice(idx).join("\n").trimStart();
 }
 
 export default async function Learn({
@@ -218,55 +244,55 @@ export default async function Learn({
   const content = cleanContent(rawContent, meta);
 
   const MyH1 = ({ children }: { children: React.ReactNode }) => (
-    <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center tracking-tight leading-[1.2] max-w-4xl mx-auto my-6">
+    <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white text-center tracking-tight leading-[1.2] max-w-4xl mx-auto my-6 px-2 break-words overflow-hidden">
       {children}
     </h1>
   );
 
   const MyH2 = ({ children }: { children: React.ReactNode }) => (
-    <h2 className="font-display text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center my-6 max-w-4xl mx-auto">
-      <span className="relative whitespace-nowrap inline-block text-violet-600 dark:text-violet-400">
+    <h2 className="font-display text-xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center my-6 max-w-4xl mx-auto px-2 leading-tight break-words overflow-hidden">
+      <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words">
         <SquigglyLines />
-        <span className="relative">{children}</span>
+        <span className="relative break-words whitespace-normal">{children}</span>
       </span>
     </h2>
   );
 
   const MyP = ({ children }: { children: React.ReactNode }) => {
     return (
-      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed my-5 max-w-4xl mx-auto font-normal">
+      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed my-5 max-w-4xl mx-auto font-normal px-2 sm:px-0 break-words overflow-hidden">
         {children}
       </p>
     );
   };
 
   const MyH3 = ({ children }: { children: React.ReactNode }) => (
-    <div className="max-w-4xl mx-auto mt-10 mb-4 text-left">
-      <h3 className="font-display text-xl sm:text-2xl font-bold text-violet-600 dark:text-violet-400 tracking-tight">
+    <div className="max-w-4xl mx-auto mt-10 mb-4 text-left px-2 sm:px-0">
+      <h3 className="font-display text-xl sm:text-2xl font-bold text-violet-500 dark:text-violet-300 tracking-tight break-words">
         {children}
       </h3>
     </div>
   );
 
   const MyH4 = ({ children }: { children: React.ReactNode }) => (
-    <div className="max-w-4xl mx-auto mt-8 mb-3 text-left">
-      <h4 className="font-display text-lg sm:text-xl font-normal text-gray-700 dark:text-gray-300 leading-relaxed">
+    <div className="max-w-4xl mx-auto mt-8 mb-3 text-left px-2 sm:px-0">
+      <h4 className="font-display text-lg sm:text-xl font-normal text-gray-700 dark:text-gray-300 leading-relaxed break-words">
         {children}
       </h4>
     </div>
   );
 
   const MyLi = ({ children }: { children: React.ReactNode }) => (
-    <div className="max-w-4xl mx-auto my-2 text-left">
-      <li className="flex items-start gap-2.5 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed list-none">
+    <div className="max-w-4xl mx-auto my-2 text-left px-2 sm:px-0">
+      <li className="flex items-start gap-2.5 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed list-none break-words min-w-0">
         <span className="inline-block w-2 h-2 rounded-full bg-violet-500 mt-2.5 flex-shrink-0" />
-        <span>{children}</span>
+        <span className="min-w-0 break-words flex-1">{children}</span>
       </li>
     </div>
   );
 
   const MyCode = ({ children }: { children: React.ReactNode }) => (
-    <code className="px-1.5 py-0.5 rounded-lg bg-violet-500/10 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 font-mono text-sm border border-violet-500/20">
+    <code className="px-1.5 py-0.5 rounded-lg bg-violet-500/10 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 font-mono text-sm border border-violet-500/20 break-all">
       {children}
     </code>
   );
@@ -287,6 +313,7 @@ export default async function Learn({
   ));
 
   const heroSrc = formatImageSrc(meta.image);
+  const titleParts = highlightTitle(meta.subtitle);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -301,36 +328,43 @@ export default async function Learn({
         />
 
         {/* Header del artículo - orden correcto: imagen → título → meta → descripción (no negrita) */}
-        <div className="max-w-4xl mx-auto text-center mt-8">
+        <div className="max-w-4xl mx-auto text-center mt-8 overflow-hidden px-2 sm:px-0 w-full">
           {heroSrc && (
             <div className="w-full max-w-3xl mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg border border-black/5 dark:border-white/10">
               <img
                 src={heroSrc}
                 alt={meta.subtitle || meta.title}
-                className="w-full h-auto max-h-[420px] object-cover forcedImage"
+                className="w-full aspect-[16/9] sm:aspect-auto sm:h-auto max-h-[420px] object-cover forcedImage"
               />
             </div>
           )}
           {meta.subtitle && (
-            <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.2]">
-              {meta.subtitle}
+            <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-[1.2] break-words px-2 max-w-full overflow-hidden">
+              {titleParts.before}
+              {titleParts.keyword && (
+                <span className="relative inline-block max-w-full text-violet-500 dark:text-violet-300 break-words">
+                  <SquigglyLines />
+                  <span className="relative break-words whitespace-normal">{titleParts.keyword}</span>
+                </span>
+              )}
+              {titleParts.after}
             </h1>
           )}
-          <div className="flex items-center justify-center gap-3 mt-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] text-sm text-gray-500 dark:text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08] text-sm text-gray-500 dark:text-gray-400 px-2 max-w-full overflow-hidden">
             {meta.date && <span>{meta.date}</span>}
             {meta.date && <span>·</span>}
             <span>{time} {dictionary.minutes}</span>
             <span className="ml-2"><LikeCount slug={slug} title={slug} animation={true} /></span>
           </div>
           {meta.description && (
-            <p className="mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 font-normal leading-relaxed break-words px-2 max-w-full overflow-hidden">
               {meta.description}
             </p>
           )}
         </div>
 
         {/* Article Content - ya sin header duplicado, ancho 4xl igual que code */}
-        <article className="w-full text-center sm:text-left mt-8">
+        <article className="w-full max-w-full text-center sm:text-left mt-8 min-w-0 overflow-hidden">
           <Markdown
             options={{
               overrides: {
@@ -358,6 +392,9 @@ export default async function Learn({
                 pre: {
                   component: MyPre,
                 },
+                img: {
+                  component: MyImg,
+                },
               },
             }}
           >
@@ -365,9 +402,11 @@ export default async function Learn({
           </Markdown>
         </article>
 
-        {/* Floating Share Button */}
-        <div className="fixed bottom-6 right-6 z-40">
-          <RouteActualLink titlePage={titlePage} title={dictionary.share} />
+        {/* Floating Share Button - centrado inferior, responsive sin overflow */}
+        <div className="fixed inset-x-0 bottom-4 sm:bottom-6 z-40 flex justify-center pointer-events-none px-4">
+          <div className="pointer-events-auto max-w-[calc(100vw-2rem)]">
+            <RouteActualLink titlePage={titlePage} title={dictionary.share} />
+          </div>
         </div>
 
         {/* Related Articles */}

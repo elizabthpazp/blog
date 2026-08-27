@@ -46,8 +46,10 @@ export default function LikeCount({
         cache: "no-store",
         method: "POST",
       });
-      if (!res.ok) throw new Error(`Failed: ${res.status}`);
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(`Failed: ${res.status} ${data?.error || ""}`.trim());
+      }
       if (typeof data?.count === "number") {
         setCount(data.count);
       }

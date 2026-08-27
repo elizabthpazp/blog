@@ -1,7 +1,17 @@
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
+
+function getClient() {
+  const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  if (!url) {
+    throw new Error(
+      'No database connection string found. Set DATABASE_URL (Neon) or POSTGRES_URL in Vercel Environment Variables.'
+    );
+  }
+  return neon(url);
+}
 
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -12,19 +22,23 @@ export async function POST(request: Request) {
   }
 
   try {
+    const sql = getClient();
     await sql`CREATE TABLE IF NOT EXISTS posts (id TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0)`;
 
-    const result = await sql`
+    const rows = await sql`
       INSERT INTO posts (id, count) VALUES (${id}, 1)
       ON CONFLICT (id) DO UPDATE SET count = posts.count + 1
       RETURNING count
     `;
 
-    const newCount = Number(result.rows[0]?.count ?? 0);
+    const newCount = Number(rows[0]?.count ?? 0);
     return NextResponse.json({ ok: true, count: newCount }, { status: 200 });
   } catch (error: any) {
     console.error('POST /api/post error', error?.message || error);
-    return NextResponse.json({ error: error?.message || 'DB error' }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || 'DB error', code: error?.code || null },
+      { status: 500 }
+    );
   }
 }
 

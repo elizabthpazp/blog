@@ -63,6 +63,112 @@ article code {
   word-wrap: normal;
 }
 
+/* ===== Markdown Tables ===== */
+article table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+:is(.dark) article table {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(18, 21, 32, 0.55);
+  color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+article table thead {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+:is(.dark) article table thead {
+  background: rgba(124, 58, 237, 0.18);
+}
+
+article table th {
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: left;
+  border-bottom: 2px solid rgba(124, 58, 237, 0.25);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+:is(.dark) article table th {
+  color: #f3f4f6;
+  border-bottom-color: rgba(167, 139, 250, 0.35);
+}
+
+article table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  vertical-align: top;
+  line-height: 1.55;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+:is(.dark) article table td {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+article table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+article table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+article table tbody tr:hover {
+  background: rgba(124, 58, 237, 0.04);
+}
+
+:is(.dark) article table tbody tr:hover {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+/* Wrapper for horizontal scroll on narrow screens */
+.article-table-wrapper {
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  border-radius: 12px;
+}
+
+.article-table-wrapper > table {
+  margin: 0;
+  min-width: max-content;
+}
+
+@media (max-width: 640px) {
+  article table {
+    font-size: 0.8125rem;
+  }
+  article table th,
+  article table td {
+    padding: 0.6rem 0.75rem;
+  }
+}
+
 /* Code blocks: permiten scroll horizontal sin bloquear el vertical — clave para no “frenar” en mobile */
 article pre,
 .code-block pre {

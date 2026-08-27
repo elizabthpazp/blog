@@ -156,6 +156,14 @@ const MyImg = ({ alt, src, title, ...rest }: any) => {
   );
 };
 
+const MyTable = ({ children, ...rest }: any) => {
+  return (
+    <div className="article-table-wrapper max-w-4xl mx-auto">
+      <table {...rest}>{children}</table>
+    </div>
+  );
+};
+
 // Limpia el markdown para evitar duplicar header (imagen, título, fecha, descripción) que ya se renderiza desde frontmatter
 function cleanContent(raw: string, meta: PostMetadata): string {
   const normalize = (text: string) =>
@@ -395,6 +403,9 @@ export default async function Learn({
                 },
                 img: {
                   component: MyImg,
+                },
+                table: {
+                  component: MyTable,
                 },
               },
             }}

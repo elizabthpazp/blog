@@ -228,7 +228,7 @@ const getPostMetaData = (
   // Related mode: use TF-IDF analysis to return only truly related
   if (related && actual) {
     const actualSlug = typeof actual === 'string' ? actual : String(actual);
-    return getRelatedScoredPosts(lang, actualSlug, 3, 0.08);
+    return getRelatedScoredPosts(lang, actualSlug, 3, 0.05);
   }
 
   const files = fs.readdirSync(folder);
@@ -250,7 +250,7 @@ const getPostMetaData = (
 
         const fileContents = fs.readFileSync(targetPath, "utf8");
         const matterResult = matter(fileContents);
-        
+
         if (related && filename === actual) {
           return null;
         }
@@ -274,6 +274,7 @@ const getPostMetaData = (
           date: date,
           image: image,
           likes: matterResult.data.likes || 0,
+          body: matterResult.content || "",
         };
         if (icon) (post as any).icon = icon;
 

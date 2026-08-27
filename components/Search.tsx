@@ -5,19 +5,27 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { PostMetadata } from '../PostMetadata';
 import PostPreview from "../components/PostPreview";
 
-const getPostContent = (postMetadata: PostMetadata[], title: string) => {
-  const normalizedTitle = title
+const normalize = (text: string) =>
+  (text || "")
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
 
-  const filtered = postMetadata.filter((item) =>
-    item.subtitle
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .includes(normalizedTitle)
-  );
+const getPostContent = (postMetadata: PostMetadata[], title: string) => {
+  const normalizedTitle = normalize(title);
+
+  const filtered = postMetadata.filter((item) => {
+    const haystack = [
+      item.subtitle,
+      item.description,
+      item.body,
+      item.title,
+    ]
+      .map((field) => normalize(field || ""))
+      .join('\n');
+
+    return haystack.includes(normalizedTitle);
+  });
 
   return filtered.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()

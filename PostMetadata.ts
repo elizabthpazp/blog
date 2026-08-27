@@ -7,7 +7,8 @@ export interface PostMetadata{
     image: string,
     icon?: string,
     likes: any,
-    language?: string
+    language?: string,
+    body?: string
 }
 
 export interface PreviewMetadata{ 

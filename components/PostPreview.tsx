@@ -12,7 +12,7 @@ const formatImageSrc = (img?: string) => {
   return cleaned;
 };
 
-const Postpreview = (props: PostMetadata) => {  
+const Postpreview = (props: PostMetadata & { lang?: string }) => {  
   if (!props.slug) return null;
 
   const categoryTag = props.title || 'Desarrollo Web';
@@ -22,9 +22,12 @@ const Postpreview = (props: PostMetadata) => {
   const hasIcon = Boolean((props as any).icon);
   const imageSrc = formatImageSrc((props as any).icon || props.image);
 
+  // Build URL with language prefix
+  const href = props.lang ? `/${props.lang}/${props.slug}` : `/${props.slug}`;
+
   return ( 
     <Link 
-      href={`/${props.slug}`} 
+      href={href} 
       className="group block card-post p-4 sm:p-5 mb-4 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-white/80 dark:bg-[#131622]/90 border border-black/10 dark:border-white/10 rounded-2xl"
     >
       <div className="flex flex-row items-center gap-3 sm:gap-5 w-full min-w-0">

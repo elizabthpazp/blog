@@ -61,7 +61,7 @@ export default async function HomePage({
   postMetadata.sort((a, b) => getDate(b.date) - getDate(a.date));
 
   const postPreviews = postMetadata.map((post) => (
-    <PostPreview key={post.slug} {...post} />
+    <PostPreview key={post.slug} {...post} lang={lang} />
   ));
 
   return (

@@ -191,7 +191,7 @@ export default function Search({
           <div className="rounded-2xl backdrop-blur-xl bg-white/95 dark:bg-[#131622]/95 border border-black/10 dark:border-white/10 shadow-xl shadow-violet-500/10 overflow-hidden">
             <div className="px-3 sm:px-4 py-3 max-h-[60vh] sm:max-h-[450px] overflow-y-auto search-scroll divide-y divide-black/[0.06] dark:divide-white/[0.06]">
               {listResult.map((post) => (
-                <PostPreview key={post.slug} {...post} />
+                <PostPreview key={post.slug} {...post} lang={lang} />
               ))}
             </div>
           </div>

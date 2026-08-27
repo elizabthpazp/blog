@@ -133,7 +133,7 @@ export default function Header({
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo */}
           <Link
-            href="/"
+            href={actual ? `/${actual}` : "/"}
             className="relative group flex items-center shrink-0"
             aria-label={links.username}
           >
@@ -151,7 +151,7 @@ export default function Header({
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-1.5 sm:gap-2">
             {showHome && (
-              <NavButton href="/" title="Home" label="Home">
+              <NavButton href={actual ? `/${actual}` : "/"} title="Home" label="Home">
                 <HomeIcon className="w-[18px] h-[18px]" />
               </NavButton>
             )}
@@ -279,7 +279,7 @@ function MobileMenu({
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-black/[0.06] dark:border-white/[0.06]">
               <Link
-                href="/"
+                href={actual ? `/${actual}` : "/"}
                 onClick={onClose}
                 aria-label={links.username}
                 className="relative group flex items-center shrink-0"
@@ -327,7 +327,7 @@ function MobileMenu({
             <nav className="px-3 py-3 max-h-[60vh] overflow-y-auto">
               {showHome && (
                 <MobileNavLink
-                  href="/"
+                  href={actual ? `/${actual}` : "/"}
                   label="Home"
                   icon={<HomeIcon className="w-5 h-5" />}
                   accent="violet"

@@ -16,7 +16,8 @@ export default function RouteActualLink({
 
   return (
     <Link
-      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl backdrop-blur-xl bg-white/80 dark:bg-[#161926]/90 border border-black/10 dark:border-white/15 text-gray-800 dark:text-gray-100 font-semibold text-xs sm:text-sm shadow-xl hover:shadow-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 max-w-full text-center whitespace-nowrap"
+      style={{ transform: 'translateZ(0)' } as any}
+      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl backdrop-blur-md md:backdrop-blur-xl bg-white/85 dark:bg-[#161926]/90 border border-black/10 dark:border-white/15 text-gray-800 dark:text-gray-100 font-semibold text-xs sm:text-sm shadow-lg md:shadow-xl hover:shadow-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 max-w-full text-center whitespace-nowrap transform-gpu will-change-transform"
       href={shareUrl}
       target="_blank"
       rel="noopener noreferrer"

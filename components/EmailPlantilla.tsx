@@ -21,7 +21,7 @@ export default function EmailPlantilla({
 }) {
   return (
     <>
-      <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+      <script src="https://f.convertkit.com/ckjs/ck.5.js" async defer></script>
       <form
         action="https://app.convertkit.com/forms/5918261/subscriptions"
         className="seva-form formkit-form my-12 w-full max-w-2xl mx-auto relative rounded-3xl p-6 sm:p-10 backdrop-blur-xl bg-gradient-to-br from-violet-500/[0.07] via-transparent to-indigo-500/[0.05] border border-violet-500/20 shadow-xl overflow-hidden"

@@ -67,8 +67,11 @@ export default function CodeHighlight({ code, language = 'javascript' }: { code:
         </button>
       </div>
 
-      {/* Code Body - scroll interno, nunca desborda página */}
-      <pre className="!p-4 sm:!p-6 !m-0 !bg-transparent overflow-x-auto max-w-full text-sm font-mono leading-relaxed text-[#d6deeb]">
+      {/* Code Body - scroll interno, nunca desborda página | fix mobile: no bloquea scroll vertical */}
+      <pre
+        className="!p-4 sm:!p-6 !m-0 !bg-transparent overflow-x-auto max-w-full text-sm font-mono leading-relaxed text-[#d6deeb] overscroll-x-contain"
+        style={{ WebkitOverflowScrolling: 'touch', overscrollBehaviorX: 'contain', touchAction: 'pan-x pan-y' } as any}
+      >
         <code className={`${language} whitespace-pre max-w-none !bg-transparent`}>
           {code}
         </code>

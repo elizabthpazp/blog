@@ -35,7 +35,20 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    let ticking = false;
+    let lastState = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const next = window.scrollY > 8;
+        if (next !== lastState) {
+          lastState = next;
+          setScrolled(next);
+        }
+        ticking = false;
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -108,10 +121,11 @@ export default function Header({
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        style={{ transform: 'translateZ(0)', willChange: 'transform' } as any}
+        className={`sticky top-0 z-40 w-full transition-all duration-300 transform-gpu ${
           scrolled
-            ? "py-2 backdrop-blur-2xl bg-white/80 dark:bg-[#0b0d14]/80 shadow-lg shadow-black/[0.03] dark:shadow-black/20"
-            : "py-3 backdrop-blur-xl bg-white/70 dark:bg-[#0b0d14]/70 shadow-sm"
+            ? "py-2 backdrop-blur-lg md:backdrop-blur-xl bg-white/80 dark:bg-[#0b0d14]/80 shadow-lg shadow-black/[0.03] dark:shadow-black/20"
+            : "py-3 backdrop-blur-md md:backdrop-blur-xl bg-white/70 dark:bg-[#0b0d14]/70 shadow-sm"
         }`}
       >
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent opacity-70" />
@@ -233,27 +247,30 @@ function MobileMenu({
 }) {
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop - sin blur ni bg cuando cerrado para no crear layer GPU que frena scroll */}
       <div
         onClick={onClose}
         aria-hidden="true"
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 transition-opacity duration-300 md:hidden ${
+          open ? "bg-black/40 backdrop-blur-sm opacity-100" : "bg-transparent backdrop-blur-none opacity-0 pointer-events-none"
         }`}
+        style={{ contain: open ? 'paint' : 'none', willChange: 'opacity' } as any}
       />
 
-      {/* Sheet */}
+      {/* Sheet - evita layer fijo cuando cerrado */}
       <div
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
+        aria-hidden={!open}
         className={`fixed inset-x-0 top-0 z-50 md:hidden transition-all duration-300 ease-out ${
           open
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0 pointer-events-none"
         }`}
+        style={{ contain: open ? 'paint' : 'none', willChange: 'transform, opacity', visibility: open ? 'visible' : 'hidden' } as any}
       >
-        <div className="relative mx-3 mt-3 rounded-3xl backdrop-blur-2xl bg-white/95 dark:bg-[#0b0d14]/95 border border-black/10 dark:border-white/10 shadow-2xl shadow-violet-500/10 overflow-hidden">
+        <div className={`relative mx-3 mt-3 rounded-3xl border border-black/10 dark:border-white/10 shadow-2xl shadow-violet-500/10 overflow-hidden ${open ? "backdrop-blur-2xl bg-white/95 dark:bg-[#0b0d14]/95" : "backdrop-blur-none bg-white dark:bg-[#0b0d14]"}`}>
           {/* Decorative gradient orb */}
           <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-gradient-to-br from-violet-500/20 to-indigo-500/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-gradient-to-br from-indigo-500/15 to-violet-500/15 blur-3xl pointer-events-none" />

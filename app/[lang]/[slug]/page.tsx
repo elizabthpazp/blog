@@ -261,7 +261,7 @@ export default async function Learn({
 
   const MyP = ({ children }: { children: React.ReactNode }) => {
     return (
-      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed my-5 max-w-4xl mx-auto font-normal px-2 sm:px-0 break-words overflow-hidden">
+      <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed my-5 max-w-4xl mx-auto font-normal px-2 sm:px-0 break-words overflow-visible">
         {children}
       </p>
     );
@@ -317,7 +317,7 @@ export default async function Learn({
   const titleParts = highlightTitle(meta.subtitle);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen supports-[min-height:100svh]:min-h-[100svh]">
       <Header showHome={true} actual={lang} />
 
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 background-gradient relative">
@@ -403,9 +403,9 @@ export default async function Learn({
           </Markdown>
         </article>
 
-        {/* Floating Share Button - centrado inferior, responsive sin overflow */}
-        <div className="fixed inset-x-0 bottom-4 sm:bottom-6 z-40 flex justify-center pointer-events-none px-4">
-          <div className="pointer-events-auto max-w-[calc(100vw-2rem)]">
+        {/* Floating Share Button - fix mobile scroll: ancho auto centrado, no full-width fixed que bloquea gestos */}
+        <div className="fixed left-1/2 -translate-x-1/2 bottom-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-6 z-40 pointer-events-none flex justify-center w-auto max-w-[calc(100vw-1rem)] px-0" style={{ transform: 'translateX(-50%) translateZ(0)' } as any}>
+          <div className="pointer-events-auto max-w-[calc(100vw-1rem)]">
             <RouteActualLink titlePage={titlePage} title={dictionary.share} />
           </div>
         </div>

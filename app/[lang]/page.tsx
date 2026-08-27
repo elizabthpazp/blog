@@ -65,7 +65,7 @@ export default async function HomePage({
   ));
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen supports-[min-height:100svh]:min-h-[100svh]">
       <Header actual={lang} />
 
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 background-gradient relative">

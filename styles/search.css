@@ -54,4 +54,7 @@ input[type="text"]:focus ~ .search-icon {
 .search-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(124, 58, 237, 0.35) transparent;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }

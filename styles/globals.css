@@ -3,9 +3,23 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  max-width: 100vw;
+  scroll-behavior: auto;
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+}
+
+@supports not (overflow: clip) {
+  html {
+    overflow-x: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -19,14 +33,22 @@ html {
 }
 
 body {
-  overflow-x: hidden;
-  max-width: 100vw;
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
 }
 
-/* Prevent horizontal scroll from any rogue element */
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Prevent horizontal scroll from any rogue element — solo en html/body para no crear scroll anidado */
 main, article {
   max-width: 100%;
-  overflow-x: clip;
+  overflow: visible;
 }
 
 article {
@@ -39,6 +61,43 @@ article code {
   overflow-wrap: normal;
   word-break: normal;
   word-wrap: normal;
+}
+
+/* Code blocks: permiten scroll horizontal sin bloquear el vertical — clave para no “frenar” en mobile */
+article pre,
+.code-block pre {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  touch-action: pan-x pan-y;
+  scroll-padding: 0;
+}
+
+/* Reduce coste GPU en mobile: menos blur y sin transform innecesario */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .background-gradient::before {
+    opacity: 0.35 !important;
+    will-change: opacity;
+    contain: paint;
+  }
+  /* Header, share button y newsletter con menos blur en mobile para 60fps */
+  header[class*="backdrop-blur"],
+  .seva-form[class*="backdrop-blur"],
+  [class*="backdrop-blur-xl"] {
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  .seva-form {
+    contain: content;
+  }
+}
+
+/* Aisla stacking context del main para que fixed no se contenga accidentalmente */
+main.background-gradient {
+  isolation: isolate;
 }
 
 /* ===== Design System ===== */
@@ -268,6 +327,14 @@ article img,
 
 div.code {
   white-space: pre;
+}
+
+/* Aisla paint de bloques de código para no recalcular layout durante scroll — mejora 60fps en mobile */
+.code-block {
+  contain: content;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
 }
 
 /* El bloque de codigo hereda el fondo del contenedor: sin cortes ni cajas internas */

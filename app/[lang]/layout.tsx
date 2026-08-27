@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
+import Script from "next/script";
 import "../../styles/globals.css"
 import { Providers } from "./providers";
 import { i18n, Locale } from '../../i18n-config'
@@ -52,11 +53,24 @@ export default async function RootLayout({ children, params }: any) {
         <meta name="google-site-verification" content="FKs04hcaiO7XyuBg9sogiZE3Hctm1YFcscQteeDZvIM" />
         <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
       </head>
-      <body className="bg-[#ffffff] dark:bg-[#0b0d14] text-gray-900 dark:text-[#e8e8f0] font-sans antialiased selection:bg-violet-500/30 selection:text-violet-400 min-h-screen transition-colors duration-200">
+      <body className="bg-[#ffffff] dark:bg-[#0b0d14] text-gray-900 dark:text-[#e8e8f0] font-sans antialiased selection:bg-violet-500/30 selection:text-violet-400 min-h-screen supports-[min-height:100svh]:min-h-[100svh] transition-colors duration-200">
         <Providers>
           {children}
 
-          <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="elizabethpH" data-description="Support me on Buy me a pizza!" data-message="Thank you so much for helping me keep creating content! 💜" data-color="#7c3aed" data-position="Right" data-x_margin="19" data-y_margin="15"></script>
+          {/* BMC widget deferido para no bloquear scroll en mobile */}
+          <Script
+            data-name="BMC-Widget"
+            data-cfasync="false"
+            src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+            data-id="elizabethpH"
+            data-description="Support me on Buy me a pizza!"
+            data-message="Thank you so much for helping me keep creating content! 💜"
+            data-color="#7c3aed"
+            data-position="Right"
+            data-x_margin="19"
+            data-y_margin="15"
+            strategy="lazyOnload"
+          />
 
           <GoogleAnalytics gaId="G-92CHRN38WP" />
         </Providers>

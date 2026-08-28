@@ -7,6 +7,7 @@ import { i18n, Locale } from '../../i18n-config'
 import { links } from '../../links-web'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import ScrollToTop from "../../components/ScrollToTop";
 
 export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
   return i18n.locales.map((locale) => ({ lang: locale as Locale }))
@@ -54,6 +55,7 @@ export default async function RootLayout({ children, params }: any) {
         <meta name="google-adsense-account" content="ca-pub-7738434269106493"></meta>
       </head>
       <body className="bg-[#ffffff] dark:bg-[#0b0d14] text-gray-900 dark:text-[#e8e8f0] font-sans antialiased selection:bg-violet-500/30 selection:text-violet-400 min-h-screen supports-[min-height:100svh]:min-h-[100svh] transition-colors duration-200">
+        <ScrollToTop />
         <Providers>
           {children}
 

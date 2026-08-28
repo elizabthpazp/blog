@@ -29,7 +29,7 @@ const Postpreview = (props: PostMetadata & { lang?: string }) => {
     <Link 
       href={href}
       scroll={true}
-      className="group block card-post p-4 sm:p-5 mb-4 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-white/80 dark:bg-[#131622]/90 border border-black/10 dark:border-white/10 rounded-2xl"
+      className="group block card-post p-4 sm:p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-white/80 dark:bg-[#131622]/90 border border-black/10 dark:border-white/10 rounded-2xl h-full"
     >
       <div className="flex flex-row items-center gap-3 sm:gap-5 w-full min-w-0">
         {/* Image Container - square icon optimized for small cards */}

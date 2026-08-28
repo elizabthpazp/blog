@@ -1,13 +1,13 @@
 import Footer from "../../components/Footer";
 import EmailPlantilla from "../../components/EmailPlantilla";
 import Header from "../../components/Header";
-import PostPreview from "../../components/PostPreview";
 import SquigglyLines from "../../components/SquigglyLines";
 import { getDictionary } from '../../get-dictionary';
 import { Locale } from '../../i18n-config';
 import { links } from '../../links-web';
 import getPostMetaData from "../../getPostMetadata";
 import Search from "../../components/Search";
+import ArticleGrid from "../../components/ArticleGrid";
 import getDate from "../../utils/getDate";
 
 export async function generateMetadata({
@@ -59,10 +59,6 @@ export default async function HomePage({
 
   // Sort posts strictly from newest (2026) to oldest (2024/2023)
   postMetadata.sort((a, b) => getDate(b.date) - getDate(a.date));
-
-  const postPreviews = postMetadata.map((post) => (
-    <PostPreview key={post.slug} {...post} lang={lang} />
-  ));
 
   return (
     <div className="flex flex-col min-h-screen supports-[min-height:100svh]:min-h-[100svh]">
@@ -143,30 +139,20 @@ export default async function HomePage({
           />
         </section>
 
-        {/* Articles List */}
-        <section id="articles" className="max-w-3xl mx-auto my-12 scroll-mt-20">
-          <div className="text-center mb-10">
-            <h2 className="section-heading text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-              {dictionary.posts}
-            </h2>
-          </div>
+        {/* Articles - new distributed layout: featured + filters + grid + load more */}
+        <ArticleGrid posts={postMetadata} lang={lang} heading={dictionary.posts} />
 
-          <div className="space-y-4">
-            {postPreviews}
-          </div>
-
-          <div className="flex justify-center mt-10">
-            <a
-              href={links.web}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center gap-2 px-5 py-3 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-white font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 transition-all duration-200"
-            >
-              <span>{dictionary.about}</span>
-              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-          </div>
-        </section>
+        <div className="flex justify-center mt-10">
+          <a
+            href={links.web}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex items-center gap-2 px-5 py-3 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 hover:text-neutral-900 dark:hover:text-white font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 transition-all duration-200"
+          >
+            <span>{dictionary.about}</span>
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
       </main>
 
       <Footer copy={dictionary.copy} />

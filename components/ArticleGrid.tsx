@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { PostMetadata } from '../PostMetadata';
 import PostPreview from './PostPreview';
 import { Locale } from '../i18n-config';
+import getDate from '../utils/getDate';
 
 type Props = {
   posts: PostMetadata[];
@@ -28,14 +29,15 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
   const [page, setPage] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   const perPage = 6;
   const hasMounted = useRef(false);
 
-  // Reset page when category changes
+  // Reset page when category or sort changes
   useEffect(() => {
     setPage(0);
     setMobileOpen(false);
-  }, [active]);
+  }, [active, sortOrder]);
 
   // Mobile: al pasar de página con siguiente/dots/swipe, volver al inicio de la lista
   useEffect(() => {
@@ -54,6 +56,20 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
       }
     }
   }, [page]);
+
+  // Mobile: al cambiar orden, también volver al inicio de la lista
+  useEffect(() => {
+    if (!hasMounted.current) return;
+    if (typeof window !== 'undefined' && window.innerWidth < 640) {
+      const el = document.getElementById('articles-grid-top');
+      if (el) {
+        setTimeout(() => {
+          const top = el.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }, 60);
+      }
+    }
+  }, [sortOrder]);
 
   // Sync default label if lang changes (edge)
   useEffect(() => {
@@ -88,9 +104,20 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
     });
   }, [posts, active, allLabel]);
 
-  const hasFeatured = active === allLabel && filtered.length > 0;
-  const featured = hasFeatured ? filtered[0] : null;
-  const rest = hasFeatured ? filtered.slice(1) : filtered;
+  // Sort by date: desc = más reciente primero (default), asc = más antiguo primero
+  const sortedFiltered = useMemo(() => {
+    const copy = [...filtered];
+    copy.sort((a, b) => {
+      const da = getDate(a.date);
+      const db = getDate(b.date);
+      return sortOrder === 'desc' ? db - da : da - db;
+    });
+    return copy;
+  }, [filtered, sortOrder]);
+
+  const hasFeatured = active === allLabel && sortedFiltered.length > 0;
+  const featured = hasFeatured ? sortedFiltered[0] : null;
+  const rest = hasFeatured ? sortedFiltered.slice(1) : sortedFiltered;
   const totalPages = Math.max(1, Math.ceil(rest.length / perPage));
   // Clamp page if filtered shrinks
   useEffect(() => {
@@ -114,7 +141,9 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
   const featuredHref = featured ? `/${lang}/${featured.slug}` : '#';
 
   const t = {
-    featuredBadge: lang === 'en' ? 'Featured · Latest' : 'Destacado · Lo más reciente',
+    featuredBadge: sortOrder === 'desc'
+      ? lang === 'en' ? 'Featured · Latest' : 'Destacado · Lo más reciente'
+      : lang === 'en' ? 'Featured · Oldest first' : 'Destacado · Más antiguo primero',
     showing: rangeLabel,
     pageLabel: lang === 'en' ? `Page ${page + 1} of ${totalPages}` : `Página ${page + 1} de ${totalPages}`,
     prev: lang === 'en' ? 'Previous' : 'Anterior',
@@ -122,6 +151,9 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
     articles: lang === 'en' ? 'articles' : 'artículos',
     empty: lang === 'en' ? 'No articles in this category.' : 'No hay artículos en esta categoría.',
     clearFilter: lang === 'en' ? 'Clear filter' : 'Limpiar filtro',
+    sortLabel: lang === 'en' ? 'Sort by date' : 'Ordenar por fecha',
+    sortNewest: lang === 'en' ? 'Newest' : 'Más recientes',
+    sortOldest: lang === 'en' ? 'Oldest' : 'Más antiguos',
   };
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
@@ -382,8 +414,8 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
       {/* Anchor para scroll mobile */}
       <div id="articles-grid-top" className="scroll-mt-20" />
 
-      {/* Results meta - carousel header */}
-      <div className="flex items-center justify-between mb-4 px-1">
+      {/* Results meta + sort by date */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 px-1">
         <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
           {active !== allLabel ? (
             <>
@@ -401,14 +433,56 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
             </>
           )}
         </p>
-        {active !== allLabel && (
-          <button
-            onClick={() => setActive(allLabel)}
-            className="text-xs font-medium text-violet-600 dark:text-violet-400 hover:text-violet-700 underline-offset-4 hover:underline"
-          >
-            {t.clearFilter}
-          </button>
-        )}
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-between sm:justify-end">
+          {/* Sort by date toggle — feature solicitada: reciente ↔ antiguo */}
+          <div className="flex items-center gap-2">
+            <span className="hidden sm:inline text-xs font-medium text-gray-500 dark:text-gray-400">{t.sortLabel}:</span>
+            <div
+              role="group"
+              aria-label={t.sortLabel}
+              className="inline-flex items-center p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] border border-black/5 dark:border-white/10"
+            >
+              <button
+                onClick={() => setSortOrder('desc')}
+                aria-pressed={sortOrder === 'desc'}
+                aria-label={t.sortNewest + ' — más reciente primero'}
+                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  sortOrder === 'desc'
+                    ? 'bg-violet-500 dark:bg-violet-400 text-white dark:text-neutral-900 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M19 12l-7 7-7-7" />
+                </svg>
+                {t.sortNewest}
+              </button>
+              <button
+                onClick={() => setSortOrder('asc')}
+                aria-pressed={sortOrder === 'asc'}
+                aria-label={t.sortOldest + ' — más antiguo primero'}
+                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  sortOrder === 'asc'
+                    ? 'bg-violet-500 dark:bg-violet-400 text-white dark:text-neutral-900 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
+                {t.sortOldest}
+              </button>
+            </div>
+          </div>
+          {active !== allLabel && (
+            <button
+              onClick={() => setActive(allLabel)}
+              className="text-xs font-medium text-violet-600 dark:text-violet-400 hover:text-violet-700 underline-offset-4 hover:underline shrink-0"
+            >
+              {t.clearFilter}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Grid - carousel page */}
@@ -419,7 +493,7 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
           className="relative overflow-hidden"
         >
           <div
-            key={page + active}
+            key={`${page}-${active}-${sortOrder}`}
             className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr"
             style={{ animation: 'fadeIn 0.35s ease-out' } as React.CSSProperties}
           >

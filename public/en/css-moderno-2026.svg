@@ -1,0 +1,58 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0a1a"/>
+      <stop offset="50%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="14" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="200" fill="#f472b6" opacity="0.18"/>
+  <circle cx="200" cy="540" r="240" fill="#be185d" opacity="0.16"/>
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#f9a8d4" opacity="0.95">CSS MODERNO • 2026 • VIEW TRANSITIONS + :HAS()</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">CSS Moderno en 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#f9a8d4" letter-spacing="-1.5">Container Queries,</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">:has() y View Transitions</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#fce7f3" opacity="0.9">El CSS que reemplaza media queries, JS y animaciones</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#fce7f3" opacity="0.9">complejas con 5 líneas de código nativo.</text>
+  <!-- Browser mock -->
+  <g transform="translate(860, 380)" filter="url(#glow)">
+    <rect x="-150" y="-110" width="300" height="200" rx="16" fill="#ffffff" opacity="0.97"/>
+    <rect x="-150" y="-110" width="300" height="32" rx="16" fill="#1f0a14"/>
+    <circle cx="-122" cy="-94" r="6" fill="#ef4444"/><circle cx="-102" cy="-94" r="6" fill="#facc15"/><circle cx="-82" cy="-94" r="6" fill="#22c55e"/>
+    <text x="0" y="-86" font-family="monospace" font-size="11" fill="#ffffff" text-anchor="middle" opacity="0.9">style.css</text>
+    <!-- CSS code preview -->
+    <text x="-130" y="-56" font-family="monospace" font-size="11" font-weight="700" fill="#be185d">@container (min-width: 400px) {</text>
+    <text x="-120" y="-38" font-family="monospace" font-size="11" fill="#7c3aed">.card { grid-template: 1fr 1fr; }</text>
+    <text x="-130" y="-20" font-family="monospace" font-size="11" font-weight="700" fill="#be185d">}</text>
+    <text x="-130" y="2" font-family="monospace" font-size="11" font-weight="700" fill="#be185d">:has(+ .open) { opacity: 1; }</text>
+    <text x="-130" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#be185d">::view-transition {</text>
+    <text x="-120" y="38" font-family="monospace" font-size="11" fill="#059669">animation: slide 0.3s ease;</text>
+    <text x="-130" y="56" font-family="monospace" font-size="11" font-weight="700" fill="#be185d">}</text>
+    <text x="-130" y="76" font-family="monospace" font-size="11" fill="#ec4899" opacity="0.9">/* 0 JS necesario ✨ */</text>
+  </g>
+  <g transform="translate(700, 108)">
+    <rect x="0" y="0" width="205" height="42" rx="10" fill="url(#card)" stroke="#f9a8d4" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#ec4899"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">@container queries</text>
+  </g>
+  <g transform="translate(720, 162)">
+    <rect x="0" y="0" width="205" height="42" rx="10" fill="url(#card)" stroke="#f9a8d4" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#ec4899"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">:has() parent selector</text>
+  </g>
+  <g transform="translate(740, 216)">
+    <rect x="0" y="0" width="205" height="42" rx="10" fill="url(#card)" stroke="#34d399" stroke-opacity="0.5"/>
+    <circle cx="22" cy="21" r="8" fill="#34d399"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">View Transitions API</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hono Icon">
+  <defs>
+    <linearGradient id="g_hono" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0a14"/>
+      <stop offset="50%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g_hono)"/>
+  <g opacity="0.07" fill="#fff">
+    <circle cx="72" cy="72" r="5"/><circle cx="152" cy="72" r="5"/><circle cx="232" cy="72" r="5"/><circle cx="312" cy="72" r="5"/><circle cx="392" cy="72" r="5"/>
+    <circle cx="72" cy="152" r="5"/><circle cx="152" cy="152" r="5"/><circle cx="232" cy="152" r="5"/><circle cx="312" cy="152" r="5"/><circle cx="392" cy="152" r="5"/>
+    <circle cx="72" cy="392" r="5"/><circle cx="152" cy="392" r="5"/><circle cx="232" cy="392" r="5"/><circle cx="312" cy="392" r="5"/><circle cx="392" cy="392" r="5"/>
+  </g>
+  <circle cx="256" cy="256" r="158" fill="#ffffff" opacity="0.06"/>
+  <circle cx="256" cy="256" r="124" fill="#ffffff" opacity="0.08"/>
+  <g transform="translate(256, 256)">
+    <!-- Flame -->
+    <path d="M 0 -94 C 24 -66, 44 -38, 28 -8 C 38 4, 18 24, 0 36 C -18 24, -38 4, -28 -8 C -44 -38, -24 -66, 0 -94 Z" fill="#fb923c" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M 0 -66 C 12 -48, 20 -30, 12 -12 C 16 -6, 10 2, 0 10 C -10 2, -16 -6, -12 -12 C -20 -30, -12 -48, 0 -66 Z" fill="#ffffff" opacity="0.92"/>
+    <!-- Hono text below -->
+    <g transform="translate(0, 78)">
+      <rect x="-78" y="-18" width="156" height="36" rx="10" fill="#ffffff" opacity="0.97"/>
+      <text x="0" y="7" font-family="monospace" font-size="20" font-weight="900" fill="#7c2d12" text-anchor="middle">HONO</text>
+    </g>
+  </g>
+  <text x="256" y="450" font-family="monospace" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle" opacity="0.95">HONO.JS</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0a14"/>
+      <stop offset="50%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="14" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="200" fill="#fb923c" opacity="0.18"/>
+  <circle cx="200" cy="540" r="240" fill="#ea580c" opacity="0.16"/>
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">HONO.JS • 2026 • BACKEND EDGE ULTRALIGERO</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Hono.js en 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">El backend edge</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">ultraligero</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">14KB, 0 dependencias, corre en Cloudflare,</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Bun, Deno y Node con el mismo código.</text>
+  <!-- Hono illustration -->
+  <g transform="translate(880, 380)" filter="url(#glow)">
+    <!-- Server flame -->
+    <ellipse cx="0" cy="42" rx="96" ry="18" fill="#000000" opacity="0.18"/>
+    <rect x="-110" y="-90" width="220" height="120" rx="16" fill="#ffffff" opacity="0.97"/>
+    <rect x="-110" y="-90" width="220" height="28" rx="16" fill="#ff6b35"/>
+    <rect x="-110" y="-74" width="220" height="12" fill="#ff6b35"/>
+    <text x="0" y="-72" font-family="monospace" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">🔥 hono.ts — 14kB</text>
+    <text x="-90" y="-44" font-family="monospace" font-size="11" fill="#7c2d12">import { Hono } from 'hono'</text>
+    <text x="-90" y="-26" font-family="monospace" font-size="11" fill="#7c2d12">const app = new Hono()</text>
+    <text x="-90" y="-8" font-family="monospace" font-size="11" fill="#ea580c" font-weight="700">app.get('/', (c) =&gt; c.text('hi'))</text>
+    <text x="-90" y="10" font-family="monospace" font-size="11" fill="#059669">export default app // ✨ edge</text>
+    <!-- Latency badge -->
+    <g transform="translate(0, 48)">
+      <rect x="-70" y="-14" width="140" height="28" rx="14" fill="#fb923c"/>
+      <text x="0" y="6" font-family="monospace" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">18ms global ⚡</text>
+    </g>
+  </g>
+  <g transform="translate(700, 108)">
+    <rect x="0" y="0" width="200" height="42" rx="10" fill="url(#card)" stroke="#fdba74" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#fb923c"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">14kB • 0 deps</text>
+  </g>
+  <g transform="translate(720, 162)">
+    <rect x="0" y="0" width="200" height="42" rx="10" fill="url(#card)" stroke="#fdba74" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#fb923c"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Edge everywhere</text>
+  </g>
+  <g transform="translate(740, 216)">
+    <rect x="0" y="0" width="200" height="42" rx="10" fill="url(#card)" stroke="#34d399" stroke-opacity="0.5"/>
+    <circle cx="22" cy="21" r="8" fill="#34d399"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">RPC type-safe</text>
+  </g>
+</svg>

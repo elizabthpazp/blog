@@ -1,0 +1,58 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0a1a"/>
+      <stop offset="50%" stop-color="#7f1d1d"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="14" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="200" fill="#fb923c" opacity="0.18"/>
+  <circle cx="200" cy="540" r="240" fill="#dc2626" opacity="0.16"/>
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">TANSTACK • 2026 • ROUTER + QUERY + START</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">TanStack Start en 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">La stack React</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">moderna completa</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Router type-safe, Query v5 y Start SSR: el nuevo</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">estándar que reemplaza a Next.js para muchos equipos.</text>
+  <!-- Architecture illustration -->
+  <g transform="translate(860, 380)" filter="url(#glow)">
+    <!-- Stack layers -->
+    <rect x="-140" y="-110" width="280" height="58" rx="12" fill="#ffffff" opacity="0.95"/>
+    <text x="0" y="-78" font-family="monospace" font-size="15" font-weight="900" fill="#7f1d1d" text-anchor="middle">TanStack Start ⚡</text>
+    <text x="0" y="-60" font-family="monospace" font-size="10" fill="#9ca3af" text-anchor="middle">SSR • Streaming • RSC</text>
+    <rect x="-140" y="-44" width="280" height="58" rx="12" fill="#fdba74" opacity="0.95"/>
+    <text x="0" y="-12" font-family="monospace" font-size="15" font-weight="900" fill="#7f1d1d" text-anchor="middle">◉ TanStack Router</text>
+    <text x="0" y="6" font-family="monospace" font-size="10" fill="#7f1d1d" text-anchor="middle">Type-safe • File-based</text>
+    <rect x="-140" y="22" width="280" height="58" rx="12" fill="#ffffff" opacity="0.95"/>
+    <text x="0" y="54" font-family="monospace" font-size="15" font-weight="900" fill="#ea580c" text-anchor="middle">◎ TanStack Query v5</text>
+    <text x="0" y="72" font-family="monospace" font-size="10" fill="#9ca3af" text-anchor="middle">Cache • Sync • Optimistic</text>
+    <!-- Connection -->
+    <line x1="0" y1="-52" x2="0" y2="-44" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+    <line x1="0" y1="14" x2="0" y2="22" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  </g>
+  <g transform="translate(700, 108)">
+    <rect x="0" y="0" width="210" height="42" rx="10" fill="url(#card)" stroke="#fdba74" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#fdba74"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">100% Type-safe</text>
+  </g>
+  <g transform="translate(720, 162)">
+    <rect x="0" y="0" width="210" height="42" rx="10" fill="url(#card)" stroke="#fdba74" stroke-opacity="0.4"/>
+    <circle cx="22" cy="21" r="8" fill="#fdba74"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">File-based routing</text>
+  </g>
+  <g transform="translate(740, 216)">
+    <rect x="0" y="0" width="210" height="42" rx="10" fill="url(#card)" stroke="#34d399" stroke-opacity="0.5"/>
+    <circle cx="22" cy="21" r="8" fill="#34d399"/>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">SSR + Streaming</text>
+  </g>
+</svg>

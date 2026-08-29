@@ -2,7 +2,7 @@
 title: "SEO & Digital Marketing"
 subtitle: "GEO & AEO in 2026: How to Rank Your Website in ChatGPT, Perplexity & Google AI Overviews"
 description: "Complete guide to GEO (Generative Engine Optimization) & AEO in 2026: Answer Capsules, llms.txt, E-E-A-T, FAQ schema and how to get cited by ChatGPT and Google AI Overviews."
-date: "27 August 2026"
+date: "29 August 2026"
 image: "./geo-aeo-ia-generativa.svg"
 icon: "./geo-aeo-icon.svg"
 language: "js"

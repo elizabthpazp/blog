@@ -75,6 +75,14 @@ export default async function RootLayout({ children, params }: any) {
           />
 
           <GoogleAnalytics gaId="G-92CHRN38WP" />
+          {/* Cloudflare Web Analytics */}
+          <Script
+            type="module"
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "087a3a308a474047b2ab088a790293fb"}'
+            strategy="afterInteractive"
+          />
+          {/* End Cloudflare Web Analytics */}
         </Providers>
         <Analytics />
         <SpeedInsights />

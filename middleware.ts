@@ -14,6 +14,18 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
+  // No aplicar redirección de locale a sitemap, robots ni archivos de
+  // verificación (deben servirse en la raíz para Google/Search Console)
+  if (
+    pathname === '/sitemap.xml' ||
+    pathname === '/robots.txt' ||
+    pathname.endsWith('.xml') ||
+    pathname.endsWith('.txt') ||
+    /^\/google[a-z0-9]+\.html$/i.test(pathname)
+  ) {
+    return NextResponse.next()
+  }
+
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
   // if (
@@ -46,6 +58,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/`, `/api/` and static files in `/public` (images, fonts, etc.)
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|webp|gif|ico|css|js|map|woff2?|ttf|otf|eot)).*)'],
+  // Matcher ignoring `/_next/`, `/api/`, sitemap/robots y archivos estáticos
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:png|jpg|jpeg|svg|webp|gif|ico|css|js|map|woff2?|ttf|otf|eot|xml|txt|html)).*)'],
 }

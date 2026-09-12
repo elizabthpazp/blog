@@ -20,13 +20,24 @@ export default function Footer({
         <div className="ask-ai-inner">
           <AskAiBadge
             className="custom-ask-ai-badge"
-            productName={links.username}
+            productName="elijs.dev"
             productUrl={links.domain}
             locale={lang === "en" ? "en" : "es"}
-            description={lang === "en"
-              ? "Learn about Web Development with me | Articles, videos, resources and tutorials on Web Development, Frontend, JavaScript, CSS, TypeScript, Vue and React"
-              : "Aprende sobre Desarrollo Web conmigo | Artículos, videos, recursos y tutoriales sobre Desarrollo Web, Frontend, JavaScript, CSS, TypeScript, Vue y React"}
+            prompt={lang === "en"
+              ? "Who is Elizabeth (elijs.dev) and what kind of content does she share on her blog https://blog.elijs.dev? Please summarize."
+              : "¿Quién es Elizabeth (elijs.dev) y qué tipo de contenido comparte en su blog https://blog.elijs.dev? Por favor, resume su contenido."}
           />
+          <div className="mt-4 text-center">
+            <a 
+              href="https://ask-ai-badge.elijs.dev" 
+              target="_blank" 
+              rel="noreferrer"
+              className="text-xs text-gray-500 dark:text-gray-400 hover:text-violet-500 transition-colors"
+            >
+              {lang === "en" ? "Powered by my open-source library " : "Hecho con mi librería open-source "}
+              <span className="font-semibold underline decoration-violet-500/30 underline-offset-2">ask-ai-badge</span> ✦
+            </a>
+          </div>
         </div>
       </div>
 

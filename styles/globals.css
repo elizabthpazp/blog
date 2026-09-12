@@ -508,3 +508,190 @@ div.code {
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
 }
+
+/* ────────────────────────────────────────────────
+   Ask AI Badge — sección dedicada centrada
+──────────────────────────────────────────────── */
+.ask-ai-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem 2.5rem;
+  overflow: hidden;
+}
+
+/* Halo de fondo animado */
+.ask-ai-glow-ring {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 50%,
+    rgba(139, 92, 246, 0.12) 0%,
+    rgba(59, 130, 246, 0.06) 40%,
+    transparent 70%);
+  animation: haloBreath 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes haloBreath {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.06); }
+}
+
+/* Contenedor con glassmorphism */
+.ask-ai-inner {
+  position: relative;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 2rem 2.5rem;
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.1),
+    0 8px 32px -8px rgba(0, 0, 0, 0.35),
+    0 0 60px -20px rgba(139, 92, 246, 0.25);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.ask-ai-inner::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 25px;
+  background: linear-gradient(135deg,
+    rgba(168, 85, 247, 0.35),
+    rgba(99, 102, 241, 0.2),
+    rgba(59, 130, 246, 0.15),
+    transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  animation: borderGlow 4s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.ask-ai-inner:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.2),
+    0 16px 48px -8px rgba(0, 0, 0, 0.4),
+    0 0 80px -15px rgba(139, 92, 246, 0.4);
+}
+
+/* Dark mode adjustments del inner */
+.dark .ask-ai-inner {
+  background: rgba(15, 10, 30, 0.45);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Estilos del widget ── */
+.custom-ask-ai-badge {
+  --aab-bg: transparent;
+  --aab-radius: 14px;
+  --aab-gap: 0.85rem;
+}
+
+.custom-ask-ai-badge .aab__header {
+  margin-bottom: 1.4rem;
+}
+
+.custom-ask-ai-badge .aab__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  justify-content: center;
+  background: linear-gradient(90deg, #e2d9f3 0%, #c4b5fd 40%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.4));
+}
+
+.custom-ask-ai-badge .aab__spark {
+  color: #a855f7;
+  display: inline-block;
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.8));
+  animation: sparkPulse 2.5s ease-in-out infinite;
+  -webkit-text-fill-color: initial;
+}
+
+@keyframes sparkPulse {
+  0%, 100% {
+    transform: scale(1) rotate(-5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25) rotate(5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(168, 85, 247, 1));
+  }
+}
+
+.custom-ask-ai-badge .aab__list {
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.custom-ask-ai-badge .aab__link {
+  border-radius: 14px;
+  padding: 0.7rem 1.1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.dark .custom-ask-ai-badge .aab__link {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.custom-ask-ai-badge .aab__link:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: rgba(139, 92, 246, 0.55);
+  background: rgba(139, 92, 246, 0.1);
+  box-shadow:
+    0 10px 28px -6px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.dark .custom-ask-ai-badge .aab__link:hover {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow:
+    0 10px 32px -6px rgba(147, 51, 234, 0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.custom-ask-ai-badge .aab__label {
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.custom-ask-ai-badge .aab__link:hover .aab__label {
+  opacity: 1;
+  color: #7c3aed;
+}
+
+.dark .custom-ask-ai-badge .aab__link:hover .aab__label {
+  color: #c4b5fd;
+}

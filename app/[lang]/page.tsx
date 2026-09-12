@@ -155,7 +155,7 @@ export default async function HomePage({
         </div>
       </main>
 
-      <Footer copy={dictionary.copy} />
+      <Footer copy={dictionary.copy} lang={lang} />
     </div>
   );
 }

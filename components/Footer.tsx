@@ -1,13 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import { links } from '../links-web'
+import 'ask-ai-badge/style.css';
+import { AskAiBadge } from 'ask-ai-badge';
 
 export default function Footer({
-  copy
+  copy,
+  lang = "es"
 }: {
-  copy: string
+  copy: string;
+  lang?: string;
 }) {
   return (
-    <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t mt-5 flex sm:flex-row flex-col justify-between items-center px-3 space-y-3 sm:mb-0 mb-3 border-gray-500">
+    <>
+      {/* Ask AI Badge — sección dedicada y centrada */}
+      <div className="ask-ai-section">
+        <div className="ask-ai-glow-ring" />
+        <div className="ask-ai-inner">
+          <AskAiBadge
+            className="custom-ask-ai-badge"
+            productName={links.username}
+            productUrl={links.domain}
+            locale={lang === "en" ? "en" : "es"}
+            description={lang === "en"
+              ? "Learn about Web Development with me | Articles, videos, resources and tutorials on Web Development, Frontend, JavaScript, CSS, TypeScript, Vue and React"
+              : "Aprende sobre Desarrollo Web conmigo | Artículos, videos, recursos y tutoriales sobre Desarrollo Web, Frontend, JavaScript, CSS, TypeScript, Vue y React"}
+          />
+        </div>
+      </div>
+
+    <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t flex sm:flex-row flex-col justify-between items-center px-3 space-y-3 sm:mb-0 mb-3 border-gray-500">
       <div className="text-gray-500">
         © {new Date().getFullYear()}{" "}
         &nbsp;<a
@@ -20,6 +43,7 @@ export default function Footer({
         </a> &nbsp;
         {copy}
       </div>
+
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
           href={links.youtube}
@@ -137,5 +161,6 @@ export default function Footer({
 
       </div>
     </footer>
+    </>
   );
 }

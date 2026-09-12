@@ -450,7 +450,7 @@ export default async function Learn({
         </section>
       </main>
 
-      <Footer copy={dictionary.copy} />
+      <Footer copy={dictionary.copy} lang={lang} />
     </div>
   );
 }

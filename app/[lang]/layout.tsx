@@ -58,32 +58,32 @@ export default async function RootLayout({ children, params }: any) {
         <ScrollToTop />
         <Providers>
           {children}
-
-          {/* BMC widget deferido para no bloquear scroll en mobile */}
-          <Script
-            data-name="BMC-Widget"
-            data-cfasync="false"
-            src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-            data-id="elizabethpH"
-            data-description="Support me on Buy me a pizza!"
-            data-message="Thank you so much for helping me keep creating content! 💜"
-            data-color="#7c3aed"
-            data-position="Right"
-            data-x_margin="19"
-            data-y_margin="15"
-            strategy="lazyOnload"
-          />
-
-          <GoogleAnalytics gaId="G-92CHRN38WP" />
-          {/* Cloudflare Web Analytics */}
-          <Script
-            type="module"
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "087a3a308a474047b2ab088a790293fb"}'
-            strategy="afterInteractive"
-          />
-          {/* End Cloudflare Web Analytics */}
         </Providers>
+
+        {/* BMC widget deferido para no bloquear scroll en mobile */}
+        <Script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-id="elizabethpH"
+          data-description="Support me on Buy me a pizza!"
+          data-message="Thank you so much for helping me keep creating content! 💜"
+          data-color="#7c3aed"
+          data-position="Right"
+          data-x_margin="19"
+          data-y_margin="15"
+          strategy="lazyOnload"
+        />
+
+        <GoogleAnalytics gaId="G-92CHRN38WP" />
+        {/* Cloudflare Web Analytics */}
+        <Script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "087a3a308a474047b2ab088a790293fb"}'
+          strategy="afterInteractive"
+        />
+        {/* End Cloudflare Web Analytics */}
         <Analytics />
         <SpeedInsights />
       </body>

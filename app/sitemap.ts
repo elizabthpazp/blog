@@ -97,6 +97,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const other of locales) {
       languages[other] = `${baseUrl}/${other}`;
     }
+    // x-default apunta al idioma por defecto (es) para usuarios sin preferencia
+    languages['x-default'] = `${baseUrl}/es`;
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
       lastModified: now,
@@ -125,6 +127,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }
       }
     }
+    // x-default al default (es) si existe, si no al primer disponible
+    languages['x-default'] = languages['es'] ?? Object.values(languages)[0];
     if (!lastModified) return;
     Object.keys(languages).forEach((locale) => {
       sitemapEntries.push({

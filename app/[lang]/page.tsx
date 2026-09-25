@@ -20,6 +20,7 @@ export async function generateMetadata({
   const dictionary = await getDictionary(lang);
   let titleMeta = sitename + dictionary.metaTitle;
   let descriptionMeta = dictionary.title + ' ' + dictionary.title1 + ' ' + dictionary.title2 + ' | ' + dictionary.metaDescription;
+  const canonicalUrl = `${links.domain}/${lang}`;
 
   return {
     title: titleMeta,
@@ -27,14 +28,20 @@ export async function generateMetadata({
     icons: {
       icon: links.icon,
     },
-    canonical: links.domain,
-    amphtml: links.domain,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        es: `${links.domain}/es`,
+        en: `${links.domain}/en`,
+        'x-default': `${links.domain}/es`,
+      },
+    },
     keywords: 'blog, desarrollo web, marketing digital, elizabthpazp, seo, web, programación, curso, web development, frontend, developer, desarrollador',
     openGraph: {
       images: [ogimage],
       title: titleMeta,
       description: descriptionMeta,
-      url: links.domain,
+      url: canonicalUrl,
       siteName: sitename,
       locale: lang === 'en' ? "en_US" : "es_ES",
       type: "website",

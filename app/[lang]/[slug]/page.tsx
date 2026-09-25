@@ -18,6 +18,7 @@ import PostPreview from "../../../components/PostPreview";
 import getDate from "../../../utils/getDate";
 import highlightTitle from "../../../utils/highlightTitle";
 import CodeHighlight from "../../../components/CodeHighlight";
+import { notFound } from "next/navigation";
 
 let languageProgramming: string;
 
@@ -29,6 +30,7 @@ export async function generateMetadata({
   const { lang, slug } = await params;
   let sitename = links.username;
   const postMeta = getPostMetaData2(slug, lang);
+  const canonicalUrl = `${links.domain}/${lang}/${slug}`;
 
   return {
     title: postMeta.subtitle,
@@ -36,8 +38,14 @@ export async function generateMetadata({
     icons: {
       icon: links.icon,
     },
-    canonical: links.domain + "/" + slug,
-    amphtml: links.domain + "/" + slug,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        es: `${links.domain}/es/${slug}`,
+        en: `${links.domain}/en/${slug}`,
+        'x-default': `${links.domain}/es/${slug}`,
+      },
+    },
     keywords:
       postMeta.title +
       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
@@ -45,7 +53,7 @@ export async function generateMetadata({
       images: [postMeta.image],
       title: postMeta.subtitle,
       description: postMeta.description,
-      url: links.domain + "/" + slug,
+      url: canonicalUrl,
       siteName: sitename,
       locale: lang === "en" ? "en_US" : "es_ES",
       type: "website",
@@ -55,10 +63,6 @@ export async function generateMetadata({
       images: [postMeta.image],
       title: postMeta.subtitle,
       description: postMeta.description,
-    },
-    link: {
-      canonical: links.domain + "/" + slug,
-      amphtml: links.domain + "/" + slug,
     },
   };
 }
@@ -71,6 +75,15 @@ export const generateStaticParams = async () => {
     try {
       const postMetadata = getPostMetaData(locale as any, false);
       for (const file of postMetadata) {
+        // Solo generar la página si existe el .md para ese locale
+        // (evita /en/* vacíos cuando solo existe /es/*, que Google
+        // vería como contenido delgado/duplicado)
+        try {
+          const filePath = `posts/${file.slug}/${locale}/${file.slug}.md`;
+          if (!fs.existsSync(filePath)) continue;
+        } catch {
+          continue;
+        }
         list.push({ lang: locale, slug: file.slug });
       }
     } catch (e) {
@@ -246,6 +259,9 @@ export default async function Learn({
 }) {
   const { lang, slug } = await params;
   const rawContent = getPostContent(slug, lang);
+  if (!rawContent) {
+    notFound();
+  }
   const dictionary = await getDictionary(lang);
   const time = readingTime(rawContent);
   let titlePage = getPostMetaData2(slug, lang).subtitle;
@@ -318,7 +334,7 @@ export default async function Learn({
   // relatedList ya viene ordenado por relevancia (TF-IDF + categoria + language). No reordenar por fecha para mantener los realmente relacionados arriba.
 
   const postPreviews = relatedList.map((post) => (
-    <PostPreview key={post.slug} {...post} />
+    <PostPreview key={post.slug} {...post} lang={lang} />
   ));
 
   const heroSrc = formatImageSrc(meta.image);

@@ -1,0 +1,25 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bgt1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#022c22"/><stop offset="55%" stop-color="#0f766e"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+<linearGradient id="glt1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bgt1)"/>
+<circle cx="1050" cy="120" r="160" fill="#34d399" opacity="0.12"/><circle cx="180" cy="560" r="220" fill="#2dd4bf" opacity="0.08"/>
+<g opacity="0.05" stroke="#fff" stroke-width="1"><line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="300" y1="0" x2="300" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/></g>
+<text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#99f6e4">TESTING • QA • PROMPTS IA • 2026</text>
+<text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Que tu app</text>
+<text x="64" y="215" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#99f6e4" letter-spacing="-1.5">no se rompa</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#ecfdf5" opacity="0.92">8 prompts: unitarias, integracion, E2E y CI</text>
+<text x="64" y="310" font-family="Inter, sans-serif" font-size="15" fill="#ecfdf5" opacity="0.68">Vitest • Playwright • Flujo de pago • Red de seguridad IA</text>
+<g transform="translate(64, 346)"><rect width="200" height="38" rx="19" fill="#ffffff"/><text x="16" y="24" font-family="Inter, sans-serif" font-size="11" font-weight="900" fill="#065f46">8 PROMPTS DE TESTING</text><rect x="214" width="120" height="38" rx="19" fill="#10b981"/><text x="230" y="24" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff">npm test ✓</text></g>
+<g transform="translate(640, 66)"><rect width="496" height="464" rx="28" fill="url(#glt1)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+<text x="248" y="60" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" letter-spacing="1.2" fill="#99f6e4">PIRAMIDE: MUCHAS · ALGUNAS · POCAS</text>
+<g transform="translate(24, 80)">
+<rect width="448" height="64" rx="14" fill="#ffffff"/><text x="16" y="28" font-family="monospace" font-size="11" font-weight="800" fill="#065f46">✓ UNITARIAS × 40 — rapidas, segundos</text><text x="16" y="48" font-family="monospace" font-size="10" fill="#64748b">carrito, descuentos, validaciones</text>
+<rect y="74" width="448" height="64" rx="14" fill="#ffffff" opacity="0.92"/><text x="16" y="102" font-family="monospace" font-size="11" font-weight="800" fill="#0f766e">✓ INTEGRACION × 8 — piezas juntas</text><text x="16" y="122" font-family="monospace" font-size="10" fill="#64748b">boton + estado + API simulada</text>
+<rect y="148" width="448" height="64" rx="14" fill="#065f46"/><text x="16" y="176" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff">✓ E2E × 2 — flujo que da dinero</text><text x="16" y="196" font-family="monospace" font-size="10" fill="#a7f3d0">compra completa en ambiente pruebas</text>
+</g>
+<rect x="24" y="312" width="448" height="84" rx="14" fill="#022c22"/><text x="40" y="340" font-family="monospace" font-size="11" fill="#6ee7b7">$ npm run test:e2e  →  2/2 passed ✓</text><text x="40" y="360" font-family="monospace" font-size="10" fill="#94a3b8">CI en cada push · si rompe, PARA y avisa</text><text x="40" y="378" font-family="monospace" font-size="10" fill="#fbbf24">regla IA: no cambies la prueba para que pase</text>
+<text x="248" y="424" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.55">empieza por el flujo que mas duele si se rompe</text></g>
+<text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.32">BLOG.ELIJS.DEV • TESTING • VITEST • PLAYWRIGHT • CI</text>
+</svg>

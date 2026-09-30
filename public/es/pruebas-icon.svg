@@ -1,0 +1,17 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Icono testing QA">
+<defs><linearGradient id="g_tst" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#022c22"/><stop offset="55%" stop-color="#0f766e"/><stop offset="100%" stop-color="#34d399"/></linearGradient></defs>
+<rect width="512" height="512" rx="112" fill="url(#g_tst)"/>
+<g opacity="0.08" fill="#fff"><circle cx="80" cy="80" r="5"/><circle cx="150" cy="80" r="5"/><circle cx="220" cy="80" r="5"/><circle cx="290" cy="80" r="5"/><circle cx="360" cy="80" r="5"/><circle cx="430" cy="80" r="5"/><circle cx="80" cy="430" r="5"/><circle cx="150" cy="430" r="5"/><circle cx="220" cy="430" r="5"/><circle cx="290" cy="430" r="5"/><circle cx="360" cy="430" r="5"/><circle cx="430" cy="430" r="5"/></g>
+<circle cx="256" cy="250" r="148" fill="#ffffff" opacity="0.07"/>
+<g transform="translate(256, 244)">
+<rect x="-104" y="-96" width="208" height="192" rx="28" fill="#ffffff"/>
+<rect x="-104" y="-96" width="208" height="44" rx="22" fill="#0f766e"/><rect x="-104" y="-70" width="208" height="14" fill="#0f766e"/>
+<text x="0" y="-64" text-anchor="middle" font-family="monospace" font-size="14" font-weight="900" fill="#ffffff">✓ TESTS</text>
+<text x="-84" y="-18" font-family="monospace" font-size="12" font-weight="800" fill="#065f46">✓✓✓✓✓ unit</text>
+<text x="-84" y="8" font-family="monospace" font-size="12" font-weight="800" fill="#0f766e">✓✓✓ integ.</text>
+<text x="-84" y="34" font-family="monospace" font-size="12" font-weight="800" fill="#059669">✓ E2E pago</text>
+<rect x="-84" y="46" width="168" height="12" rx="6" fill="#d1fae5"/><rect x="-84" y="46" width="150" height="12" rx="6" fill="#10b981"/>
+<g transform="translate(74, -100)"><rect x="-28" y="-16" width="56" height="32" rx="16" fill="#10b981" stroke="#ffffff" stroke-width="3"/><text x="0" y="7" text-anchor="middle" font-size="14" font-weight="900" fill="#ffffff">8/8</text></g>
+</g>
+<g transform="translate(256, 428)"><rect x="-70" y="-18" width="140" height="36" rx="18" fill="#ffffff"/><text x="0" y="7" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="900" letter-spacing="1.5" fill="#065f46">QA • TESTS</text></g>
+</svg>

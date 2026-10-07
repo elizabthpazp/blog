@@ -1,0 +1,31 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bgrh" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#020617"/><stop offset="55%" stop-color="#0c4a6e"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+<linearGradient id="glrh" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bgrh)"/>
+<circle cx="1050" cy="120" r="160" fill="#22d3ee" opacity="0.12"/><circle cx="180" cy="560" r="220" fill="#0ea5e9" opacity="0.1"/>
+<g opacity="0.05" stroke="#fff" stroke-width="1"><line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="300" y1="0" x2="300" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/></g>
+<text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#67e8f9">REACT • HOOKS • FRONTEND</text>
+<text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">7 hooks en React</text>
+<text x="64" y="215" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#67e8f9" letter-spacing="-1.5">que debes conocer</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#ecfeff" opacity="0.92">useState, useEffect, useRef, useMemo y mas</text>
+<text x="64" y="310" font-family="Inter, sans-serif" font-size="15" fill="#ecfeff" opacity="0.68">Casos de uso • Ejemplos practicos • Buenas practicas</text>
+<g transform="translate(64, 346)"><rect width="220" height="38" rx="19" fill="#ffffff"/><text x="16" y="24" font-family="Inter, sans-serif" font-size="11" font-weight="900" fill="#0c4a6e">7 HOOKS ESENCIALES · GUIA 2024</text><rect x="234" width="120" height="38" rx="19" fill="#06b6d4"/><text x="250" y="24" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff">useState ⚛</text></g>
+<g transform="translate(640, 66)"><rect width="496" height="464" rx="28" fill="url(#glrh)" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.2"/>
+<g transform="translate(248, 78)" stroke="#22d3ee" stroke-width="7" fill="none" opacity="0.95">
+<ellipse rx="96" ry="36"/><ellipse rx="96" ry="36" transform="rotate(60)"/><ellipse rx="96" ry="36" transform="rotate(120)"/><circle r="16" fill="#22d3ee" stroke="none"/>
+</g>
+<text x="248" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="800" letter-spacing="1.2" fill="#67e8f9">LOS 7 IMPRESCINDIBLES</text>
+<g font-family="monospace" font-size="12" font-weight="800">
+<rect x="24" y="236" width="216" height="52" rx="14" fill="#ffffff"/><text x="40" y="268" fill="#0c4a6e">useState</text>
+<rect x="256" y="236" width="216" height="52" rx="14" fill="#ffffff"/><text x="272" y="268" fill="#0c4a6e">useEffect</text>
+<rect x="24" y="296" width="216" height="52" rx="14" fill="#ffffff"/><text x="40" y="328" fill="#0c4a6e">useRef</text>
+<rect x="256" y="296" width="216" height="52" rx="14" fill="#ffffff"/><text x="272" y="328" fill="#0c4a6e">useContext</text>
+<rect x="24" y="356" width="140" height="52" rx="14" fill="#06b6d4"/><text x="40" y="388" fill="#ffffff">useMemo</text>
+<rect x="178" y="356" width="140" height="52" rx="14" fill="#06b6d4"/><text x="194" y="388" fill="#ffffff">useCallback</text>
+<rect x="332" y="356" width="140" height="52" rx="14" fill="#06b6d4"/><text x="348" y="388" fill="#ffffff">useReducer</text>
+</g>
+<text x="248" y="440" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.55">const [state, setState] = useState(initialValue)</text></g>
+<text x="64" y="590" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#ffffff" opacity="0.32">BLOG.ELIJS.DEV • REACT • HOOKS • FRONTEND</text>
+</svg>

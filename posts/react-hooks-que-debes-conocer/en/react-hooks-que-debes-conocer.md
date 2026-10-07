@@ -3,11 +3,12 @@ title: Web Development
 subtitle: 7 React Hooks You Should Know
 description: The most essential React hooks every frontend developer should know. From state management with useState to performance optimization with useMemo and useCallback, you'll understand how these hooks can transform the way you build React apps. You'll learn their use cases, practical examples, and best practices for implementing each of them in your projects.
 date: September 1, 2024
-image: ./react.png
+image: "./react-hooks-guia.svg"
+icon: "./react-hooks-icon.svg"
 language: "js"
 ---
 
-![web development](./react.png)
+![7 react hooks you should know](./react-hooks-guia.svg)
 
 # 7 React Hooks You
 ## Should Know

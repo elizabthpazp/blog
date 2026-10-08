@@ -18,12 +18,12 @@
     <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
-  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">HONO.JS • 2026 • BACKEND EDGE ULTRALIGERO</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Hono.js en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">El backend edge</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">ultraligero</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">14KB, 0 dependencias, corre en Cloudflare,</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Bun, Deno y Node con el mismo código.</text>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">HONO.JS • 2026 • ULTRALIGHT EDGE BACKEND</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Hono.js in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">The ultralight</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">edge backend</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">14KB, 0 deps, runs on Cloudflare,</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Bun, Deno &amp; Node with the same code.</text>
   <!-- Hono illustration -->
   <g transform="translate(880, 380)" filter="url(#glow)">
     <!-- Server flame -->

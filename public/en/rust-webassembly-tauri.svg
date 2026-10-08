@@ -19,14 +19,14 @@
 </g>
 <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">RUST • WASM • TAURI • 2026</text>
 <text x="64" y="158" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#ffffff" letter-spacing="-1.8">Rust + WASM</text>
-<text x="64" y="218" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#fdba74" letter-spacing="-1.8">para Frontend</text>
-<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#ffedd5" opacity="0.9">Velocidad nativa en el navegador y desktop</text>
-<text x="64" y="312" font-family="Inter, sans-serif" font-size="15" fill="#ffedd5" opacity="0.72">Tauri • WebAssembly • Performance extrema</text>
+<text x="64" y="218" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#fdba74" letter-spacing="-1.8">for Frontend</text>
+<text x="64" y="268" font-family="Inter, sans-serif" font-size="20" fill="#ffedd5" opacity="0.9">Native speed in the browser and desktop</text>
+<text x="64" y="312" font-family="Inter, sans-serif" font-size="15" fill="#ffedd5" opacity="0.72">Tauri • WebAssembly • Extreme performance</text>
 <g transform="translate(64, 348)">
   <rect width="138" height="38" rx="19" fill="#ffffff"/>
   <text x="16" y="24" font-family="monospace" font-size="11" font-weight="900" fill="#9a3412">⚡ 10× FASTER</text>
   <rect x="152" width="170" height="38" rx="19" fill="#ffffff" opacity="0.14" stroke="#ffffff" stroke-opacity="0.25"/>
-  <text x="168" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&lt; 5MB binario</text>
+  <text x="168" y="24" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&lt; 5MB binary</text>
 </g>
 <!-- Right card -->
 <g transform="translate(640, 66)">
@@ -62,12 +62,12 @@
     <text x="16" y="26" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#78716c">ELECTRON</text>
     <text x="16" y="48" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#a8a29e">180 MB</text>
     <text x="16" y="66" font-family="Inter, sans-serif" font-size="11" fill="#a8a29e">+ Chromium + Node</text>
-    <text x="16" y="80" font-family="Inter, sans-serif" font-size="11" fill="#f97316">✕ Pesado</text>
+    <text x="16" y="80" font-family="Inter, sans-serif" font-size="11" fill="#f97316">✕ Heavy</text>
     <rect x="234" width="214" height="88" rx="16" fill="#7c2d12"/>
     <text x="250" y="26" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#fdba74">TAURI (RUST)</text>
     <text x="250" y="48" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#ffffff">4.2 MB</text>
-    <text x="250" y="66" font-family="Inter, sans-serif" font-size="11" fill="#fed7aa">WebView nativo</text>
-    <text x="250" y="80" font-family="Inter, sans-serif" font-size="11" fill="#22c55e">✓ 42× más ligero</text>
+    <text x="250" y="66" font-family="Inter, sans-serif" font-size="11" fill="#fed7aa">Native WebView</text>
+    <text x="250" y="80" font-family="Inter, sans-serif" font-size="11" fill="#22c55e">✓ 42× lighter</text>
   </g>
   <text x="248" y="432" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.6">wasm-pack build --target web • tauri build</text>
 </g>

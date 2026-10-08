@@ -18,12 +18,12 @@
     <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/><line x1="0" y1="525" x2="1200" y2="525"/>
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
-  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#6ee7b7" opacity="0.95">WEBGPU • 2026 • GPU EN EL BROWSER</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">WebGPU en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#6ee7b7" letter-spacing="-1.5">Aceleración GPU</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">en el navegador</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#a7f3d0" opacity="0.9">Compute shaders en JavaScript, IA on-device,</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#a7f3d0" opacity="0.9">juegos 3D y rendimiento 100x vs WebGL.</text>
+  <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#6ee7b7" opacity="0.95">WEBGPU • 2026 • GPU IN THE BROWSER</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">WebGPU in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#6ee7b7" letter-spacing="-1.5">GPU Acceleration</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">in the browser</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#a7f3d0" opacity="0.9">Compute shaders in JavaScript, on-device AI,</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#a7f3d0" opacity="0.9">3D games &amp; 100x performance vs WebGL.</text>
   <!-- GPU chip illustration -->
   <g transform="translate(880, 380)" opacity="0.95">
     <rect x="-120" y="-100" width="240" height="200" rx="20" fill="#0a1f1a" stroke="#34d399" stroke-width="3"/>
@@ -49,7 +49,7 @@
   <g transform="translate(740, 165)">
     <rect x="0" y="0" width="160" height="42" rx="10" fill="url(#card)" stroke="#6ee7b7" stroke-opacity="0.4"/>
     <circle cx="22" cy="21" r="8" fill="#6ee7b7"/>
-    <text x="40" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">IA on-device</text>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#ffffff">On-device AI</text>
   </g>
   <g transform="translate(760, 220)">
     <rect x="0" y="0" width="160" height="42" rx="10" fill="url(#card)" stroke="#6ee7b7" stroke-opacity="0.4"/>

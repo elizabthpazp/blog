@@ -32,7 +32,15 @@ try {
     }
   }
 
-  // Copy all images from public/es and public/en to root public so all image paths resolve at /image-name
+  // Copy all images from public/es and public/en to root public so all image paths resolve at /image-name.
+  // NOTE (convención bg images por idioma): los banners SVG con texto viven en
+  // public/es/*.svg (ES) y public/en/*.svg (EN traducido). La resolución con
+  // idioma se hace en utils/formatImageSrc.ts -> /{lang}/<nombre>.svg, por lo
+  // que el frontmatter sigue usando "./<nombre>.svg" en ambos idiomas.
+  // La copia a root solo crea FALLBACKS (no sobrescribe): nunca pisa un
+  // fichero existente, así la versión EN nunca se contamina con la ES.
+  // Al crear un banner nuevo: añadir public/es/<nombre>.svg y su traducción
+  // public/en/<nombre>.svg con el MISMO nombre de fichero.
   for (const subDir of ["es", "en"]) {
     const subPath = path.join(publicDir, subDir);
     if (fs.existsSync(subPath)) {

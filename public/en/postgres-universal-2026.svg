@@ -19,11 +19,11 @@
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#7dd3fc" opacity="0.95">POSTGRES • 2026 • UNIVERSAL DB</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Postgres en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#7dd3fc" letter-spacing="-1.5">La única base de datos</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">que necesitas</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">pgvector, Neon, Supabase, Edge, JSON,全文检索 y RAG</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">en un solo motor relacional.</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Postgres in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#7dd3fc" letter-spacing="-1.5">The only database</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">you need</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">pgvector, Neon, Supabase, Edge, JSONB and RAG</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">in a single relational engine.</text>
   <!-- Elephant silhouette + SQL -->
   <g transform="translate(900, 430)" opacity="0.95">
     <ellipse cx="0" cy="0" rx="120" ry="80" fill="#ffffff"/>

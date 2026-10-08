@@ -20,10 +20,10 @@
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#f9a8d4" opacity="0.95">LOCAL-FIRST • 2026 • CRDT</text>
   <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Software Local-First</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#f9a8d4" letter-spacing="-1.5">en 2026: CRDTs</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">con Yjs y Automerge</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#fbcfe8" opacity="0.9">Apps offline-first que sincronizan entre</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#fbcfe8" opacity="0.9">dispositivos sin conflictos y sin servidor central.</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#f9a8d4" letter-spacing="-1.5">in 2026: CRDTs</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">with Yjs &amp; Automerge</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#fbcfe8" opacity="0.9">Offline-first apps syncing across</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#fbcfe8" opacity="0.9">devices with no conflicts, no central server.</text>
   <!-- Sync nodes -->
   <g transform="translate(900, 380)">
     <!-- Center node -->

@@ -19,11 +19,11 @@
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#67e8f9" opacity="0.95">PASSKEYS • WEBAUTHN • 2026</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Passkeys en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#67e8f9" letter-spacing="-1.5">Autenticación</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">sin contraseñas</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">WebAuthn nivel 3, llaves FIDO2, biometría,</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">phishing-resistente y 0 contraseñas que robar.</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Passkeys in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#67e8f9" letter-spacing="-1.5">Passwordless</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">authentication</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">WebAuthn level 3, FIDO2 keys, biometrics,</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#a5f3fc" opacity="0.9">phishing-resistant, 0 passwords to steal.</text>
   <!-- Big key -->
   <g transform="translate(880, 380)" filter="url(#glow)">
     <circle cx="-70" cy="0" r="50" fill="#67e8f9" stroke="#ffffff" stroke-width="4"/>

@@ -19,11 +19,11 @@
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fde68a" opacity="0.95">VITE 7 • TURBOPACK • RSPACK • 2026</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Vite 7 y Turbopack:</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">Vite 7 &amp; Turbopack:</text>
   <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fde68a" letter-spacing="-1.5">Bundlers 2026</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">a velocidad extrema</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#e9d5ff" opacity="0.9">Vite 7, Turbopack estable y Rspack: comparativa</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#e9d5ff" opacity="0.9">real de HMR, build y next-gen tooling en 2026.</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">at extreme speed</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#e9d5ff" opacity="0.9">Vite 7, stable Turbopack &amp; Rspack: real</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#e9d5ff" opacity="0.9">HMR, build &amp; next-gen tooling comparison in 2026.</text>
   <!-- Speed bars -->
   <g transform="translate(860, 380)" filter="url(#glow)">
     <!-- Vite -->

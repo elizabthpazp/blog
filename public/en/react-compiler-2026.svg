@@ -19,29 +19,29 @@
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#7dd3fc" opacity="0.95">REACT COMPILER • 2026 • PRODUCTION READY</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">React Compiler en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#7dd3fc" letter-spacing="-1.5">Olvida useMemo</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">y useCallback</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">Compilación automática, memoización inteligente</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">y 2x menos re-renders sin cambiar tu código.</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">React Compiler in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#7dd3fc" letter-spacing="-1.5">Forget useMemo</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">&amp; useCallback</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">Automatic compilation, smart memoization</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#bae6fd" opacity="0.9">and 2x fewer re-renders without changing your code.</text>
   <!-- Code comparison -->
   <g transform="translate(880, 380)" filter="url(#glow)">
     <rect x="-160" y="-120" width="300" height="76" rx="12" fill="#ffffff" opacity="0.09" stroke="#ffffff" stroke-opacity="0.12"/>
-    <text x="-145" y="-96" font-family="monospace" font-size="12" fill="#f87171" opacity="0.95">✕ Antes (manual)</text>
+    <text x="-145" y="-96" font-family="monospace" font-size="12" fill="#f87171" opacity="0.95">✕ Before (manual)</text>
     <text x="-145" y="-76" font-family="monospace" font-size="11" fill="#ffffff" opacity="0.85">useMemo(() =&gt; ..., [dep])</text>
     <text x="-145" y="-60" font-family="monospace" font-size="11" fill="#ffffff" opacity="0.85">useCallback(fn, [dep])</text>
     <line x1="-150" y1="-52" x2="130" y2="-52" stroke="#f87171" stroke-width="2" opacity="0.6"/>
     <rect x="-160" y="-34" width="300" height="76" rx="12" fill="#0ea5e9" opacity="0.22" stroke="#38bdf8" stroke-opacity="0.5"/>
-    <text x="-145" y="-10" font-family="monospace" font-size="12" fill="#7dd3fc" font-weight="700">✓ Ahora (Compiler)</text>
-    <text x="-145" y="10" font-family="monospace" font-size="11" fill="#ffffff" opacity="0.95">auto-memoizado</text>
-    <text x="-145" y="26" font-family="monospace" font-size="11" fill="#7dd3fc" font-weight="700">0 useMemo necesario</text>
+    <text x="-145" y="-10" font-family="monospace" font-size="12" fill="#7dd3fc" font-weight="700">✓ Now (Compiler)</text>
+    <text x="-145" y="10" font-family="monospace" font-size="11" fill="#ffffff" opacity="0.95">auto-memoized</text>
+    <text x="-145" y="26" font-family="monospace" font-size="11" fill="#7dd3fc" font-weight="700">0 useMemo needed</text>
     <!-- Arrow -->
     <text x="-10" y="-44" font-family="monospace" font-size="22" fill="#38bdf8" text-anchor="middle">↓</text>
   </g>
   <g transform="translate(700, 108)">
     <rect x="0" y="0" width="200" height="42" rx="10" fill="url(#card)" stroke="#7dd3fc" stroke-opacity="0.4"/>
     <circle cx="22" cy="21" r="8" fill="#38bdf8"/>
-    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Auto-memoización</text>
+    <text x="40" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Auto-memoization</text>
   </g>
   <g transform="translate(720, 162)">
     <rect x="0" y="0" width="200" height="42" rx="10" fill="url(#card)" stroke="#7dd3fc" stroke-opacity="0.4"/>

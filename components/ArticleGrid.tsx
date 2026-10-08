@@ -6,18 +6,12 @@ import { PostMetadata } from '../PostMetadata';
 import PostPreview from './PostPreview';
 import { Locale } from '../i18n-config';
 import getDate from '../utils/getDate';
+import { formatImageSrc } from '../utils/formatImageSrc';
 
 type Props = {
   posts: PostMetadata[];
   lang: Locale;
   heading: string;
-};
-
-const formatImageSrc = (img?: string) => {
-  if (!img) return '/web.png';
-  let cleaned = img.replace('./', '');
-  if (!cleaned.startsWith('/')) cleaned = '/' + cleaned;
-  return cleaned;
 };
 
 const ALL_ES = 'Todos';
@@ -137,7 +131,8 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
         : `${rangeStart}–${rangeEnd} de ${rest.length}`;
 
   // For compact featured we prefer square icon (like cards), fallback to banner
-  const featuredImage = formatImageSrc((featured as any)?.icon || featured?.image);
+  const featuredImage = formatImageSrc((featured as any)?.icon || featured?.image, lang);
+  const featuredFallback = formatImageSrc((featured as any)?.icon || featured?.image);
   const featuredHref = featured ? `/${lang}/${featured.slug}` : '#';
 
   const t = {
@@ -365,7 +360,14 @@ export default function ArticleGrid({ posts, lang, heading }: Props) {
                 src={featuredImage}
                 alt={featured.subtitle || featured.title}
                 className={`w-full h-full ${(featured as any)?.icon ? 'object-cover rounded-xl sm:rounded-2xl' : 'object-contain rounded-lg sm:rounded-xl'}`}
-                onError={(e) => ((e.target as HTMLImageElement).src = '/web.png')}
+                onError={(e) => {
+                  const el = e.target as HTMLImageElement;
+                  if (!el.src.endsWith(featuredFallback)) {
+                    el.src = featuredFallback;
+                  } else {
+                    el.src = '/web.png';
+                  }
+                }}
               />
             </div>
 

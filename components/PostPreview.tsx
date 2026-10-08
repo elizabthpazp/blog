@@ -2,15 +2,7 @@
 
 import Link from "next/link"; 
 import { PostMetadata } from "../PostMetadata"; 
-
-const formatImageSrc = (img?: string) => {
-  if (!img) return '/web.png';
-  let cleaned = img.replace('./', '');
-  if (!cleaned.startsWith('/')) {
-    cleaned = '/' + cleaned;
-  }
-  return cleaned;
-};
+import { formatImageSrc } from "../utils/formatImageSrc";
 
 const Postpreview = (props: PostMetadata & { lang?: string }) => {  
   if (!props.slug) return null;
@@ -20,7 +12,8 @@ const Postpreview = (props: PostMetadata & { lang?: string }) => {
   const publishDate = props.date || '';
   // Prefer square icon for cards (48-80px), fallback to banner image for legacy posts
   const hasIcon = Boolean((props as any).icon);
-  const imageSrc = formatImageSrc((props as any).icon || props.image);
+  const imageSrc = formatImageSrc((props as any).icon || props.image, props.lang);
+  const fallbackSrc = formatImageSrc((props as any).icon || props.image);
 
   // Build URL with language prefix
   const href = props.lang ? `/${props.lang}/${props.slug}` : `/${props.slug}`;
@@ -40,7 +33,12 @@ const Postpreview = (props: PostMetadata & { lang?: string }) => {
             src={imageSrc}
             className={`w-full h-full forcedImage ${hasIcon ? 'object-cover rounded-xl sm:rounded-2xl' : 'object-contain rounded-lg sm:rounded-xl'}`}
             onError={(e) => {
-              (e.target as HTMLImageElement).src = '/web.png';
+              const el = e.target as HTMLImageElement;
+              if (el.src !== fallbackSrc && !el.src.endsWith(fallbackSrc)) {
+                el.src = fallbackSrc;
+              } else {
+                el.src = '/web.png';
+              }
             }}
           />
         </div>

@@ -17,6 +17,7 @@ import { links } from "../../../links-web";
 import PostPreview from "../../../components/PostPreview";
 import getDate from "../../../utils/getDate";
 import highlightTitle from "../../../utils/highlightTitle";
+import { formatImageSrc } from "../../../utils/formatImageSrc";
 import CodeHighlight from "../../../components/CodeHighlight";
 import { notFound } from "next/navigation";
 
@@ -31,6 +32,7 @@ export async function generateMetadata({
   let sitename = links.username;
   const postMeta = getPostMetaData2(slug, lang);
   const canonicalUrl = `${links.domain}/${lang}/${slug}`;
+  const ogImage = links.domain + formatImageSrc(postMeta.image, lang);
 
   return {
     title: postMeta.subtitle,
@@ -50,7 +52,7 @@ export async function generateMetadata({
       postMeta.title +
       " ,blog, elizabthpazp, seo, web, programación, curso, frontend, developer, desarrollador, marketing digital",
     openGraph: {
-      images: [postMeta.image],
+      images: [ogImage],
       title: postMeta.subtitle,
       description: postMeta.description,
       url: canonicalUrl,
@@ -60,7 +62,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      images: [postMeta.image],
+      images: [ogImage],
       title: postMeta.subtitle,
       description: postMeta.description,
     },
@@ -147,26 +149,22 @@ function readingTime(post: any) {
   return Math.ceil(wordCount / WORDS_PER_MINUTE);
 }
 
-const formatImageSrc = (img?: string) => {
-  if (!img) return "";
-  let cleaned = img.replace('./', '');
-  if (!cleaned.startsWith('/')) cleaned = '/' + cleaned;
-  return cleaned;
-};
-
-const MyImg = ({ alt, src, title, ...rest }: any) => {
-  const cleanedSrc = formatImageSrc(src);
-  return (
-    <img
-      src={cleanedSrc || src}
-      alt={alt || ""}
-      title={title}
-      loading="lazy"
-      decoding="async"
-      className="block mx-auto my-8 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] shadow-sm max-w-full max-h-[360px] sm:max-h-[520px] w-auto h-auto object-contain"
-      {...rest}
-    />
-  );
+const makeMyImg = (lang: Locale) => {
+  const MyImg = ({ alt, src, title, ...rest }: any) => {
+    const cleanedSrc = formatImageSrc(src, lang);
+    return (
+      <img
+        src={cleanedSrc || src}
+        alt={alt || ""}
+        title={title}
+        loading="lazy"
+        decoding="async"
+        className="block mx-auto my-8 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] shadow-sm max-w-full max-h-[360px] sm:max-h-[520px] w-auto h-auto object-contain"
+        {...rest}
+      />
+    );
+  };
+  return MyImg;
 };
 
 const MyTable = ({ children, ...rest }: any) => {
@@ -337,7 +335,8 @@ export default async function Learn({
     <PostPreview key={post.slug} {...post} lang={lang} />
   ));
 
-  const heroSrc = formatImageSrc(meta.image);
+  const heroSrc = formatImageSrc(meta.image, lang);
+  const MyImg = makeMyImg(lang);
   const titleParts = highlightTitle(meta.subtitle);
 
   return (

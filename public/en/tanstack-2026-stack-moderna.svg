@@ -19,11 +19,11 @@
     <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/><line x1="1000" y1="0" x2="1000" y2="630"/>
   </g>
   <text x="64" y="96" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="3.2" fill="#fdba74" opacity="0.95">TANSTACK • 2026 • ROUTER + QUERY + START</text>
-  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">TanStack Start en 2026:</text>
-  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">La stack React</text>
-  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">moderna completa</text>
-  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Router type-safe, Query v5 y Start SSR: el nuevo</text>
-  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">estándar que reemplaza a Next.js para muchos equipos.</text>
+  <text x="64" y="158" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">TanStack Start in 2026:</text>
+  <text x="64" y="214" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#fdba74" letter-spacing="-1.5">The complete</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="54" font-weight="900" fill="#ffffff" letter-spacing="-1.5">modern React stack</text>
+  <text x="64" y="320" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">Type-safe Router, Query v5 &amp; Start SSR: the new</text>
+  <text x="64" y="348" font-family="Inter, sans-serif" font-size="18" fill="#ffedd5" opacity="0.9">standard replacing Next.js for many teams.</text>
   <!-- Architecture illustration -->
   <g transform="translate(860, 380)" filter="url(#glow)">
     <!-- Stack layers -->
